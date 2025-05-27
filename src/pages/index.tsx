@@ -1,118 +1,242 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import Head from 'next/head'
 
 export default function Home() {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <Head>
+        <title>Involv - Compliance Made Simple. Gaming Made Smarter.</title>
+        <meta name="description" content="Strategic advisory and intelligent software helping Australian pubs and clubs meet compliance and optimise gaming performance." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <div className="bg-[#0f1115] text-white font-sans min-h-screen">
+        {/* Brand Strip with Assure, PrimeEdge, Lane Consulting */}
+        <div className="w-full bg-[#0f1115] text-white">
+          <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-end gap-x-6">
+            <a href="https://assure.involv.com.au">
+              <span className="text-sm text-gray-300 hover:text-white">Assure</span>
+            </a>
+            <a href="https://primeedge.involv.com.au">
+              <span className="text-sm text-gray-300 hover:text-white">PrimeEdge</span>
+            </a>
+            <a href="https://lane.involv.com.au">
+              <span className="text-sm text-gray-300 hover:text-white">Lane Consulting</span>
+            </a>
+          </div>
         </div>
+
+        {/* Main Header */}
+        <header className="bg-[#0f1115] text-white border-b border-gray-800 sticky top-0 z-50">
+          <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between relative">
+            {/* Left: Logo */}
+            <a href="/" className="flex items-center">
+              <span className="text-xl font-bold text-white">Involv</span>
+            </a>
+
+            {/* Centered Nav Group */}
+            <nav className="absolute left-1/2 transform -translate-x-1/2 text-sm flex space-x-6">
+              <a href="/services" className="hover:text-[#66899b] transition-colors">
+                Services
+              </a>
+              <a href="/solutions" className="hover:text-[#66899b] transition-colors">
+                Solutions
+              </a>
+              <a href="/insights" className="hover:text-[#66899b] transition-colors">
+                Insights
+              </a>
+            </nav>
+
+            {/* Right-Aligned Section: About/Contact + Login */}
+            <div className="flex items-center text-sm">
+              {/* Grouped About + Contact */}
+              <div className="flex space-x-6">
+                <a href="/about" className="hover:text-[#66899b] transition-colors">
+                  About
+                </a>
+                <a href="/contact" className="hover:text-[#66899b] transition-colors">
+                  Contact
+                </a>
+              </div>
+
+              {/* Separated Login Button */}
+              <a
+                href="/login"
+                className="ml-[60px] text-sm font-medium bg-white text-black px-4 py-1.5 rounded hover:bg-gray-200 transition"
+              >
+                Login
+              </a>
+            </div>
+          </div>
+        </header>
+
+        {/* Hero Section */}
+        <section className="text-center px-4 pt-24 pb-12">
+          <h1 className="text-4xl font-bold mb-4">
+            Compliance Made Simple. Gaming Made Smarter. Built for Pubs and Clubs.
+          </h1>
+          <p className="text-lg text-gray-400 mb-6 max-w-2xl mx-auto">
+            Strategic advisory and intelligent software helping Australian pubs and clubs meet compliance and optimise gaming performance.
+          </p>
+          <div className="space-x-4">
+            <a href="/contact" className="bg-[#66899b] text-white px-6 py-2 rounded hover:bg-opacity-80 inline-block">
+              Contact Us
+            </a>
+            <a href="/services" className="border border-[#66899b] text-[#66899b] px-6 py-2 rounded hover:bg-[#66899b] hover:text-white inline-block">
+              Explore Our Services
+            </a>
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section className="bg-[#121418] py-16 px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-gray-300 text-lg">
+              We are built for Australian pubs and clubs – and only for them. Our team brings over 80 years of collective experience across gaming operations, gaming regulation, and hospitality compliance. Everything we do is designed to make venues safer, smarter, and more successful.
+            </p>
+          </div>
+        </section>
+
+        {/* Services Section */}
+        <section className="max-w-6xl mx-auto px-4 py-16">
+          <h2 className="text-2xl font-bold mb-10 text-center">Our Services</h2>
+          <div className="grid gap-8 md:grid-cols-3">
+            {serviceCards.map((service) => (
+              <a key={service.title} href={service.link} className="bg-[#1a1d21] hover:bg-[#22252a] rounded-lg p-6 shadow block transition-colors">
+                <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
+                <p className="text-gray-400 text-sm">{service.description}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        {/* Why Involv Section */}
+        <section className="bg-[#121418] py-16 px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-2xl font-bold mb-10 text-center">Why Involv</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {whyInvolvCards.map((card) => (
+                <div key={card.title} className="bg-[#1a1d21] rounded-lg p-6 shadow">
+                  <h3 className="text-lg font-semibold mb-2">{card.title}</h3>
+                  <p className="text-gray-400 text-sm">{card.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Solutions Section */}
+        <section className="max-w-6xl mx-auto px-4 py-16">
+          <h2 className="text-2xl font-bold mb-10 text-center">Solutions</h2>
+          <div className="grid gap-8 md:grid-cols-2">
+            {solutionCards.map((solution) => (
+              <a key={solution.name} href={solution.link} className="bg-[#1a1d21] hover:bg-[#22252a] rounded-lg p-6 shadow block transition-colors">
+                <h3 className="text-lg font-semibold mb-1">{solution.name}</h3>
+                <p className="text-[#9b7866] italic mb-2">{solution.tagline}</p>
+                <p className="text-gray-400 text-sm">{solution.description}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="bg-[#121418] text-white py-12 px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-4 gap-8">
+              <div>
+                <span className="text-xl font-bold text-white mb-4 block">Involv</span>
+                <p className="text-gray-400 text-sm">
+                  Compliance made simple. Gaming made smarter. Built for Australian pubs and clubs.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-4">Services</h3>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li><a href="/services/aml-advisory" className="hover:text-white">AML Advisory</a></li>
+                  <li><a href="/services/risk-compliance" className="hover:text-white">Risk & Compliance</a></li>
+                  <li><a href="/services/gaming-performance" className="hover:text-white">Gaming Performance</a></li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-4">Solutions</h3>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li><a href="https://assure.involv.com.au" className="hover:text-white">Involv Assure</a></li>
+                  <li><a href="https://primeedge.involv.com.au" className="hover:text-white">Involv PrimeEdge</a></li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-4">Company</h3>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li><a href="/about" className="hover:text-white">About</a></li>
+                  <li><a href="/insights" className="hover:text-white">Insights</a></li>
+                  <li><a href="/contact" className="hover:text-white">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+              <p>&copy; 2025 Involv. All rights reserved.</p>
+              <div className="flex space-x-6 mt-4 md:mt-0">
+                <a href="/privacy-policy" className="hover:text-white">Privacy Policy</a>
+                <a href="/terms-of-use" className="hover:text-white">Terms of Use</a>
+                <a href="/disclaimer" className="hover:text-white">Disclaimer</a>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </>
   )
 }
+
+// Data
+const serviceCards = [
+  {
+    title: 'AML Advisory',
+    description: 'Navigate AUSTRAC obligations confidently. We implement, uplift, and independently review your AML/CTF Programs.',
+    link: '/services/aml-advisory',
+  },
+  {
+    title: 'Risk & Regulatory Compliance',
+    description: 'From licensing to registers and audits, we clarify your obligations and uplift your compliance framework.',
+    link: '/services/risk-compliance',
+  },
+  {
+    title: 'Gaming Performance',
+    description: 'Led by Australia\'s most experienced gaming ops leader. We optimise floors and boost revenue, data-first.',
+    link: '/services/gaming-performance',
+  },
+]
+
+const whyInvolvCards = [
+  {
+    title: 'Deep Industry Experience',
+    description: 'Led by former ALH execs and gaming specialists — we know how high-performance venues actually run.',
+  },
+  {
+    title: 'Practical + Trusted Advisory',
+    description: 'We demystify compliance, streamline ops, and help you stay ahead of changing regulation.',
+  },
+  {
+    title: 'Tech That Works in Venues',
+    description: 'Involv Assure and PrimeEdge are intuitive, venue-friendly SaaS tools with clear ROI.',
+  },
+]
+
+const solutionCards = [
+  {
+    name: 'Involv Assure',
+    tagline: 'A risk and compliance team in your browser.',
+    description: 'A purpose-built GRC platform tailored to licensed gaming venues. Map obligations, test controls, and stay audit-ready – without the bloat.',
+    link: 'https://assure.involv.com.au',
+  },
+  {
+    name: 'Involv PrimeEdge',
+    tagline: 'The science behind high-performance gaming venues.',
+    description: 'An AI-powered optimisation tool for EGM floors. Visualise performance, simulate changes, and receive data-backed recommendations.',
+    link: 'https://primeedge.involv.com.au',
+  },
+]
