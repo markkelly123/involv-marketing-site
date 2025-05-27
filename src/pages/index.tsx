@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -30,42 +31,42 @@ export default function Home() {
         <header className="bg-[#0f1115] text-white border-b border-gray-800 sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between relative">
             {/* Left: Logo */}
-            <a href="/" className="flex items-center">
+            <Link href="/" className="flex items-center">
               <span className="text-xl font-bold text-white">Involv</span>
-            </a>
+            </Link>
 
             {/* Centered Nav Group */}
             <nav className="absolute left-1/2 transform -translate-x-1/2 text-sm flex space-x-6">
-              <a href="/services" className="hover:text-[#66899b] transition-colors">
+              <Link href="/services" className="hover:text-[#66899b] transition-colors">
                 Services
-              </a>
-              <a href="/solutions" className="hover:text-[#66899b] transition-colors">
+              </Link>
+              <Link href="/solutions" className="hover:text-[#66899b] transition-colors">
                 Solutions
-              </a>
-              <a href="/insights" className="hover:text-[#66899b] transition-colors">
+              </Link>
+              <Link href="/insights" className="hover:text-[#66899b] transition-colors">
                 Insights
-              </a>
+              </Link>
             </nav>
 
             {/* Right-Aligned Section: About/Contact + Login */}
             <div className="flex items-center text-sm">
               {/* Grouped About + Contact */}
               <div className="flex space-x-6">
-                <a href="/about" className="hover:text-[#66899b] transition-colors">
+                <Link href="/about" className="hover:text-[#66899b] transition-colors">
                   About
-                </a>
-                <a href="/contact" className="hover:text-[#66899b] transition-colors">
+                </Link>
+                <Link href="/contact" className="hover:text-[#66899b] transition-colors">
                   Contact
-                </a>
+                </Link>
               </div>
 
               {/* Separated Login Button */}
-              <a
+              <Link
                 href="/login"
                 className="ml-[60px] text-sm font-medium bg-white text-black px-4 py-1.5 rounded hover:bg-gray-200 transition"
               >
                 Login
-              </a>
+              </Link>
             </div>
           </div>
         </header>
@@ -79,12 +80,12 @@ export default function Home() {
             Strategic advisory and intelligent software helping Australian pubs and clubs meet compliance and optimise gaming performance.
           </p>
           <div className="space-x-4">
-            <a href="/contact" className="bg-[#66899b] text-white px-6 py-2 rounded hover:bg-opacity-80 inline-block">
+            <Link href="/contact" className="bg-[#66899b] text-white px-6 py-2 rounded hover:bg-opacity-80 inline-block">
               Contact Us
-            </a>
-            <a href="/services" className="border border-[#66899b] text-[#66899b] px-6 py-2 rounded hover:bg-[#66899b] hover:text-white inline-block">
+            </Link>
+            <Link href="/services" className="border border-[#66899b] text-[#66899b] px-6 py-2 rounded hover:bg-[#66899b] hover:text-white inline-block">
               Explore Our Services
-            </a>
+            </Link>
           </div>
         </section>
 
@@ -102,10 +103,10 @@ export default function Home() {
           <h2 className="text-2xl font-bold mb-10 text-center">Our Services</h2>
           <div className="grid gap-8 md:grid-cols-3">
             {serviceCards.map((service) => (
-              <a key={service.title} href={service.link} className="bg-[#1a1d21] hover:bg-[#22252a] rounded-lg p-6 shadow block transition-colors">
+              <Link key={service.title} href={service.link} className="bg-[#1a1d21] hover:bg-[#22252a] rounded-lg p-6 shadow block transition-colors">
                 <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
                 <p className="text-gray-400 text-sm">{service.description}</p>
-              </a>
+              </Link>
             ))}
           </div>
         </section>
@@ -153,9 +154,9 @@ export default function Home() {
               <div>
                 <h3 className="font-semibold mb-4">Services</h3>
                 <ul className="space-y-2 text-sm text-gray-400">
-                  <li><a href="/services/aml-advisory" className="hover:text-white">AML Advisory</a></li>
-                  <li><a href="/services/risk-compliance" className="hover:text-white">Risk & Compliance</a></li>
-                  <li><a href="/services/gaming-performance" className="hover:text-white">Gaming Performance</a></li>
+                  <li><Link href="/services/aml-advisory" className="hover:text-white">AML Advisory</Link></li>
+                  <li><Link href="/services/risk-compliance" className="hover:text-white">Risk & Compliance</Link></li>
+                  <li><Link href="/services/gaming-performance" className="hover:text-white">Gaming Performance</Link></li>
                 </ul>
               </div>
               
@@ -170,9 +171,9 @@ export default function Home() {
               <div>
                 <h3 className="font-semibold mb-4">Company</h3>
                 <ul className="space-y-2 text-sm text-gray-400">
-                  <li><a href="/about" className="hover:text-white">About</a></li>
-                  <li><a href="/insights" className="hover:text-white">Insights</a></li>
-                  <li><a href="/contact" className="hover:text-white">Contact</a></li>
+                  <li><Link href="/about" className="hover:text-white">About</Link></li>
+                  <li><Link href="/insights" className="hover:text-white">Insights</Link></li>
+                  <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
                 </ul>
               </div>
             </div>
@@ -180,9 +181,9 @@ export default function Home() {
             <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
               <p>&copy; 2025 Involv. All rights reserved.</p>
               <div className="flex space-x-6 mt-4 md:mt-0">
-                <a href="/privacy-policy" className="hover:text-white">Privacy Policy</a>
-                <a href="/terms-of-use" className="hover:text-white">Terms of Use</a>
-                <a href="/disclaimer" className="hover:text-white">Disclaimer</a>
+                <Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
+                <Link href="/terms-of-use" className="hover:text-white">Terms of Use</Link>
+                <Link href="/disclaimer" className="hover:text-white">Disclaimer</Link>
               </div>
             </div>
           </div>
