@@ -16,13 +16,13 @@ export default function Home() {
         <div className="w-full bg-[#0f1115] text-white">
           <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-end gap-x-6">
             <a href="https://assure.involv.com.au">
-              <span className="text-sm text-gray-300 hover:text-white">Assure</span>
+              <img src="/logo-involve-assure-white.svg" alt="Assure" className="h-4 w-auto" />
             </a>
             <a href="https://primeedge.involv.com.au">
-              <span className="text-sm text-gray-300 hover:text-white">PrimeEdge</span>
+              <img src="/logo-involve-primeedge-white.svg" alt="PrimeEdge" className="h-4 w-auto" />
             </a>
             <a href="https://lane.involv.com.au">
-              <span className="text-sm text-gray-300 hover:text-white">Lane Consulting</span>
+              <img src="/logo-lane-white.svg" alt="Lane Consulting" className="h-4 w-auto" />
             </a>
           </div>
         </div>
@@ -32,7 +32,11 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between relative">
             {/* Left: Logo */}
             <Link href="/" className="flex items-center">
-              <span className="text-xl font-bold text-white">Involv</span>
+              <img
+                src="/logo-involv-white.svg"
+                alt="Involv"
+                className="h-6 w-auto"
+              />
             </Link>
 
             {/* Centered Nav Group */}
@@ -145,7 +149,13 @@ export default function Home() {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-4 gap-8">
               <div>
-                <span className="text-xl font-bold text-white mb-4 block">Involv</span>
+                <div className="mb-4">
+                  <img 
+                    src="/logo-involv-white.svg" 
+                    alt="Involv" 
+                    className="h-6 w-auto"
+                  />
+                </div>
                 <p className="text-gray-400 text-sm">
                   Compliance made simple. Gaming made smarter. Built for Australian pubs and clubs.
                 </p>
@@ -240,4 +250,4 @@ const solutionCards = [
     description: 'An AI-powered optimisation tool for EGM floors. Visualise performance, simulate changes, and receive data-backed recommendations.',
     link: 'https://primeedge.involv.com.au',
   },
-]// Force update
+]
