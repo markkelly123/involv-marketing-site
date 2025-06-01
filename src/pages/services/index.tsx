@@ -101,7 +101,7 @@ export default function Services() {
                 </div>
               </div>
               <p className="text-gray-300 text-sm text-center">
-                Built by former ALH executives, gaming regulators, and compliance specialists who've solved these challenges at scale.
+                Built by former ALH executives, gaming regulators, and compliance specialists who&apos;ve solved these challenges at scale.
               </p>
             </div>
           </div>
@@ -111,7 +111,7 @@ export default function Services() {
         <section className="bg-[#121418] py-16 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Challenges Facing Today's Venues</h2>
+              <h2 className="text-3xl font-bold mb-4">Challenges Facing Today&apos;s Venues</h2>
               <p className="text-gray-300 text-lg max-w-2xl mx-auto">
                 Regulatory requirements are getting more complex while performance expectations increase. These are the challenges we help venues navigate.
               </p>
@@ -146,7 +146,7 @@ export default function Services() {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4">Three Expert Advisory Services That Solve Your Problems</h2>
             <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-              We've structured our services around the three biggest challenges facing venues today. Each service transforms a burden into a competitive advantage.
+              We&apos;ve structured our services around the three biggest challenges facing venues today. Each service transforms a burden into a competitive advantage.
             </p>
           </div>
 
@@ -252,7 +252,7 @@ export default function Services() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Why Venues Trust Involv</h2>
             <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-              We're not just consultants — we're former venue operators, gaming regulators, and compliance specialists who understand your challenges from the inside.
+              We&apos;re not just consultants — we&apos;re former venue operators, gaming regulators, and compliance specialists who understand your challenges from the inside.
             </p>
           </div>
 
@@ -274,7 +274,7 @@ export default function Services() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to Get Expert Guidance?</h2>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              Every venue faces different challenges. Let's discuss your specific situation and how our expertise can help you navigate your compliance and performance requirements.
+              Every venue faces different challenges. Let&apos;s discuss your specific situation and how our expertise can help you navigate your compliance and performance requirements.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium">
@@ -408,7 +408,7 @@ const services = [
     title: "Gaming Risk & Compliance",
     subtitle: "Regulatory Complexity Simplified",
     icon: "⚖️",
-    problemSolution: "Turn regulatory complexity into competitive advantage. We simplify licence obligations across all Australian jurisdictions so you can focus on running your venue. Our frameworks ensure you're always audit-ready while supporting sustainable growth.",
+    problemSolution: "Turn regulatory complexity into competitive advantage. We simplify licence obligations across all Australian jurisdictions so you can focus on running your venue. Our frameworks ensure you&apos;re always audit-ready while supporting sustainable growth.",
     outcomes: [
       "Clear obligations mapping and tracking",
       "Robust safer gambling frameworks that work",
@@ -429,7 +429,7 @@ const services = [
     title: "Gaming Performance Advisory",
     subtitle: "Revenue Optimisation Through Expertise",
     icon: "📈",
-    problemSolution: "Unlock your gaming revenue potential with data-driven insights from Australia's most experienced gaming professionals. Led by Con Nikitas, who managed nearly 13,000 EGMs at ALH Group, we turn guesswork into strategic advantage.",
+    problemSolution: "Unlock your gaming revenue potential with data-driven insights from Australia&apos;s most experienced gaming professionals. Led by Con Nikitas, who managed nearly 13,000 EGMs at ALH Group, we turn guesswork into strategic advantage.",
     outcomes: [
       "Strategic gaming floor optimisation",
       "Data-backed machine placement decisions",
@@ -439,7 +439,7 @@ const services = [
     ],
     expertiseTitle: "Gaming Operations Expertise",
     expertise: [
-      "30+ years managing Australia's largest gaming operations",
+      "30+ years managing Australia&apos;s largest gaming operations",
       "Deep relationships with all major manufacturers",
       "Proven track record optimising 13,000+ EGMs",
       "Data-driven methodologies and insights"

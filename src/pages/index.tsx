@@ -374,7 +374,7 @@ export default function Home({ insights }: HomePageProps) {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Finally. Straight talking Guidance from Industry Doers</h2>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              Every venue faces different challenges. Let's discuss your specific situation and how our expertise can help you stay compliant while improving your operations.
+              Every venue faces different challenges. Let&apos;s discuss your specific situation and how our expertise can help you stay compliant while improving your operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium">
@@ -506,7 +506,7 @@ const serviceCards = [
   {
     title: 'Gaming Performance',
     icon: '📈',
-    problemSolution: 'Unlock gaming revenue potential with data-driven insights from Australia\'s most experienced gaming professionals.',
+    problemSolution: 'Unlock gaming revenue potential with data-driven insights from Australia&apos;s most experienced gaming professionals.',
     outcomes: [
       'Strategic gaming floor optimisation',
       'Data-backed machine placement decisions',
@@ -521,7 +521,7 @@ const whyInvolvData = [
   {
     title: "Deep Industry Expertise",
     subtitle: "Built by venue operators, for venue operators",
-    description: "Our team includes gaming specialists who've managed Australia's largest operations. We don't just understand compliance — we know how high-performance venues actually run.",
+    description: "Our team includes gaming specialists who&apos;ve managed Australia&apos;s largest operations. We don&apos;t just understand compliance — we know how high-performance venues actually run.",
     icon: "🏆",
     points: [
       "80+ years combined gaming experience",
@@ -533,7 +533,7 @@ const whyInvolvData = [
   {
     title: "Practical Advisory Approach",
     subtitle: "Solutions that work in the real world",
-    description: "We don't write policies and walk away. Our hands-on approach ensures compliance frameworks actually work in your day-to-day operations, protecting your licence while supporting growth.",
+    description: "We don&apos;t write policies and walk away. Our hands-on approach ensures compliance frameworks actually work in your day-to-day operations, protecting your licence while supporting growth.",
     icon: "🔧",
     points: [
       "Implementation support, not just documentation",
@@ -545,7 +545,7 @@ const whyInvolvData = [
   {
     title: "Technology That Works",
     subtitle: "Software designed for venues, not corporates",
-    description: "Involv Assure and PrimeEdge aren't generic tools adapted for gaming. They're purpose-built for Australian pub and club operations, delivering clear ROI without the complexity.",
+    description: "Involv Assure and PrimeEdge aren&apos;t generic tools adapted for gaming. They&apos;re purpose-built for Australian pub and club operations, delivering clear ROI without the complexity.",
     icon: "⚡",
     points: [
       "Intuitive interfaces staff actually use",

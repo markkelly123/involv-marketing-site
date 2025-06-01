@@ -122,8 +122,8 @@ export default function AMLAdvisory() {
             </div>
 
             <div className="text-center">
-              <p className="text-[#66899b] text-lg font-medium mb-4">Sound familiar? You're not alone.</p>
-              <p className="text-gray-300">We've helped hundreds of venues transform these fears into confidence.</p>
+              <p className="text-[#66899b] text-lg font-medium mb-4">Sound familiar? You&apos;re not alone.</p>
+              <p className="text-gray-300">We&apos;ve helped many venues transform these fears into confidence.</p>
             </div>
           </div>
         </section>
@@ -133,7 +133,7 @@ export default function AMLAdvisory() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">How We Transform AML Compliance from Burden to Confidence</h2>
             <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-              We don't just write policies and walk away. Our proven approach ensures your AML program actually works in your day-to-day operations while keeping you audit-ready.
+              We don&apos;t just write policies and walk away. Our proven approach ensures your AML program actually works in your day-to-day operations while keeping you audit-ready.
             </p>
           </div>
 
@@ -171,7 +171,7 @@ export default function AMLAdvisory() {
                 <div>
                   <h2 className="text-3xl font-bold mb-4">Why AUSTRAC Respects Our Approach</h2>
                   <p className="text-gray-300 mb-6 leading-relaxed">
-                    Our team includes former AUSTRAC professionals who've seen compliance from both sides. We know exactly what regulators look for because we used to be the ones looking.
+                    Our team includes former AUSTRAC professionals who&apos;ve seen compliance from both sides. We know exactly what regulators look for because we used to be the ones looking.
                   </p>
                   <div className="space-y-4">
                     {austraExpertise.map((point, index) => (
@@ -278,7 +278,7 @@ export default function AMLAdvisory() {
           <div className="bg-[#1a1d21] rounded-lg p-8 md:p-12 text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to Get Clear on Your AML Requirements?</h2>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              Every venue's AML situation is different. Let's discuss your specific circumstances and how we can help you understand your obligations and build effective compliance.
+              Every venue's AML situation is different. Let&apos;s discuss your specific circumstances and how we can help you understand your obligations and build effective compliance.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium">
@@ -358,7 +358,7 @@ const amlProblems = [
     title: "Staff Responsibilities",
     icon: "👥",
     description: "Making sure staff understand their AML obligations and know what to do in different situations.",
-    quote: "How do we make sure our staff know what they're supposed to do for AML compliance?"
+    quote: "How do we make sure our staff know what they&apos;re supposed to do for AML compliance?"
   },
   {
     title: "Customer Due Diligence",
@@ -382,7 +382,7 @@ const amlProblems = [
     title: "Reporting Obligations",
     icon: "📊",
     description: "Understanding when and how to submit required reports to AUSTRAC.",
-    quote: "What reports do we need to submit and how do we know if we're doing it correctly?"
+    quote: "What reports do we need to submit and how do we know if we&apos;re doing it correctly?"
   }
 ]
 
@@ -478,7 +478,7 @@ const amlProcess = [
   },
   {
     title: "Design Your Solution",
-    description: "Custom AML/CTF program tailored to your venue's specific operations and risks.",
+    description: "Custom AML/CTF program tailored to your venue&apos;s specific operations and risks.",
     outcome: "AUSTRAC-ready program"
   },
   {
@@ -495,7 +495,7 @@ const amlProcess = [
 
 const successStories = [
   {
-    venue: "Regional RSL Club",
+    venue: "Regional Club",
     type: "Gaming & Hospitality",
     icon: "🏆",
     quote: "We went from dreading AUSTRAC contact to actually welcoming their visit. The confidence Involv gave us was life-changing.",
@@ -509,10 +509,10 @@ const successStories = [
     result: "100% staff confidence rating"
   },
   {
-    venue: "Sports Club Chain",
+    venue: "Family-owned Group of Hotels",
     type: "Multi-venue Operation",
     icon: "🎯",
-    quote: "Involv's program scales perfectly across all our venues. Consistent compliance without the complexity.",
-    result: "Streamlined 8-venue operation"
+    quote: "Involv&apos;s program scales perfectly across all our venues. Consistent compliance without the complexity.",
+    result: "Streamlined 3-venue operation"
   }
 ]

@@ -69,7 +69,7 @@ export default function GamingPerformance() {
                 Gaming Performance Advisory
               </h1>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                Unlock your venue's gaming potential with strategic insights from Australia's most experienced gaming professionals. Maximise revenue, optimise operations, and stay ahead of market trends.
+                Unlock your venue&apos;s gaming potential with strategic insights from Australia&apos;s most experienced gaming professionals. Maximise revenue, optimise operations, and stay ahead of market trends.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium text-center">
@@ -89,7 +89,7 @@ export default function GamingPerformance() {
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Industry-Leading Expertise</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  Our team includes Con Nikitas, with 30 years managing Australia's largest gaming operations. Deep manufacturer relationships and proven track record optimising nearly 13,000 EGMs.
+                  Our team includes Con Nikitas, with 30 years managing Australia&apos;s largest gaming operations. Deep manufacturer relationships and proven track record optimising nearly 13,000 EGMs.
                 </p>
               </div>
             </div>
@@ -135,7 +135,7 @@ export default function GamingPerformance() {
         {/* Market Challenges */}
         <section className="max-w-7xl mx-auto px-4 py-16">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Navigating Today's Gaming Challenges</h2>
+            <h2 className="text-3xl font-bold mb-4">Navigating Today&apos;s Gaming Challenges</h2>
             <p className="text-gray-300 text-lg max-w-2xl mx-auto">
               The gaming landscape is rapidly evolving. Stay ahead with strategic insights that address current market realities.
             </p>
@@ -189,7 +189,7 @@ export default function GamingPerformance() {
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold mb-4">Unmatched Industry Experience</h2>
               <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                Our gaming performance team brings decades of hands-on experience from Australia's largest gaming operations.
+                Our gaming performance team brings decades of hands-on experience from Australia&apos;s largest gaming operations.
               </p>
             </div>
 
@@ -197,10 +197,10 @@ export default function GamingPerformance() {
               <div>
                 <h3 className="text-xl font-semibold mb-4 text-[#66899b]">Con Nikitas - Director, Gaming Performance</h3>
                 <p className="text-gray-300 mb-4 text-sm leading-relaxed">
-                  Con brings 30 years of unparalleled expertise to his Director role at Involv, having established himself as a cornerstone figure in Australia's gaming industry. His distinguished career spans leadership positions with premier gaming and hospitality organisations, where he navigated regulatory frameworks while optimising venue operations.
+                  Con brings 30 years of unparalleled expertise to his Director role at Involv, having established himself as a cornerstone figure in Australia&apos;s gaming industry. His distinguished career spans leadership positions with premier gaming and hospitality organisations, where he navigated regulatory frameworks while optimising venue operations.
                 </p>
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  Con's strategic vision, comprehensive industry knowledge, and ability to balance compliance with business growth make his counsel some of the most valuable in the industry. His proven track record in gaming asset management and operational excellence continues to drive innovation and sustainable success.
+                  Con&apos;s strategic vision, comprehensive industry knowledge, and ability to balance compliance with business growth make his counsel some of the most valuable in the industry. His proven track record in gaming asset management and operational excellence continues to drive innovation and sustainable success.
                 </p>
               </div>
               
@@ -227,7 +227,7 @@ export default function GamingPerformance() {
             <div className="bg-[#1a1d21] rounded-lg p-8 md:p-12 text-center">
               <h2 className="text-3xl font-bold mb-4">Ready to Optimise Your Gaming Performance?</h2>
               <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-                Every venue has unique opportunities for improvement. Let's discuss how our proven strategies can unlock your gaming floor's full potential.
+                Every venue has unique opportunities for improvement. Let&apos;s discuss how our proven strategies can unlock your gaming floor&apos;s full potential.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium">
@@ -412,7 +412,7 @@ const teamHighlights = [
   {
     number: "30",
     title: "Years Industry Experience",
-    description: "Three decades leading gaming operations across Australia's largest venues"
+    description: "Three decades leading gaming operations across Australia&apos;s largest venues"
   },
   {
     number: "13K",
@@ -427,6 +427,6 @@ const teamHighlights = [
   {
     number: "1st",
     title: "Industry Recognition", 
-    description: "Recognised as one of Australia's most experienced and respected gaming professionals"
+    description: "Recognised as one of Australia&apos;s most experienced and respected gaming professionals"
   }
 ]

@@ -6,7 +6,7 @@ export default function RegulatoryCompliance() {
     <>
       <Head>
         <title>Regulatory Compliance - Involv | Navigate Complex Gaming & Liquor Obligations</title>
-        <meta name="description" content="Navigate the complex web of gaming and liquor obligations across legislation, regulations, codes of practice, and licence conditions. Expert guidance to keep you compliant in today's enforcement environment." />
+        <meta name="description" content="Navigate the complex web of gaming and liquor obligations across legislation, regulations, codes of practice, and licence conditions. Expert guidance to keep you compliant in today&apos;s enforcement environment." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -71,7 +71,7 @@ export default function RegulatoryCompliance() {
                 Navigate the Compliance Minefield
               </h1>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                Gaming and liquor regulations have always been complex. What's changed is that regulators are now actively enforcing them. With inspections increasing and fines becoming material, it's never been more important to understand your obligations and have proper controls in place.
+                Gaming and liquor regulations have always been complex. What&apos;s changed is that regulators are now actively enforcing them. With inspections increasing and fines becoming material, it&apos;s never been more important to understand your obligations and have proper controls in place.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium text-center">
@@ -104,7 +104,7 @@ export default function RegulatoryCompliance() {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">The Universe of Obligations Facing Gaming Venues</h2>
               <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                It's not just legislation anymore. The regulatory landscape spans multiple layers of requirements across federal and state jurisdictions.
+                It&apos;s not just legislation anymore. The regulatory landscape spans multiple layers of requirements across federal and state jurisdictions.
               </p>
             </div>
 
@@ -135,9 +135,9 @@ export default function RegulatoryCompliance() {
         {/* Changed Enforcement Environment */}
         <section className="max-w-7xl mx-auto px-4 py-16">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">What's Changed: From Compliance Ignored to Actively Enforced</h2>
+            <h2 className="text-3xl font-bold mb-4">What&apos;s Changed: From Compliance Ignored to Actively Enforced</h2>
             <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-              The obligations have always existed, but enforcement was inconsistent. Now there's a cop on the beat, and venues are getting caught unprepared.
+              The obligations have always existed, but enforcement was inconsistent. The cop is on the beat, and many venues are getting caught unprepared.
             </p>
           </div>
 
@@ -167,7 +167,7 @@ export default function RegulatoryCompliance() {
                 <div className="bg-red-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-3xl">🚨</span>
                 </div>
-                <h3 className="text-xl font-bold text-red-400 mb-2">Today's Reality</h3>
+                <h3 className="text-xl font-bold text-red-400 mb-2">Today&apos;s Reality</h3>
                 <p className="text-red-300 text-sm">Active enforcement and real consequences</p>
               </div>
               <ul className="space-y-3">
@@ -288,7 +288,7 @@ export default function RegulatoryCompliance() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to Turn Compliance into Competitive Advantage?</h2>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              Every venue's regulatory situation is unique. Let's discuss your specific obligations and show you how to manage them efficiently while improving your operations.
+              Every venue&apos;s regulatory situation is unique. Let&apos;s discuss your specific obligations and show you how to manage them efficiently while improving your operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium">

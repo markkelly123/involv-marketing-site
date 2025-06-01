@@ -69,7 +69,7 @@ export default function GamingRiskCompliance() {
                 Gaming Risk & Compliance Advisory
               </h1>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                Transform complex regulatory requirements into operational advantages. We help pubs and clubs navigate Australia's gaming compliance landscape with confidence and clarity.
+                Transform complex regulatory requirements into operational advantages. We help pubs and clubs navigate Australia&apos;s gaming compliance landscape with confidence and clarity.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium text-center">
@@ -209,7 +209,7 @@ export default function GamingRiskCompliance() {
             <div className="bg-[#1a1d21] rounded-lg p-8 md:p-12 text-center">
               <h2 className="text-3xl font-bold mb-4">Transform Compliance into Competitive Advantage</h2>
               <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-                Every venue's compliance requirements are unique. Let's discuss how we can help you navigate your regulatory obligations while optimising your operations.
+                Every venue&apos;s compliance requirements are unique. Let&apos;s discuss how we can help you navigate your regulatory obligations while optimising your operations.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium">
@@ -283,7 +283,7 @@ const complianceServices = [
   {
     icon: "📋",
     title: "Regulatory Frameworks & Policies",
-    description: "Comprehensive frameworks, policies and procedures tailored to your venue's specific gaming and liquor licence conditions.",
+    description: "Comprehensive frameworks, policies and procedures tailored to your venue&apos;s specific gaming and liquor licence conditions.",
     features: [
       "Gaming licence compliance frameworks",
       "Liquor licence obligation mapping",

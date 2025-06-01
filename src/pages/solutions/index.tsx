@@ -66,7 +66,7 @@ export default function Solutions() {
               Software That Actually Works in Venues
             </h1>
             <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Our advisory expertise is enhanced by purpose-built software solutions. No generic corporate tools that aren't fit-for-purpose. Just practical systems tailored specifically to meet the needs of Australian pubs and clubs.
+              Our advisory expertise is enhanced by purpose-built software solutions. No generic corporate tools that aren&apos;t fit-for-purpose. Just practical systems tailored specifically to meet the needs of Australian pubs and clubs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium">
@@ -85,7 +85,7 @@ export default function Solutions() {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Advisory-First, Technology-Enhanced</h2>
               <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                We're compliance and experienced gaming practitioners who've bottled our knowledge to develop software we know the industry needs. Our tools support our advisory work, not the other way around.
+                We&apos;re compliance and experienced gaming practitioners who&apos;ve bottled our knowledge to develop software we know the industry needs. Our tools support our advisory work, not the other way around.
               </p>
             </div>
 
@@ -212,7 +212,7 @@ export default function Solutions() {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Why Our Software Will Benefit Your Venue Operation</h2>
               <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                We've built software that understands gaming venues because we've operated them. No generic solutions adapted for gaming.
+                We&apos;ve built software that understands gaming venues because we&apos;ve operated them. No generic solutions adapted for gaming.
               </p>
             </div>
 
@@ -259,7 +259,7 @@ export default function Solutions() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to See How Our Solutions Work?</h2>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              Every venue has different needs. Let's show you how Assure and PrimeEdge can work for your specific situation.
+              Every venue has different needs. Let&apos;s show you how Assure and PrimeEdge can work for your specific situation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium">
@@ -333,7 +333,7 @@ const solutions = [
     name: "Involv Assure",
     tagline: "A risk and compliance team in your browser.",
     logo: "/logo-involve-assure-white.svg",
-    description: "Stop wondering if you're meeting your compliance obligations. Assure tracks all your regulatory requirements in one place, shows you what needs to be done and when, and keeps you audit-ready without the administrative burden.",
+    description: "Stop wondering if you&apos;re meeting your compliance obligations. Assure tracks all your regulatory requirements in one place, shows you what needs to be done and when, and keeps you audit-ready without the administrative burden.",
     benefits: [
       "Know exactly what compliance requirements apply to your venue",
       "Track all deadlines, renewals, and obligations automatically",
@@ -368,7 +368,7 @@ const solutions = [
     logo: "/logo-involve-primeedge-white.svg",
     description: "Stop guessing about your gaming floor performance. PrimeEdge shows you exactly which machines are working, where they should be placed, and how to improve revenue through data-driven insights from gaming industry experts.",
     benefits: [
-      "See which machines are performing and which aren't",
+      "See which machines are performing and which aren&apos;t",
       "Get specific recommendations for machine placement",
       "Track the revenue impact of floor changes",
       "Make gaming decisions based on data, not guesswork",
@@ -401,7 +401,7 @@ const differentiators = [
   {
     title: "Built by Operators",
     icon: "🏗️",
-    description: "Created by people who've actually run gaming venues, not generic software developers."
+    description: "Created by people who&apos;ve actually run gaming venues, not generic software developers."
   },
   {
     title: "Australia-Specific",
@@ -427,7 +427,7 @@ const integrationBenefits = [
   },
   {
     title: "Ongoing Guidance",
-    description: "Regular check-ins ensure you're getting the most value from both the software and our advisory support."
+    description: "Regular check-ins ensure you&apos;re getting the most value from both the software and our advisory support."
   },
   {
     title: "Continuous Improvement",

@@ -255,7 +255,7 @@ export default function Risk() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Building and Testing Effective Controls</h2>
             <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-              Controls are only effective if they're properly designed, implemented, and regularly tested. We ensure your controls actually work.
+              Controls are only effective if they&apos;re properly designed, implemented, and regularly tested. We ensure your controls actually work.
             </p>
           </div>
 
@@ -371,7 +371,7 @@ export default function Risk() {
           <div className="bg-[#1a1d21] rounded-lg p-8 md:p-12 text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Risk Management?</h2>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              Every venue has unique risks based on their operations, location, and regulatory environment. Let's assess your specific risk profile and design effective controls.
+              Every venue has unique risks based on their operations, location, and regulatory environment. Let&apos;s assess your specific risk profile and design effective controls.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium">
