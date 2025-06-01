@@ -278,7 +278,7 @@ export default function Home({ insights }: HomePageProps) {
                   </div>
                 ))}
                 <div className="pt-4 border-t border-gray-700 text-center">
-                  <p className="text-[#66899b] text-sm font-medium">Sound familiar? We can help.</p>
+                  <p className="text-[#66899b] text-sm font-medium">Is this your reality? We can help.</p>
                 </div>
               </div>
             </div>
@@ -471,10 +471,10 @@ export const getStaticProps: GetStaticProps = async () => {
 // Data
 const venueProblems = [
   "Keeping up with regulatory changes across different jurisdictions",
-  "Gaming floors not performing as well as they could be", 
   "Understanding AML/CTF requirements and what they mean for daily operations",
   "Ensuring staff are properly trained and up to date with their obligations",
   "Making sure policies and procedures meet current standards",
+  "Not realising your gaming floor's full potential and losing market share", 
   "Balancing compliance requirements with operational efficiency"
 ]
 
@@ -482,7 +482,7 @@ const serviceCards = [
   {
     title: 'AML Advisory',
     icon: '🛡️',
-    problemSolution: 'Never fear an AUSTRAC audits. We transform complex AML obligations into clear, manageable processes that protect your licence and reputation.',
+    problemSolution: 'Never fear an AUSTRAC audit. We transform complex AML obligations into clear, manageable processes that protect your licence and reputation.',
     outcomes: [
       'AUSTRAC-ready programs that pass scrutiny',
       'Staff who understand their AML responsibilities',
@@ -494,7 +494,7 @@ const serviceCards = [
   {
     title: 'Gaming Risk & Compliance',
     icon: '⚖️',
-    problemSolution: 'Turn regulatory complexity into competitive advantage. We simplify licence obligations across all jurisdictions so you focus on running your venue.',
+    problemSolution: 'Turn regulatory complexity into competitive advantage. We simplify licence obligations across all jurisdictions so you can focus on running your venue.',
     outcomes: [
       'Clear obligations mapping and tracking',
       'Robust safer gambling frameworks',
@@ -506,10 +506,10 @@ const serviceCards = [
   {
     title: 'Gaming Performance',
     icon: '📈',
-    problemSolution: 'Unlock gaming revenue potential with data-driven insights from Australia&apos;s most experienced gaming professionals.',
+    problemSolution: 'Unlock gaming revenue potential with data-driven insights from Australia\'s most experienced gaming professionals.',
     outcomes: [
-      'Strategic gaming floor optimisation',
-      'Data-backed machine placement decisions',
+      'Strategic EGM optimisation',
+      'Data-backed game and machine decisions',
       'Improved player engagement and retention',
       'Measurable revenue uplift and ROI'
     ],
@@ -521,11 +521,11 @@ const whyInvolvData = [
   {
     title: "Deep Industry Expertise",
     subtitle: "Built by venue operators, for venue operators",
-    description: "Our team includes gaming specialists who&apos;ve managed Australia&apos;s largest operations. We don&apos;t just understand compliance — we know how high-performance venues actually run.",
+    description: "Our team includes gaming specialists who\'ve managed Australia&apos;s largest operations. We don\'t just understand compliance — we know how high-performance venues actually run.",
     icon: "🏆",
     points: [
       "80+ years combined gaming experience",
-      "Former regulators and venue operators on our team",
+      "A regulatory lawyer and venue operators on our team",
       "Deep manufacturer relationships and industry connections",
       "Proven track record with Australia's largest venue groups"
     ]
@@ -533,7 +533,7 @@ const whyInvolvData = [
   {
     title: "Practical Advisory Approach",
     subtitle: "Solutions that work in the real world",
-    description: "We don&apos;t write policies and walk away. Our hands-on approach ensures compliance frameworks actually work in your day-to-day operations, protecting your licence while supporting growth.",
+    description: "We don\'t write policies and walk away. Our hands-on approach ensures compliance frameworks actually work in your day-to-day operations, protecting your licence while supporting growth.",
     icon: "🔧",
     points: [
       "Implementation support, not just documentation",
@@ -545,7 +545,7 @@ const whyInvolvData = [
   {
     title: "Technology That Works",
     subtitle: "Software designed for venues, not corporates",
-    description: "Involv Assure and PrimeEdge aren&apos;t generic tools adapted for gaming. They&apos;re purpose-built for Australian pub and club operations, delivering clear ROI without the complexity.",
+    description: "Involv Assure and PrimeEdge aren\'t generic tools adapted for gaming. They\'re purpose-built for Australian pub and club operations, delivering clear ROI without the complexity.",
     icon: "⚡",
     points: [
       "Intuitive interfaces staff actually use",
@@ -558,7 +558,7 @@ const whyInvolvData = [
 
 const solutionCards = [
   {
-    name: 'Involv Assure',
+    name: 'Involv|Assure',
     tagline: 'A risk and compliance team in your browser.',
     icon: '🛡️',
     problemFocus: 'Know ALL your obligations, get compliant. Assure transforms regulatory obligations into clear, trackable systems that keep you audit-ready without the administrative burden.',
@@ -571,7 +571,7 @@ const solutionCards = [
     link: 'https://assure.involv.com.au',
   },
   {
-    name: 'Involv PrimeEdge',
+    name: 'Involv|PrimeEdge',
     tagline: 'The science behind high-performance gaming venues.',
     icon: '🎯',
     problemFocus: 'Remove guess work from your gaming floor optimisation decisions. PrimeEdge uses AI and industry data to recommend machine placements and floor changes that actually drive revenue.',

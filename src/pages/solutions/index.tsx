@@ -330,10 +330,10 @@ export default function Solutions() {
 // Data
 const solutions = [
   {
-    name: "Involv Assure",
+    name: "",
     tagline: "A risk and compliance team in your browser.",
     logo: "/logo-involve-assure-white.svg",
-    description: "Stop wondering if you&apos;re meeting your compliance obligations. Assure tracks all your regulatory requirements in one place, shows you what needs to be done and when, and keeps you audit-ready without the administrative burden.",
+    description: "Stop wondering if you\'re meeting your compliance obligations. Assure tracks all your regulatory requirements in one place, shows you what needs to be done and when, and keeps you audit-ready without the administrative burden.",
     benefits: [
       "Know exactly what compliance requirements apply to your venue",
       "Track all deadlines, renewals, and obligations automatically",
@@ -363,12 +363,12 @@ const solutions = [
     }
   },
   {
-    name: "Involv PrimeEdge",
+    name: "",
     tagline: "The science behind high-performance gaming venues.",
     logo: "/logo-involve-primeedge-white.svg",
     description: "Stop guessing about your gaming floor performance. PrimeEdge shows you exactly which machines are working, where they should be placed, and how to improve revenue through data-driven insights from gaming industry experts.",
     benefits: [
-      "See which machines are performing and which aren&apos;t",
+      "See which machines are performing and which aren\'t",
       "Get specific recommendations for machine placement",
       "Track the revenue impact of floor changes",
       "Make gaming decisions based on data, not guesswork",
@@ -401,7 +401,7 @@ const differentiators = [
   {
     title: "Built by Operators",
     icon: "🏗️",
-    description: "Created by people who&apos;ve actually run gaming venues, not generic software developers."
+    description: "Created by people who\'ve actually run gaming venues, not generic software developers."
   },
   {
     title: "Australia-Specific",
@@ -427,7 +427,7 @@ const integrationBenefits = [
   },
   {
     title: "Ongoing Guidance",
-    description: "Regular check-ins ensure you&apos;re getting the most value from both the software and our advisory support."
+    description: "Regular check-ins ensure you\'re getting the most value from both the software and our advisory support."
   },
   {
     title: "Continuous Improvement",

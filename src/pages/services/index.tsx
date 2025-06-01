@@ -101,7 +101,7 @@ export default function Services() {
                 </div>
               </div>
               <p className="text-gray-300 text-sm text-center">
-                Built by former ALH executives, gaming regulators, and compliance specialists who&apos;ve solved these challenges at scale.
+                Built by former ALH executives, a gaming regulatory legal team, and compliance specialists who&apos;ve solved these challenges at scale.
               </p>
             </div>
           </div>
@@ -387,7 +387,7 @@ const services = [
     title: "AML Advisory",
     subtitle: "AUSTRAC Compliance Made Simple",
     icon: "🛡️",
-    problemSolution: "Stop fearing AUSTRAC audits. We transform your complex AML obligations into clear, manageable processes that protect your licence and give you confidence. Our team includes former AUSTRAC professionals who understand both regulatory expectations and practical venue operations.",
+    problemSolution: "Stop fearing AUSTRAC audits. We transform your complex AML obligations into clear, manageable processes that protect your licence and give you confidence. Our team have hands-on experience working with AUSTRAC and understand both regulatory expectations and practical venue operations.",
     outcomes: [
       "AUSTRAC-ready programs that pass scrutiny",
       "Staff who understand their AML responsibilities",
@@ -397,8 +397,8 @@ const services = [
     ],
     expertiseTitle: "AUSTRAC Expertise",
     expertise: [
-      "Former AUSTRAC professionals on our team",
-      "Hundreds of successful AML implementations",
+      "AML legal professionals on our team",
+      "Many successful AML implementations",
       "Deep understanding of gaming venue operations",
       "Proven track record with regulatory audits"
     ],
@@ -408,7 +408,7 @@ const services = [
     title: "Gaming Risk & Compliance",
     subtitle: "Regulatory Complexity Simplified",
     icon: "⚖️",
-    problemSolution: "Turn regulatory complexity into competitive advantage. We simplify licence obligations across all Australian jurisdictions so you can focus on running your venue. Our frameworks ensure you&apos;re always audit-ready while supporting sustainable growth.",
+    problemSolution: "Turn regulatory complexity into competitive advantage. We simplify licence obligations across all Australian jurisdictions so you can focus on running your venue. Our frameworks ensure you\'re always audit-ready while supporting sustainable growth.",
     outcomes: [
       "Clear obligations mapping and tracking",
       "Robust safer gambling frameworks that work",
@@ -429,7 +429,7 @@ const services = [
     title: "Gaming Performance Advisory",
     subtitle: "Revenue Optimisation Through Expertise",
     icon: "📈",
-    problemSolution: "Unlock your gaming revenue potential with data-driven insights from Australia&apos;s most experienced gaming professionals. Led by Con Nikitas, who managed nearly 13,000 EGMs at ALH Group, we turn guesswork into strategic advantage.",
+    problemSolution: "Unlock your gaming revenue potential with data-driven insights from Australia\'s most experienced gaming professionals. Led by Con Nikitas, who managed nearly 13,000 EGMs at ALH Group, we turn guesswork into strategic advantage.",
     outcomes: [
       "Strategic gaming floor optimisation",
       "Data-backed machine placement decisions",
@@ -439,7 +439,7 @@ const services = [
     ],
     expertiseTitle: "Gaming Operations Expertise",
     expertise: [
-      "30+ years managing Australia&apos;s largest gaming operations",
+      "50+ years managing Australia\'s largest gaming operations",
       "Deep relationships with all major manufacturers",
       "Proven track record optimising 13,000+ EGMs",
       "Data-driven methodologies and insights"
@@ -452,7 +452,7 @@ const whyChooseUs = [
   {
     icon: "80+",
     title: "Years of Experience",
-    description: "Collective expertise from ALH executives, gaming regulators, and compliance specialists."
+    description: "Collective expertise from gaming operators, gaming regulatory legal, and compliance specialists."
   },
   {
     icon: "🎯",

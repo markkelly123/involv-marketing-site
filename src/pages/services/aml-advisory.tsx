@@ -6,7 +6,7 @@ export default function AMLAdvisory() {
     <>
       <Head>
         <title>AML Advisory - Involv | Stop Fearing AUSTRAC Audits</title>
-        <meta name="description" content="Transform AUSTRAC compliance from burden to confidence. Expert AML/CTF Program implementation and review from former AUSTRAC professionals who understand gaming venues." />
+        <meta name="description" content="Transform AUSTRAC compliance from burden to confidence. Expert AML/CTF Program implementation and review from gaming AML legal professionals who understand gaming venues." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -69,7 +69,7 @@ export default function AMLAdvisory() {
                 Get Clear on Your AML Obligations
               </h1>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                Not sure what your AUSTRAC obligations mean for your venue? Need help implementing AML programs that meet regulatory standards? We help you understand your requirements and build compliance that works.
+                Lingering doubt as to what your AUSTRAC obligations mean for your venue? Need help implementing AML programs that meet regulatory standards? We help you understand your requirements and build compliance that works.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium text-center">
@@ -87,9 +87,9 @@ export default function AMLAdvisory() {
                     <path fillRule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Former AUSTRAC Expertise</h3>
+                <h3 className="text-xl font-semibold mb-3">AUSTRAC Expertise</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  Our team includes former AUSTRAC professionals who know exactly what regulators look for. We understand both regulatory expectations and the practical realities of venue operations.
+                  Our team includes AML legal professionals who have worked with AUSTRAC and know exactly what regulators look for. We understand both regulatory expectations and the practical realities of venue operations.
                 </p>
               </div>
             </div>
@@ -169,9 +169,9 @@ export default function AMLAdvisory() {
             <div className="bg-[#1a1d21] rounded-lg p-8 md:p-12">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
-                  <h2 className="text-3xl font-bold mb-4">Why AUSTRAC Respects Our Approach</h2>
+                  <h2 className="text-3xl font-bold mb-4">An Approach Respected by AUSTRAC</h2>
                   <p className="text-gray-300 mb-6 leading-relaxed">
-                    Our team includes former AUSTRAC professionals who&apos;ve seen compliance from both sides. We know exactly what regulators look for because we used to be the ones looking.
+                    Our team includes gaming AML legal professionals who are expert in this space. We know exactly what regulators look for because we have hands-on experience working with AUSTRAC.
                   </p>
                   <div className="space-y-4">
                     {austraExpertise.map((point, index) => (
@@ -191,7 +191,7 @@ export default function AMLAdvisory() {
                   </div>
                   <div className="grid grid-cols-2 gap-4 text-center">
                     <div>
-                      <div className="text-2xl font-bold text-white mb-1">200+</div>
+                      <div className="text-2xl font-bold text-white mb-1">Dozens</div>
                       <div className="text-gray-400 text-xs">AML Programs Implemented</div>
                     </div>
                     <div>
@@ -391,7 +391,7 @@ const amlSolutions = [
     icon: "🛡️",
     title: "AUSTRAC-Ready Programs",
     outcome: "→ Audit confidence, not anxiety",
-    description: "Complete AML/CTF programs designed by former AUSTRAC professionals who know exactly what regulators expect to see.",
+    description: "Complete AML/CTF programs designed by gaming AML legal professionals who know exactly what regulators expect to see.",
     benefits: [
       "Programs that pass regulatory scrutiny every time",
       "Clear documentation that auditors understand",
@@ -462,7 +462,7 @@ const amlSolutions = [
 ]
 
 const austraExpertise = [
-  "Former AUSTRAC compliance officers who know regulatory expectations from the inside",
+  "Gaming AML legal professionals that are specialist in the needs of pub and club venue operators",
   "Hundreds of successful AML implementations with zero AUSTRAC penalties for our clients",
   "Deep understanding of gaming venue operations and customer flow patterns",
   "Proven track record of turning compliance anxiety into audit confidence",
@@ -512,7 +512,7 @@ const successStories = [
     venue: "Family-owned Group of Hotels",
     type: "Multi-venue Operation",
     icon: "🎯",
-    quote: "Involv&apos;s program scales perfectly across all our venues. Consistent compliance without the complexity.",
+    quote: "Involv's program scales perfectly across all our venues. Consistent compliance without the complexity.",
     result: "Streamlined 3-venue operation"
   }
 ]

@@ -213,7 +213,7 @@ export default function GamingRiskCompliance() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium">
-                  Schedule Compliance Consultation
+                  Schedule A Compliance Consultation
                 </Link>
                 <Link href="/services" className="border border-[#66899b] text-[#66899b] px-8 py-3 rounded-lg hover:bg-[#66899b] hover:text-white transition-colors font-medium">
                   View All Services
@@ -283,7 +283,7 @@ const complianceServices = [
   {
     icon: "📋",
     title: "Regulatory Frameworks & Policies",
-    description: "Comprehensive frameworks, policies and procedures tailored to your venue&apos;s specific gaming and liquor licence conditions.",
+    description: "Comprehensive frameworks, policies and procedures tailored to your venue\'s specific gaming and liquor licence conditions.",
     features: [
       "Gaming licence compliance frameworks",
       "Liquor licence obligation mapping",
@@ -351,19 +351,19 @@ const complianceServices = [
 const jurisdictions = [
   {
     state: "NSW",
-    regulators: ["Liquor & Gaming NSW", "Independent Liquor & Gaming Authority"]
+    regulators: ["L&GNSW", "ILGA"]
   },
   {
     state: "VIC",
-    regulators: ["Victorian Gambling & Casino Control Commission", "Liquor Control Victoria"]
+    regulators: ["VGCCC", "Liquor Control Victoria"]
   },
   {
     state: "QLD",
-    regulators: ["Office of Liquor & Gaming Regulation"]
+    regulators: ["OLGR"]
   },
   {
     state: "SA",
-    regulators: ["Consumer & Business Services"]
+    regulators: ["CBS"]
   },
   {
     state: "WA",
