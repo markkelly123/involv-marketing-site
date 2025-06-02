@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { GetStaticProps, GetStaticPaths } from 'next'
+import { useRouter } from 'next/router'
+import Navigation from '../../components/Navigation'
 import { PortableText } from '@portabletext/react'
 import { getPost, getPosts, Post, buildImageUrl, calculateReadingTime } from '../../../lib/sanity'
 
@@ -9,6 +11,8 @@ interface PostPageProps {
 }
 
 export default function PostPage({ post }: PostPageProps) {
+  const router = useRouter()
+
   if (!post) {
     return <div>Post not found</div>
   }
@@ -41,24 +45,19 @@ export default function PostPage({ post }: PostPageProps) {
       </Head>
 
       <div className="bg-[#0f1115] text-white font-sans min-h-screen">
-        {/* Header */}
-        <header className="bg-gray-900 border-b border-gray-800 py-4">
-          <div className="max-w-4xl mx-auto px-4">
-            <Link href="/" className="text-blue-400 hover:text-blue-300 flex items-center">
-              <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
-              </svg>
-              Involv
-            </Link>
-          </div>
-        </header>
+        {/* Replace the old header with the new Navigation component */}
+        <Navigation currentPath={router.pathname} />
 
         <article className="max-w-4xl mx-auto px-4 py-12">
           {/* Breadcrumb */}
           <nav className="mb-8">
-            <Link href="/insights" className="text-blue-400 hover:text-blue-300 text-sm">
-              ← Back to Insights
-            </Link>
+            <div className="text-sm text-gray-400">
+              <Link href="/" className="hover:text-white">Home</Link>
+              <span className="mx-2">/</span>
+              <Link href="/insights" className="hover:text-white">Insights</Link>
+              <span className="mx-2">/</span>
+              <span className="text-white line-clamp-1">{post.title}</span>
+            </div>
           </nav>
 
           {/* Main Image */}
@@ -78,7 +77,7 @@ export default function PostPage({ post }: PostPageProps) {
             {post.categories && post.categories.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-4">
                 {post.categories.map((category) => (
-                  <span key={category._id} className="bg-blue-600 px-3 py-1 rounded-full text-sm font-medium">
+                  <span key={category._id} className="bg-[#66899b] px-3 py-1 rounded-full text-sm font-medium text-white">
                     {category.title}
                   </span>
                 ))}
@@ -102,7 +101,7 @@ export default function PostPage({ post }: PostPageProps) {
                     className="w-12 h-12 rounded-full object-cover mr-4"
                   />
                 ) : (
-                  <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 rounded-full bg-[#66899b] flex items-center justify-center mr-4">
                     <span className="text-lg font-medium text-white">
                       {post.author?.name?.charAt(0).toUpperCase() || '?'}
                     </span>
@@ -141,7 +140,7 @@ export default function PostPage({ post }: PostPageProps) {
                   h2: ({children}) => <h2 className="text-2xl font-bold mt-6 mb-3 text-white">{children}</h2>,
                   h3: ({children}) => <h3 className="text-xl font-bold mt-4 mb-2 text-white">{children}</h3>,
                   blockquote: ({children}) => (
-                    <blockquote className="border-l-4 border-blue-500 pl-4 my-6 italic text-gray-300">
+                    <blockquote className="border-l-4 border-[#66899b] pl-4 my-6 italic text-gray-300">
                       {children}
                     </blockquote>
                   ),
@@ -158,10 +157,28 @@ export default function PostPage({ post }: PostPageProps) {
                   strong: ({children}) => <strong className="font-bold text-white">{children}</strong>,
                   em: ({children}) => <em className="italic">{children}</em>,
                   link: ({children, value}) => (
-                    <a href={value.href} className="text-blue-400 hover:text-blue-300 underline" target="_blank" rel="noopener noreferrer">
+                    <a href={value.href} className="text-[#66899b] hover:text-white underline transition-colors" target="_blank" rel="noopener noreferrer">
                       {children}
                     </a>
                   ),
+                },
+                types: {
+                  image: ({value}: any) => {
+                    return (
+                      <div className="my-8">
+                        <img
+                          src={buildImageUrl(value.asset.url, 800, 450, 80)}
+                          alt={value.alt || ''}
+                          className="w-full rounded-lg"
+                        />
+                        {value.caption && (
+                          <p className="text-gray-400 text-sm mt-2 text-center italic">
+                            {value.caption}
+                          </p>
+                        )}
+                      </div>
+                    )
+                  },
                 },
               }}
             />
@@ -170,10 +187,10 @@ export default function PostPage({ post }: PostPageProps) {
           {/* Tags */}
           {post.tags && post.tags.length > 0 && (
             <div className="mb-8">
-              <h3 className="text-lg font-semibold mb-3">Tags</h3>
+              <h3 className="text-lg font-semibold mb-3 text-white">Tags</h3>
               <div className="flex flex-wrap gap-2">
                 {post.tags.map((tag) => (
-                  <span key={tag} className="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm">
+                  <span key={tag} className="bg-[#1a1d21] text-gray-300 px-3 py-1 rounded-full text-sm">
                     #{tag}
                   </span>
                 ))}
@@ -184,10 +201,10 @@ export default function PostPage({ post }: PostPageProps) {
           {/* Jurisdictions */}
           {post.jurisdictions && post.jurisdictions.length > 0 && (
             <div className="mb-8">
-              <h3 className="text-lg font-semibold mb-3">Jurisdictions</h3>
+              <h3 className="text-lg font-semibold mb-3 text-white">Jurisdictions</h3>
               <div className="flex flex-wrap gap-2">
                 {post.jurisdictions.map((jurisdiction) => (
-                  <span key={jurisdiction} className="bg-gray-700 text-gray-200 px-3 py-1 rounded text-sm font-medium">
+                  <span key={jurisdiction} className="bg-[#66899b] text-white px-3 py-1 rounded text-sm font-medium">
                     {jurisdiction.toUpperCase()}
                   </span>
                 ))}
@@ -198,7 +215,7 @@ export default function PostPage({ post }: PostPageProps) {
           {/* Navigation */}
           <div className="pt-8 border-t border-gray-700">
             <div className="flex justify-between items-center">
-              <Link href="/insights" className="text-blue-400 hover:text-blue-300 flex items-center">
+              <Link href="/insights" className="text-[#66899b] hover:text-white flex items-center transition-colors">
                 <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
                 </svg>
@@ -206,13 +223,64 @@ export default function PostPage({ post }: PostPageProps) {
               </Link>
               
               <div className="text-right">
-                <Link href="/contact" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">
+                <Link href="/contact" className="bg-[#66899b] text-white px-4 py-2 rounded hover:bg-opacity-80 transition-colors">
                   Get in Touch
                 </Link>
               </div>
             </div>
           </div>
         </article>
+
+        {/* Footer */}
+        <footer className="bg-[#121418] text-white py-12 px-4 border-t border-gray-800">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-4 gap-8">
+              <div>
+                <div className="mb-4">
+                  <img src="/logo-involv-white.svg" alt="Involv" className="h-6 w-auto" />
+                </div>
+                <p className="text-gray-400 text-sm">
+                  Compliance made simple. Gaming made smarter. Built for Australian pubs and clubs.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-4">Services</h3>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li><Link href="/services/aml-advisory" className="hover:text-white">AML Advisory</Link></li>
+                  <li><Link href="/services/risk-compliance" className="hover:text-white">Risk & Compliance</Link></li>
+                  <li><Link href="/services/gaming-performance" className="hover:text-white">Gaming Performance</Link></li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-4">Solutions</h3>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li><a href="https://assure.involv.com.au" className="hover:text-white">Involv Assure</a></li>
+                  <li><a href="https://primeedge.involv.com.au" className="hover:text-white">Involv PrimeEdge</a></li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-4">Company</h3>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li><Link href="/about" className="hover:text-white">About</Link></li>
+                  <li><Link href="/insights" className="hover:text-white">Insights</Link></li>
+                  <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+              <p>&copy; 2025 Involv. All rights reserved.</p>
+              <div className="flex space-x-6 mt-4 md:mt-0">
+                <Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
+                <Link href="/terms-of-use" className="hover:text-white">Terms of Use</Link>
+                <Link href="/disclaimer" className="hover:text-white">Disclaimer</Link>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     </>
   )

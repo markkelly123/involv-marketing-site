@@ -1,7 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import Navigation from '../../components/Navigation'
 
 export default function GamingRiskCompliance() {
+  const router = useRouter()
+
   return (
     <>
       <Head>
@@ -12,43 +16,7 @@ export default function GamingRiskCompliance() {
       </Head>
 
       <div className="bg-[#0f1115] text-white font-sans min-h-screen">
-        {/* Brand Strip */}
-        <div className="w-full bg-[#0f1115] text-white">
-          <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-end gap-x-6">
-            <a href="https://assure.involv.com.au">
-              <img src="/logo-involve-assure-white.svg" alt="Assure" className="h-4 w-auto" />
-            </a>
-            <a href="https://primeedge.involv.com.au">
-              <img src="/logo-involve-primeedge-white.svg" alt="PrimeEdge" className="h-4 w-auto" />
-            </a>
-            <a href="https://lane.involv.com.au">
-              <img src="/logo-lane-white.svg" alt="Lane Consulting" className="h-4 w-auto" />
-            </a>
-          </div>
-        </div>
-
-        {/* Header */}
-        <header className="bg-[#0f1115] text-white border-b border-gray-800 sticky top-0 z-50">
-          <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between relative">
-            <Link href="/" className="flex items-center">
-              <img src="/logo-involv-white.svg" alt="Involv" className="h-6 w-auto" />
-            </Link>
-            <nav className="absolute left-1/2 transform -translate-x-1/2 text-sm flex space-x-6">
-              <Link href="/services" className="text-[#66899b] font-medium">Services</Link>
-              <Link href="/solutions" className="hover:text-[#66899b] transition-colors">Solutions</Link>
-              <Link href="/insights" className="hover:text-[#66899b] transition-colors">Insights</Link>
-            </nav>
-            <div className="flex items-center text-sm">
-              <div className="flex space-x-6">
-                <Link href="/about" className="hover:text-[#66899b] transition-colors">About</Link>
-                <Link href="/contact" className="hover:text-[#66899b] transition-colors">Contact</Link>
-              </div>
-              <Link href="/login" className="ml-[60px] text-sm font-medium bg-white text-black px-4 py-1.5 rounded hover:bg-gray-200 transition">
-                Login
-              </Link>
-            </div>
-          </div>
-        </header>
+        <Navigation currentPath={router.pathname} />
 
         {/* Breadcrumb */}
         <div className="max-w-7xl mx-auto px-4 py-4">

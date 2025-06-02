@@ -292,3 +292,154 @@ export async function getPostsByJurisdiction(site: string, jurisdiction: string,
   
   return await sanity.fetch(query)
 }
+// Add these functions to your existing lib/sanity.ts file
+
+export interface NewsPress {
+  _id: string
+  title: string
+  slug: {
+    current: string
+  }
+  contentType: 'news' | 'press-release' | 'company-update' | 'award' | 'partnership'
+  excerpt?: string
+  mainImage?: {
+    asset: {
+      _id: string
+      url: string
+    }
+    alt?: string
+  }
+  publishedAt: string
+  priority: 'high' | 'medium' | 'low'
+  sites: string[]
+  body: any
+  tags?: string[]
+  externalLink?: string
+  downloadableAssets?: Array<{
+    title: string
+    file: {
+      asset: {
+        _id: string
+        url: string
+        originalFilename: string
+      }
+    }
+    description?: string
+  }>
+}
+
+// Get news and press releases for a specific site
+export async function getNewsPress(siteName: string, limit?: number): Promise<NewsPress[]> {
+  const limitClause = limit ? `[0...${limit}]` : ''
+  
+  const query = `*[_type == "newsPress" && "${siteName}" in sites] | order(publishedAt desc)${limitClause} {
+    _id,
+    title,
+    slug,
+    contentType,
+    excerpt,
+    mainImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    publishedAt,
+    priority,
+    sites,
+    tags,
+    externalLink
+  }`
+
+  return await sanity.fetch(query)
+}
+
+// Get a single news/press item by slug
+export async function getNewsPressItem(slug: string, siteName: string): Promise<NewsPress | null> {
+  const query = `*[_type == "newsPress" && slug.current == "${slug}" && "${siteName}" in sites][0] {
+    _id,
+    title,
+    slug,
+    contentType,
+    excerpt,
+    mainImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    publishedAt,
+    priority,
+    sites,
+    body,
+    tags,
+    externalLink,
+    downloadableAssets[]{
+      title,
+      file{
+        asset->{
+          _id,
+          url,
+          originalFilename
+        }
+      },
+      description
+    }
+  }`
+
+  return await sanity.fetch(query)
+}
+
+// Get featured news/press items (high priority)
+export async function getFeaturedNewsPress(siteName: string, limit: number = 3): Promise<NewsPress[]> {
+  const query = `*[_type == "newsPress" && "${siteName}" in sites && priority == "high"] | order(publishedAt desc)[0...${limit}] {
+    _id,
+    title,
+    slug,
+    contentType,
+    excerpt,
+    mainImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    publishedAt,
+    priority,
+    sites,
+    tags,
+    externalLink
+  }`
+
+  return await sanity.fetch(query)
+}
+
+// Get news/press by content type
+export async function getNewsPressbyType(siteName: string, contentType: string, limit?: number): Promise<NewsPress[]> {
+  const limitClause = limit ? `[0...${limit}]` : ''
+  
+  const query = `*[_type == "newsPress" && "${siteName}" in sites && contentType == "${contentType}"] | order(publishedAt desc)${limitClause} {
+    _id,
+    title,
+    slug,
+    contentType,
+    excerpt,
+    mainImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    publishedAt,
+    priority,
+    sites,
+    tags,
+    externalLink
+  }`
+
+  return await sanity.fetch(query)
+}

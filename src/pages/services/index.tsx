@@ -1,54 +1,22 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import Navigation from '../../components/Navigation'
 
 export default function Services() {
+  const router = useRouter()
+
   return (
     <>
       <Head>
-        <title>Services - Involv | Transform Compliance & Gaming Challenges into Competitive Advantages</title>
-        <meta name="description" content="Expert advisory services solving the biggest challenges facing Australian pubs and clubs. AML compliance, gaming risk management, and performance optimisation from industry veterans." />
+        <title>Services - Involv | Expert Guidance for Compliance & Gaming Requirements</title>
+        <meta name="description" content="Expert advisory services helping Australian pubs and clubs understand their regulatory obligations. AML compliance, gaming risk management, and performance guidance from industry veterans." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="bg-[#0f1115] text-white font-sans min-h-screen">
-        {/* Brand Strip */}
-        <div className="w-full bg-[#0f1115] text-white">
-          <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-end gap-x-6">
-            <a href="https://assure.involv.com.au">
-              <img src="/logo-involve-assure-white.svg" alt="Assure" className="h-4 w-auto" />
-            </a>
-            <a href="https://primeedge.involv.com.au">
-              <img src="/logo-involve-primeedge-white.svg" alt="PrimeEdge" className="h-4 w-auto" />
-            </a>
-            <a href="https://lane.involv.com.au">
-              <img src="/logo-lane-white.svg" alt="Lane Consulting" className="h-4 w-auto" />
-            </a>
-          </div>
-        </div>
-
-        {/* Header */}
-        <header className="bg-[#0f1115] text-white border-b border-gray-800 sticky top-0 z-50">
-          <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between relative">
-            <Link href="/" className="flex items-center">
-              <img src="/logo-involv-white.svg" alt="Involv" className="h-6 w-auto" />
-            </Link>
-            <nav className="absolute left-1/2 transform -translate-x-1/2 text-sm flex space-x-6">
-              <Link href="/services" className="text-[#66899b] font-medium">Services</Link>
-              <Link href="/solutions" className="hover:text-[#66899b] transition-colors">Solutions</Link>
-              <Link href="/insights" className="hover:text-[#66899b] transition-colors">Insights</Link>
-            </nav>
-            <div className="flex items-center text-sm">
-              <div className="flex space-x-6">
-                <Link href="/about" className="hover:text-[#66899b] transition-colors">About</Link>
-                <Link href="/contact" className="hover:text-[#66899b] transition-colors">Contact</Link>
-              </div>
-              <Link href="/login" className="ml-[60px] text-sm font-medium bg-white text-black px-4 py-1.5 rounded hover:bg-gray-200 transition">
-                Login
-              </Link>
-            </div>
-          </div>
-        </header>
+        <Navigation currentPath={router.pathname} />
 
         {/* Breadcrumb */}
         <div className="max-w-7xl mx-auto px-4 py-4">
@@ -64,17 +32,17 @@ export default function Services() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                Expert Guidance for Your Compliance and Gaming Challenges
+                Expert Guidance for Your Compliance and Gaming Requirements
               </h1>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                Australian pubs and clubs face complex regulatory requirements and increasing performance pressures. We provide expert advisory services to help you navigate these challenges with confidence.
+                Australian pubs and clubs navigate complex regulatory requirements and want to optimise their gaming operations. We provide expert advisory services to help you understand your obligations with confidence.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium text-center">
                   Get Expert Guidance
                 </Link>
                 <Link href="#services" className="border border-[#66899b] text-[#66899b] px-8 py-3 rounded-lg hover:bg-[#66899b] hover:text-white transition-colors font-medium text-center">
-                  Explore Solutions
+                  Explore Our Services
                 </Link>
               </div>
             </div>
@@ -101,41 +69,51 @@ export default function Services() {
                 </div>
               </div>
               <p className="text-gray-300 text-sm text-center">
-                Built by former ALH executives, a gaming regulatory legal team, and compliance specialists who&apos;ve solved these challenges at scale.
+                Built by former ALH executives, gaming regulatory legal experts, and compliance specialists who have solved these challenges at scale.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Problem Statement Section */}
+        {/* Problem Statement Section with Clickable Cards */}
         <section className="bg-[#121418] py-16 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Challenges Facing Today&apos;s Venues</h2>
+              <h2 className="text-3xl font-bold mb-4">Common Questions We Help Venues Answer</h2>
               <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                Regulatory requirements are getting more complex while performance expectations increase. These are the challenges we help venues navigate.
+                Understanding regulatory requirements can be complex. These are the questions we help venues answer every day.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {challenges.map((challenge) => (
-                <div key={challenge.title} className="bg-[#1a1d21] rounded-lg p-6">
-                  <div className="text-red-500 mb-4">
-                    <div className="w-12 h-12 bg-red-500 bg-opacity-20 rounded-lg flex items-center justify-center">
+                <Link 
+                  key={challenge.title} 
+                  href={challenge.link}
+                  className="group block bg-[#1a1d21] rounded-lg p-6 hover:bg-[#1f2328] transition-all duration-300 hover:shadow-xl hover:shadow-[#66899b]/10 hover:border hover:border-[#66899b]/30 cursor-pointer"
+                >
+                  <div className="text-[#66899b] mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 bg-[#66899b] bg-opacity-20 rounded-lg flex items-center justify-center">
                       <span className="text-2xl">{challenge.icon}</span>
                     </div>
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 text-white">{challenge.title}</h3>
+                  <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-[#66899b] transition-colors duration-300">{challenge.title}</h3>
                   <p className="text-gray-300 text-sm mb-4 leading-relaxed">{challenge.description}</p>
                   <ul className="space-y-1">
                     {challenge.problems.map((problem, idx) => (
                       <li key={idx} className="flex items-start text-xs text-gray-400">
-                        <span className="text-red-500 mr-2 mt-1">•</span>
+                        <span className="text-[#66899b] mr-2 mt-1">•</span>
                         {problem}
                       </li>
                     ))}
                   </ul>
-                </div>
+                  <div className="flex items-center mt-4 text-[#66899b] text-sm group-hover:translate-x-2 transition-transform duration-300">
+                    <span>Get guidance</span>
+                    <svg className="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -144,9 +122,9 @@ export default function Services() {
         {/* Services Solutions Section */}
         <section id="services" className="max-w-7xl mx-auto px-4 py-16">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Three Expert Advisory Services That Solve Your Problems</h2>
+            <h2 className="text-3xl font-bold mb-4">Three Expert Advisory Services That Provide Clear Guidance</h2>
             <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-              We&apos;ve structured our services around the three biggest challenges facing venues today. Each service transforms a burden into a competitive advantage.
+              We've structured our services around the three most common areas where venues need expert guidance. Each service helps you understand your obligations while supporting your business operations.
             </p>
           </div>
 
@@ -160,7 +138,12 @@ export default function Services() {
                         {index + 1}
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold mb-2 text-white">{service.title}</h3>
+                        <Link 
+                          href={service.link}
+                          className="hover:text-[#66899b] transition-colors duration-300"
+                        >
+                          <h3 className="text-2xl font-bold mb-2 text-white hover:text-[#66899b] transition-colors duration-300 cursor-pointer">{service.title}</h3>
+                        </Link>
                         <p className="text-[#66899b] font-medium text-sm">{service.subtitle}</p>
                       </div>
                     </div>
@@ -185,7 +168,7 @@ export default function Services() {
                       href={service.link} 
                       className="inline-flex items-center bg-[#66899b] text-white px-6 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium"
                     >
-                      Solve This Challenge
+                      Get This Guidance
                       <svg className="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                       </svg>
@@ -220,7 +203,7 @@ export default function Services() {
         <section className="bg-[#121418] py-16 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Our Proven Implementation Approach</h2>
+              <h2 className="text-3xl font-bold mb-4">Our Practical Implementation Approach</h2>
               <p className="text-gray-300 text-lg max-w-2xl mx-auto">
                 Every engagement follows our proven methodology, developed through decades of successful venue partnerships.
               </p>
@@ -231,7 +214,7 @@ export default function Services() {
                 <div key={step.title} className="relative">
                   {/* Connector Line */}
                   {index < process.length - 1 && (
-                    <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-gray-700 transform translate-x-4 -translate-y-1/2 z-0"></div>
+                    <div className="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-gray-700 z-0"></div>
                   )}
                   
                   <div className="relative z-10 text-center">
@@ -252,7 +235,7 @@ export default function Services() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Why Venues Trust Involv</h2>
             <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-              We&apos;re not just consultants — we&apos;re former venue operators, gaming regulators, and compliance specialists who understand your challenges from the inside.
+              We're not just consultants — we're former venue operators, gaming regulatory legal experts, and compliance specialists who understand your challenges from the inside.
             </p>
           </div>
 
@@ -274,7 +257,7 @@ export default function Services() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to Get Expert Guidance?</h2>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              Every venue faces different challenges. Let&apos;s discuss your specific situation and how our expertise can help you navigate your compliance and performance requirements.
+              Every venue has different requirements. Let's discuss your specific situation and how our expertise can help you understand your obligations while improving your operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium">
@@ -342,58 +325,61 @@ export default function Services() {
   )
 }
 
-// Data
+// Data - Updated with more supportive tone
 const challenges = [
   {
     title: "AUSTRAC & AML Requirements",
     icon: "📋",
-    description: "Understanding and implementing AML/CTF obligations can be complex and time-consuming.",
+    description: "Understanding and implementing AML/CTF obligations properly for your venue.",
     problems: [
-      "Understanding what AML/CTF program requirements mean for your venue",
-      "Ensuring staff know their obligations and responsibilities",
-      "Keeping up with regulatory changes and updates",
-      "Maintaining proper documentation and procedures",
-      "Preparing for potential regulatory reviews"
-    ]
+      "What do AML/CTF program requirements mean for our venue?",
+      "How do we ensure staff understand their obligations?",
+      "Are we keeping up with regulatory changes and updates?",
+      "Is our documentation and procedures adequate?",
+      "How do we prepare for potential regulatory reviews?"
+    ],
+    link: "/services/aml-advisory"
   },
   {
     title: "Gaming Compliance Obligations",
     icon: "⚖️",
-    description: "Keeping up with gaming regulations across different jurisdictions while maintaining operations.",
+    description: "Understanding gaming regulations across different jurisdictions while maintaining operations.",
     problems: [
-      "Different regulatory requirements in each state and territory",
-      "Understanding licence conditions and what they mean in practice",
-      "Implementing safer gambling obligations effectively",
-      "Staying current with regulatory changes",
-      "Ensuring staff training meets current standards"
-    ]
+      "What are our regulatory requirements in each state and territory?",
+      "How do licence conditions apply to our day-to-day operations?",
+      "Are we implementing safer gambling obligations effectively?",
+      "How do we stay current with regulatory changes?",
+      "Does our staff training meet current standards?"
+    ],
+    link: "/services/risk-compliance"
   },
   {
     title: "Gaming Performance Optimisation",
     icon: "📊",
-    description: "Getting the best return from gaming operations while meeting compliance requirements.",
+    description: "Getting better returns from gaming operations while meeting compliance requirements.",
     problems: [
-      "Gaming floors not performing to their potential",
-      "Difficulty measuring ROI on gaming investments",
-      "Balancing performance optimisation with compliance",
-      "Understanding what drives gaming revenue",
-      "Making informed decisions about gaming floor changes"
-    ]
+      "Could our gaming floor be performing better?",
+      "How do we measure ROI on gaming investments?",
+      "How do we balance performance optimisation with compliance?",
+      "What actually drives gaming revenue?",
+      "How do we make informed decisions about gaming floor changes?"
+    ],
+    link: "/services/gaming-performance"
   }
 ]
 
 const services = [
   {
     title: "AML Advisory",
-    subtitle: "AUSTRAC Compliance Made Simple",
+    subtitle: "AUSTRAC Compliance Made Clear",
     icon: "🛡️",
-    problemSolution: "Stop fearing AUSTRAC audits. We transform your complex AML obligations into clear, manageable processes that protect your licence and give you confidence. Our team have hands-on experience working with AUSTRAC and understand both regulatory expectations and practical venue operations.",
+    problemSolution: "Get clear on your AML obligations. We help you understand AUSTRAC requirements and build programs that work in practice, giving you confidence you're meeting your obligations properly. Our team have hands-on experience working with AUSTRAC and understand both regulatory expectations and practical venue operations.",
     outcomes: [
-      "AUSTRAC-ready programs that pass scrutiny",
+      "Clear understanding of your AUSTRAC obligations",
       "Staff who understand their AML responsibilities",
-      "Automated compliance monitoring and reporting",
-      "Reduced audit stress and regulatory risk",
-      "Clear escalation processes and incident management"
+      "Practical compliance monitoring and reporting",
+      "Audit-ready documentation and processes",
+      "Peace of mind with regulatory requirements"
     ],
     expertiseTitle: "AUSTRAC Expertise",
     expertise: [
@@ -406,15 +392,15 @@ const services = [
   },
   {
     title: "Gaming Risk & Compliance",
-    subtitle: "Regulatory Complexity Simplified",
+    subtitle: "Regulatory Requirements Simplified",
     icon: "⚖️",
-    problemSolution: "Turn regulatory complexity into competitive advantage. We simplify licence obligations across all Australian jurisdictions so you can focus on running your venue. Our frameworks ensure you\'re always audit-ready while supporting sustainable growth.",
+    problemSolution: "Understand your regulatory obligations across all Australian jurisdictions. We help you navigate licence requirements and build compliance frameworks that work in your venue while supporting your business operations.",
     outcomes: [
-      "Clear obligations mapping and tracking",
-      "Robust safer gambling frameworks that work",
+      "Clear understanding of your licence obligations",
+      "Practical safer gambling frameworks that work",
       "Confident regulatory relationship management",
-      "Sustainable compliance supporting business growth",
-      "Reduced regulatory risk and penalty exposure"
+      "Compliance that supports business operations",
+      "Reduced regulatory uncertainty"
     ],
     expertiseTitle: "Regulatory Expertise",
     expertise: [
@@ -427,19 +413,19 @@ const services = [
   },
   {
     title: "Gaming Performance Advisory",
-    subtitle: "Revenue Optimisation Through Expertise",
+    subtitle: "Revenue Optimisation Through Expert Guidance",
     icon: "📈",
-    problemSolution: "Unlock your gaming revenue potential with data-driven insights from Australia\'s most experienced gaming professionals. Led by Con Nikitas, who managed nearly 13,000 EGMs at ALH Group, we turn guesswork into strategic advantage.",
+    problemSolution: "Optimise your gaming revenue with guidance from Australia's most experienced gaming professionals. Led by Con Nikitas, who managed nearly 13,000 EGMs at ALH Group, we provide data-driven insights that help you make informed decisions.",
     outcomes: [
-      "Strategic gaming floor optimisation",
+      "Expert gaming floor guidance and recommendations",
       "Data-backed machine placement decisions",
       "Improved player engagement and retention",
-      "Measurable revenue uplift and ROI",
-      "Competitive advantage through expert insights"
+      "Better returns on gaming investments",
+      "Insights from Australia's most experienced gaming professionals"
     ],
     expertiseTitle: "Gaming Operations Expertise",
     expertise: [
-      "50+ years managing Australia\'s largest gaming operations",
+      "50+ years managing Australia's largest gaming operations",
       "Deep relationships with all major manufacturers",
       "Proven track record optimising 13,000+ EGMs",
       "Data-driven methodologies and insights"

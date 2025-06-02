@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { GetStaticProps } from 'next'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
+import Navigation from '../components/Navigation'
 import { getPosts, Post, buildImageUrl } from '../../lib/sanity'
 
 interface HomePageProps {
@@ -115,6 +117,27 @@ function WhyInvolvCarousel() {
           </p>
         </div>
 
+        {/* Tab Navigation */}
+        <div className="flex justify-center mb-8">
+          <div className="bg-[#1a1d21] rounded-lg p-1 inline-flex">
+            {whyInvolvData.map((item, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveIndex(index)}
+                className={`px-6 py-3 rounded-md font-medium transition-all duration-300 text-sm ${
+                  activeIndex === index
+                    ? 'bg-[#66899b] text-white shadow-lg'
+                    : 'text-gray-400 hover:text-white hover:bg-[#22252a]'
+                }`}
+              >
+                {index === 0 && 'Expertise'}
+                {index === 1 && 'Approach'}
+                {index === 2 && 'Technology'}
+              </button>
+            ))}
+          </div>
+        </div>
+
         <div className="relative">
           {/* Carousel Content */}
           <div className="bg-[#1a1d21] rounded-lg p-8 md:p-12 min-h-[300px] flex items-center">
@@ -150,22 +173,17 @@ function WhyInvolvCarousel() {
             </div>
           </div>
 
-          {/* Navigation Dots */}
+          {/* Navigation Dots - Still included but less prominent */}
           <div className="flex justify-center mt-6 space-x-2">
             {whyInvolvData.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`w-3 h-3 rounded-full transition-colors ${
+                className={`w-2 h-2 rounded-full transition-colors ${
                   index === activeIndex ? 'bg-[#66899b]' : 'bg-gray-600 hover:bg-gray-500'
                 }`}
               />
             ))}
-          </div>
-
-          {/* Auto-advance (optional) */}
-          <div className="hidden">
-            {/* Could add auto-advance timer here if desired */}
           </div>
         </div>
       </div>
@@ -174,6 +192,8 @@ function WhyInvolvCarousel() {
 }
 
 export default function Home({ insights }: HomePageProps) {
+  const router = useRouter()
+
   return (
     <>
       <Head>
@@ -184,68 +204,8 @@ export default function Home({ insights }: HomePageProps) {
       </Head>
 
       <div className="bg-[#0f1115] text-white font-sans min-h-screen">
-        {/* Brand Strip with Assure, PrimeEdge, Lane Consulting */}
-        <div className="w-full bg-[#0f1115] text-white">
-          <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-end gap-x-6">
-            <a href="https://assure.involv.com.au">
-              <img src="/logo-involve-assure-white.svg" alt="Assure" className="h-4 w-auto" />
-            </a>
-            <a href="https://primeedge.involv.com.au">
-              <img src="/logo-involve-primeedge-white.svg" alt="PrimeEdge" className="h-4 w-auto" />
-            </a>
-            <a href="https://lane.involv.com.au">
-              <img src="/logo-lane-white.svg" alt="Lane Consulting" className="h-4 w-auto" />
-            </a>
-          </div>
-        </div>
-
-        {/* Main Header */}
-        <header className="bg-[#0f1115] text-white border-b border-gray-800 sticky top-0 z-50">
-          <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between relative">
-            {/* Left: Logo */}
-            <Link href="/" className="flex items-center">
-              <img
-                src="/logo-involv-white.svg"
-                alt="Involv"
-                className="h-6 w-auto"
-              />
-            </Link>
-
-            {/* Centered Nav Group */}
-            <nav className="absolute left-1/2 transform -translate-x-1/2 text-sm flex space-x-6">
-              <Link href="/services" className="hover:text-[#66899b] transition-colors">
-                Services
-              </Link>
-              <Link href="/solutions" className="hover:text-[#66899b] transition-colors">
-                Solutions
-              </Link>
-              <Link href="/insights" className="hover:text-[#66899b] transition-colors">
-                Insights
-              </Link>
-            </nav>
-
-            {/* Right-Aligned Section: About/Contact + Login */}
-            <div className="flex items-center text-sm">
-              {/* Grouped About + Contact */}
-              <div className="flex space-x-6">
-                <Link href="/about" className="hover:text-[#66899b] transition-colors">
-                  About
-                </Link>
-                <Link href="/contact" className="hover:text-[#66899b] transition-colors">
-                  Contact
-                </Link>
-              </div>
-
-              {/* Separated Login Button */}
-              <Link
-                href="/login"
-                className="ml-[60px] text-sm font-medium bg-white text-black px-4 py-1.5 rounded hover:bg-gray-200 transition"
-              >
-                Login
-              </Link>
-            </div>
-          </div>
-        </header>
+        {/* Replace the old brand strip + header with the new Navigation component */}
+        <Navigation currentPath={router.pathname} />
 
         {/* Hero Section - Problem-Focused */}
         <section className="max-w-7xl mx-auto px-4 pt-16 pb-20">
@@ -255,30 +215,30 @@ export default function Home({ insights }: HomePageProps) {
                 Compliance Made Simple. Gaming Made Smarter. Built for Pubs and Clubs.
               </h1>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                Regulatory requirements getting more complex? Want to optimise gaming performance but not sure where to start? We help Australian pubs and clubs stay compliant while improving their operations.
+                Need clearer guidance on regulatory requirements? Want to optimise gaming performance but not sure where to start? We help Australian pubs and clubs understand their obligations while improving their operations.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium text-center">
                   Get Expert Guidance
                 </Link>
                 <Link href="/services" className="border border-[#66899b] text-[#66899b] px-8 py-3 rounded-lg hover:bg-[#66899b] hover:text-white transition-colors font-medium text-center">
-                  Explore Solutions
+                  Explore Our Services
                 </Link>
               </div>
             </div>
             <div className="bg-[#1a1d21] rounded-lg p-8">
               <div className="space-y-6">
                 <div className="text-center pb-4 border-b border-gray-700">
-                  <h3 className="text-lg font-semibold mb-2">Common Venue Challenges</h3>
+                  <h3 className="text-lg font-semibold mb-2">Common Questions We Help With</h3>
                 </div>
                 {venueProblems.map((problem, index) => (
                   <div key={index} className="flex items-start">
-                    <div className="bg-red-500 w-2 h-2 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                    <div className="bg-[#66899b] w-2 h-2 rounded-full mt-2 mr-4 flex-shrink-0"></div>
                     <p className="text-gray-300 text-sm">{problem}</p>
                   </div>
                 ))}
                 <div className="pt-4 border-t border-gray-700 text-center">
-                  <p className="text-[#66899b] text-sm font-medium">Is this your reality? We can help.</p>
+                  <p className="text-[#66899b] text-sm font-medium">Sound familiar? We can help you get clarity.</p>
                 </div>
               </div>
             </div>
@@ -289,20 +249,24 @@ export default function Home({ insights }: HomePageProps) {
         <section className="bg-[#121418] py-16 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">How We Help You Navigate Your Biggest Challenges</h2>
+              <h2 className="text-3xl font-bold mb-4">How We Help You Navigate Your Regulatory Requirements</h2>
               <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                Three core advisory services designed to help you meet your compliance obligations while optimising your gaming operations.
+                Three core advisory services designed to help you understand your obligations and optimise your gaming operations.
               </p>
             </div>
             <div className="grid gap-8 md:grid-cols-3">
               {serviceCards.map((service) => (
-                <div key={service.title} className="bg-[#1a1d21] hover:bg-[#22252a] rounded-lg p-6 transition-colors group">
-                  <div className="text-[#66899b] mb-4">
+                <Link 
+                  key={service.title} 
+                  href={service.link}
+                  className="group block bg-[#1a1d21] rounded-lg p-6 hover:bg-[#1f2328] transition-all duration-300 hover:shadow-xl hover:shadow-[#66899b]/10 hover:border hover:border-[#66899b]/30 cursor-pointer"
+                >
+                  <div className="text-[#66899b] mb-4 group-hover:scale-110 transition-transform duration-300">
                     <div className="w-12 h-12 bg-[#66899b] bg-opacity-20 rounded-lg flex items-center justify-center">
                       <span className="text-2xl">{service.icon}</span>
                     </div>
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-[#66899b] transition-colors duration-300">{service.title}</h3>
                   <p className="text-gray-300 text-sm mb-4 leading-relaxed">{service.problemSolution}</p>
                   <ul className="space-y-1 mb-6">
                     {service.outcomes.map((outcome, idx) => (
@@ -314,10 +278,13 @@ export default function Home({ insights }: HomePageProps) {
                       </li>
                     ))}
                   </ul>
-                  <Link href={service.link} className="text-[#66899b] text-sm font-medium group-hover:text-white transition-colors">
-                    Learn More →
-                  </Link>
-                </div>
+                  <div className="flex items-center text-[#66899b] text-sm font-medium group-hover:translate-x-2 transition-transform duration-300">
+                    <span>Learn More</span>
+                    <svg className="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -329,20 +296,24 @@ export default function Home({ insights }: HomePageProps) {
         {/* Solutions Section - Software as Support */}
         <section className="max-w-6xl mx-auto px-4 py-16">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Intelligent Software That Actually Works in Venues</h2>
+            <h2 className="text-3xl font-bold mb-4">Purpose-Built Software That Actually Works in Venues</h2>
             <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-              Our advisory expertise is enhanced by purpose-built software solutions. No generic tools — just intelligent systems tailored specifically for Australian pub and club operations.
+              Our advisory expertise is enhanced by software solutions designed specifically for Australian pub and club operations. No generic tools — just systems that understand your business.
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-2">
             {solutionCards.map((solution) => (
-              <div key={solution.name} className="bg-[#1a1d21] hover:bg-[#22252a] rounded-lg p-8 transition-colors group">
+              <a 
+                key={solution.name} 
+                href={solution.link}
+                className="group block bg-[#1a1d21] rounded-lg p-8 hover:bg-[#1f2328] transition-all duration-300 hover:shadow-xl hover:shadow-[#66899b]/10 hover:border hover:border-[#66899b]/30 cursor-pointer"
+              >
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className="text-xl font-semibold mb-1">{solution.name}</h3>
+                    <h3 className="text-xl font-semibold mb-1 group-hover:text-[#66899b] transition-colors duration-300">{solution.name}</h3>
                     <p className="text-[#66899b] italic text-sm">{solution.tagline}</p>
                   </div>
-                  <div className="text-3xl">{solution.icon}</div>
+                  <div className="text-3xl group-hover:scale-110 transition-transform duration-300">{solution.icon}</div>
                 </div>
                 <p className="text-gray-300 text-sm mb-4 leading-relaxed">{solution.problemFocus}</p>
                 <div className="mb-6">
@@ -358,10 +329,13 @@ export default function Home({ insights }: HomePageProps) {
                     ))}
                   </ul>
                 </div>
-                <a href={solution.link} className="text-[#66899b] text-sm font-medium group-hover:text-white transition-colors">
-                  Explore {solution.name} →
-                </a>
-              </div>
+                <div className="flex items-center text-[#66899b] text-sm font-medium group-hover:translate-x-2 transition-transform duration-300">
+                  <span>Explore {solution.name}</span>
+                  <svg className="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </div>
+              </a>
             ))}
           </div>
         </section>
@@ -372,9 +346,9 @@ export default function Home({ insights }: HomePageProps) {
         {/* CTA Section */}
         <section className="bg-[#121418] py-16 px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Finally. Straight talking Guidance from Industry Doers</h2>
+            <h2 className="text-3xl font-bold mb-4">Ready for Practical Guidance from Industry Experts?</h2>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              Every venue faces different challenges. Let&apos;s discuss your specific situation and how our expertise can help you stay compliant while improving your operations.
+              Every venue faces different requirements. Let us discuss your specific situation and how our expertise can help you understand your obligations while improving your operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium">
@@ -470,48 +444,51 @@ export const getStaticProps: GetStaticProps = async () => {
 
 // Data
 const venueProblems = [
-  "Keeping up with regulatory changes across different jurisdictions",
-  "Understanding AML/CTF requirements and what they mean for daily operations",
-  "Ensuring staff are properly trained and up to date with their obligations",
-  "Making sure policies and procedures meet current standards",
-  "Not realising your gaming floor's full potential and losing market share", 
-  "Balancing compliance requirements with operational efficiency"
+  "What are all our regulatory obligations across different jurisdictions?",
+  "How do we know if we are meeting our AML/CTF requirements properly?",
+  "Are our staff training and procedures up to current standards?",
+  "How can we be confident we are audit-ready?",
+  "Could our gaming floor be performing better with the right guidance?", 
+  "How do we balance compliance requirements with operational efficiency?"
 ]
 
 const serviceCards = [
   {
     title: 'AML Advisory',
     icon: '🛡️',
-    problemSolution: 'Never fear an AUSTRAC audit. We transform complex AML obligations into clear, manageable processes that protect your licence and reputation.',
+    problemSolution: 'Get clear on your AML obligations. We help you understand AUSTRAC requirements and build programs that work in practice, giving you confidence you\'re meeting your obligations properly.',
     outcomes: [
-      'AUSTRAC-ready programs that pass scrutiny',
-      'Staff who understand their AML responsibilities',
-      'Automated compliance monitoring and reporting',
-      'Reduced audit stress and regulatory risk'
+      'Clear understanding of your AML/CTF obligations',
+      'Staff who know their responsibilities',
+      'Practical compliance monitoring',
+      'Audit-ready documentation',
+      'Peace of mind with regulatory requirements'
     ],
     link: '/services/aml-advisory',
   },
   {
     title: 'Gaming Risk & Compliance',
     icon: '⚖️',
-    problemSolution: 'Turn regulatory complexity into competitive advantage. We simplify licence obligations across all jurisdictions so you can focus on running your venue.',
+    problemSolution: 'Understand your regulatory obligations across all jurisdictions. We help you navigate licence requirements and build compliance frameworks that support your business operations.',
     outcomes: [
-      'Clear obligations mapping and tracking',
-      'Robust safer gambling frameworks',
-      'Confident regulatory relationship management',
-      'Sustainable compliance that supports growth'
+      'Clear understanding of licence obligations',
+      'Practical safer gambling frameworks',
+      'Confident regulatory relationships',
+      'Compliance that supports business growth',
+      'Reduced regulatory uncertainty'
     ],
     link: '/services/risk-compliance',
   },
   {
     title: 'Gaming Performance',
     icon: '📈',
-    problemSolution: 'Unlock gaming revenue potential with data-driven insights from Australia\'s most experienced gaming professionals.',
+    problemSolution: 'Optimise your gaming revenue with guidance from Australia\'s most experienced gaming professionals. Get data-driven insights that help you make informed decisions about your gaming floor.',
     outcomes: [
-      'Strategic EGM optimisation',
-      'Data-backed game and machine decisions',
-      'Improved player engagement and retention',
-      'Measurable revenue uplift and ROI'
+      'Expert gaming floor guidance',
+      'Data-backed decision making',
+      'Improved player engagement',
+      'Better return on gaming investments',
+      'Insights from industry experts'
     ],
     link: '/services/gaming-performance',
   },
@@ -521,7 +498,7 @@ const whyInvolvData = [
   {
     title: "Deep Industry Expertise",
     subtitle: "Built by venue operators, for venue operators",
-    description: "Our team includes gaming specialists who\'ve managed Australia&apos;s largest operations. We don\'t just understand compliance — we know how high-performance venues actually run.",
+    description: "Our team includes gaming specialists who\'ve managed Australia\'s largest operations. We don\'t just understand compliance — we know how high-performance venues actually run.",
     icon: "🏆",
     points: [
       "80+ years combined gaming experience",
