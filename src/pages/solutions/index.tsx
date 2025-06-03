@@ -1,6 +1,14 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { 
+  Handshake, 
+  Cpu, 
+  Wrench, 
+  MapPin, 
+  PersonStanding, 
+  Users 
+} from 'lucide-react'
 import Navigation from '../../components/Navigation'
 
 export default function Solutions() {
@@ -39,7 +47,7 @@ export default function Solutions() {
               Software That Actually Works in Venues
             </h1>
             <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Our advisory expertise is enhanced by purpose-built software solutions. No generic corporate tools that aren&apos;t fit-for-purpose. Just practical systems tailored specifically to meet the needs of Australian pubs and clubs.
+              Our advisory expertise is enhanced by purpose-built software solutions. No generic corporate tools that aren't fit-for-purpose. Just practical systems tailored specifically to meet the needs of Australian pubs and clubs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium">
@@ -58,14 +66,14 @@ export default function Solutions() {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Advisory-First, Technology-Enhanced</h2>
               <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                We&apos;re compliance and experienced gaming practitioners who&apos;ve bottled our knowledge to develop software we know the industry needs. Our tools support our advisory work, not the other way around.
+                We're compliance and experienced gaming practitioners who've bottled our knowledge to develop software we know the industry needs. Our tools support our advisory work, not the other way around.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 items-center">
               <div className="text-center">
                 <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">🤝</span>
+                  <Handshake className="w-8 h-8 text-black" />
                 </div>
                 <h3 className="text-lg font-semibold mb-3">Expert Advisory</h3>
                 <p className="text-gray-300 text-sm">Our team provides expert guidance on compliance and gaming performance challenges.</p>
@@ -77,7 +85,7 @@ export default function Solutions() {
               
               <div className="text-center">
                 <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">⚡</span>
+                  <Cpu className="w-8 h-8 text-black" />
                 </div>
                 <h3 className="text-lg font-semibold mb-3">Smart Technology</h3>
                 <p className="text-gray-300 text-sm">Purpose-built software tools that make compliance tracking and gaming insights practical and actionable.</p>
@@ -162,7 +170,7 @@ export default function Solutions() {
                         {solution.useCase.examples.map((example, idx) => (
                           <div key={idx} className="bg-[#1a1d21] rounded p-4">
                             <div className="flex items-start">
-                              <span className="text-[#66899b] mr-2 mt-1 text-sm">•</span>
+                              <span className="text-[#66899b] mr-2 mt-1 text-sm flex-shrink-0">•</span>
                               <div>
                                 <p className="text-white text-sm font-medium">{example.scenario}</p>
                                 <p className="text-gray-400 text-xs mt-1">{example.result}</p>
@@ -185,7 +193,7 @@ export default function Solutions() {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Why Our Software Will Benefit Your Venue Operation</h2>
               <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                We&apos;ve built software that understands gaming venues because we&apos;ve operated them. No generic solutions adapted for gaming.
+                We've built software that understands gaming venues because we've operated them. No generic solutions adapted for gaming.
               </p>
             </div>
 
@@ -193,7 +201,7 @@ export default function Solutions() {
               {differentiators.map((diff) => (
                 <div key={diff.title} className="text-center">
                   <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl">{diff.icon}</span>
+                    {diff.icon}
                   </div>
                   <h3 className="text-lg font-semibold mb-3 text-white">{diff.title}</h3>
                   <p className="text-gray-300 text-sm">{diff.description}</p>
@@ -232,7 +240,7 @@ export default function Solutions() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to See How Our Solutions Work?</h2>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              Every venue has different needs. Let&apos;s show you how Assure and PrimeEdge can work for your specific situation.
+              Every venue has different needs. Let's show you how Assure and PrimeEdge can work for your specific situation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium">
@@ -306,7 +314,7 @@ const solutions = [
     name: "",
     tagline: "A risk and compliance team in your browser.",
     logo: "/logo-involve-assure-white.svg",
-    description: "Stop wondering if you\'re meeting your compliance obligations. Assure tracks all your regulatory requirements in one place, shows you what needs to be done and when, and keeps you audit-ready without the administrative burden.",
+    description: "Stop wondering if you're meeting your compliance obligations. Assure tracks all your regulatory requirements in one place, shows you what needs to be done and when, and keeps you audit-ready without the administrative burden.",
     benefits: [
       "Know exactly what compliance requirements apply to your venue",
       "Track all deadlines, renewals, and obligations automatically",
@@ -341,7 +349,7 @@ const solutions = [
     logo: "/logo-involve-primeedge-white.svg",
     description: "Stop guessing about your gaming floor performance. PrimeEdge shows you exactly which machines are working, where they should be placed, and how to improve revenue through data-driven insights from gaming industry experts.",
     benefits: [
-      "See which machines are performing and which aren\'t",
+      "See which machines are performing and which aren't",
       "Get specific recommendations for machine placement",
       "Track the revenue impact of floor changes",
       "Make gaming decisions based on data, not guesswork",
@@ -373,22 +381,22 @@ const solutions = [
 const differentiators = [
   {
     title: "Built by Operators",
-    icon: "🏗️",
-    description: "Created by people who\'ve actually run gaming venues, not generic software developers."
+    icon: <Wrench className="w-8 h-8 text-black" />,
+    description: "Created by people who've actually run gaming venues, not generic software developers."
   },
   {
     title: "Australia-Specific",
-    icon: "🇦🇺",
+    icon: <MapPin className="w-8 h-8 text-black" />,
     description: "Designed for Australian regulations, gaming machine types, and venue operations."
   },
   {
     title: "Venue-Friendly",
-    icon: "🎯",
+    icon: <PersonStanding className="w-8 h-8 text-black" />,
     description: "Interfaces that busy venue staff can actually use without extensive training."
   },
   {
     title: "Expert Support",
-    icon: "🤝",
+    icon: <Users className="w-8 h-8 text-black" />,
     description: "Backed by our advisory team who understand both the software and your business."
   }
 ]
@@ -400,7 +408,7 @@ const integrationBenefits = [
   },
   {
     title: "Ongoing Guidance",
-    description: "Regular check-ins ensure you\'re getting the most value from both the software and our advisory support."
+    description: "Regular check-ins ensure you're getting the most value from both the software and our advisory support."
   },
   {
     title: "Continuous Improvement",
