@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Navigation from '../components/Navigation'
 
@@ -17,6 +17,13 @@ export default function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+    // Check for success parameter from Formspree redirect
+  React.useEffect(() => {
+    if (router.query.success === 'true') {
+      setSubmitStatus('success')
+    }
+  }, [router.query])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target
@@ -97,7 +104,7 @@ export default function Contact() {
               Ready to Simplify Your Compliance?
             </h1>
             <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Every venue faces different challenges. Let's discuss your specific situation and how our team of industry experts can help you understand the breadth of your obligations, how you can effectively meet them, all while improving your operations.
+              Every venue faces different challenges. Let's discuss your specific situation and how our team of industry experts can help you understand and meet your obligations while improving your operations.
             </p>
           </div>
         </section>
@@ -111,14 +118,14 @@ export default function Contact() {
                 <div className="mb-8">
                   <h2 className="text-2xl font-bold mb-4">Schedule a Consultation</h2>
                   <p className="text-gray-300">
-                    Fill out the form below and we'll get back to you within 24 hours to schedule a time to discuss how we can help your business.
+                    Fill out the form below and we'll get back to you within 24 hours to discuss how we can help your venue.
                   </p>
                 </div>
 
                 {submitStatus === 'success' && (
                   <div className="bg-green-500 bg-opacity-10 border border-green-500 rounded-lg p-4 mb-6">
                     <p className="text-green-400 font-medium">
-                      Thank you for your enquiry! We'll be in touch within 24 hours.
+                      Thank you for your enquiry. We'll be in touch within 24 hours.
                     </p>
                   </div>
                 )}
@@ -132,6 +139,10 @@ export default function Contact() {
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Hidden fields for Formspree */}
+                  <input type="hidden" name="_next" value="https://www.involv.com.au/contact?success=true" />
+                  <input type="hidden" name="_cc" value="hello@involv.com.au" />
+                  <input type="hidden" name="_template" value="table" />
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
@@ -191,7 +202,7 @@ export default function Contact() {
                         value={formData.phone}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 bg-[#0f1115] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-[#66899b] focus:outline-none focus:ring-1 focus:ring-[#66899b]"
-                        placeholder="0400 000 000"
+                        placeholder="1 800 INVOLV"
                       />
                     </div>
                   </div>
@@ -210,9 +221,9 @@ export default function Contact() {
                       <option value="">Select a service area</option>
                       <option value="aml-advisory">AML Advisory - Understanding AUSTRAC requirements</option>
                       <option value="risk-compliance">Gaming Risk & Compliance - Regulatory obligations</option>
-                      <option value="gaming-performance">Gaming Performance - EGM reporting and optimisation</option>
-                      <option value="assure-software">Involv|Assure - Compliance management software</option>
-                      <option value="primeedge-software">Involv|PrimeEdge - Gaming AI optimisation software</option>
+                      <option value="gaming-performance">Gaming Performance - Reporting and operations</option>
+                      <option value="assure-software">Involv Assure - Compliance management software</option>
+                      <option value="primeedge-software">Involv PrimeEdge - EGM optimisation software</option>
                       <option value="general-enquiry">General enquiry</option>
                       <option value="not-sure">Not sure - help me understand my options</option>
                     </select>
@@ -230,7 +241,7 @@ export default function Contact() {
                       required
                       rows={5}
                       className="w-full px-4 py-3 bg-[#0f1115] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-[#66899b] focus:outline-none focus:ring-1 focus:ring-[#66899b] resize-vertical"
-                      placeholder="What challenges are you facing? What questions do you have about compliance or gaming performance? The more detail you can provide, the better we can help."
+                      placeholder="What challenges are you facing? What questions do you have about risk, compliance, or gaming performance optimisation? The more detail you can provide, the better we can help."
                     />
                   </div>
 
@@ -287,7 +298,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-gray-400 text-sm mb-1">Phone</p>
-                    <a href="tel:+61400000000" className="text-[#66899b] hover:text-white transition-colors">
+                    <a href="tel:1800INVOLV" className="text-[#66899b] hover:text-white transition-colors">
                       1 800 INVOLV
                     </a>
                   </div>
@@ -399,8 +410,8 @@ export default function Contact() {
               <div>
                 <h3 className="font-semibold mb-4">Solutions</h3>
                 <ul className="space-y-2 text-sm text-gray-400">
-                  <li><a href="https://assure.involv.com.au" className="hover:text-white">Involv Assure</a></li>
-                  <li><a href="https://primeedge.involv.com.au" className="hover:text-white">Involv PrimeEdge</a></li>
+                  <li><a href="https://assure.involv.com.au" className="hover:text-white">Involv|Assure</a></li>
+                  <li><a href="https://primeedge.involv.com.au" className="hover:text-white">Involv|PrimeEdge</a></li>
                 </ul>
               </div>
               
@@ -452,7 +463,7 @@ const reasons = [
 const faqs = [
   {
     question: "How quickly can you help us?",
-    answer: "We typically respond to enquiries within 24 hours and can start most engagements within one to two week depending on your needs. For urgent compliance matters, we can often provide immediate guidance."
+    answer: "We typically respond to enquiries within 24 hours and can start most engagements within one to two week. For urgent compliance matters, we can often provide immediate guidance."
   },
   {
     question: "Do you work with all types of venues?",
