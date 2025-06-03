@@ -263,7 +263,7 @@ export default function OurTeam() {
               ))}
             </div>
             <p className="text-gray-400 text-sm">
-              Our extended network includes former gaming regulators, venue operators, technology specialists, and compliance experts across Australia.
+              Our extended network includes regulatory legal practitioners, venue operators, technology specialists, and compliance experts across Australia.
             </p>
           </div>
         </section>
@@ -311,8 +311,8 @@ export default function OurTeam() {
               <div>
                 <h3 className="font-semibold mb-4">Solutions</h3>
                 <ul className="space-y-2 text-sm text-gray-400">
-                  <li><a href="https://assure.involv.com.au" className="hover:text-white">Involv Assure</a></li>
-                  <li><a href="https://primeedge.involv.com.au" className="hover:text-white">Involv PrimeEdge</a></li>
+                  <li><a href="https://assure.involv.com.au" className="hover:text-white">Involv|Assure</a></li>
+                  <li><a href="https://primeedge.involv.com.au" className="hover:text-white">Involv|PrimeEdge</a></li>
                 </ul>
               </div>
               
@@ -387,7 +387,7 @@ const founders = [
       "Expert in regulatory navigation"
     ],
     value: "Tim brings the strategic leadership and transformation expertise needed to help venues navigate complex change while building sustainable competitive advantages.",
-    linkedIn: "https://linkedin.com/in/timbarnett"
+    linkedIn: "https://www.linkedin.com/in/tim-barnett-52258126"
   },
   {
     name: "Louise Lane",
@@ -411,7 +411,7 @@ const founders = [
       "Strategic regulatory guidance"
     ],
     value: "Louise provides the regulatory legal expertise that ensures compliance solutions are not just practical, but legally robust and defensible under scrutiny.",
-    linkedIn: "https://linkedin.com/in/louiselane"
+    linkedIn: "https://www.linkedin.com/in/louise-l-56078b112"
   },
   {
     name: "Con Nikitas",
@@ -435,7 +435,7 @@ const founders = [
       "Proven operational excellence track record"
     ],
     value: "Con's unmatched operational experience provides the practical insights needed to optimise gaming performance while maintaining strict compliance standards.",
-    linkedIn: "https://linkedin.com/in/connikitas"
+    linkedIn: "https://www.linkedin.com/in/con-nikitas-19200122"
   },
   {
     name: "Mark Kelly",
@@ -454,12 +454,13 @@ const founders = [
     ],
     highlights: [
       "30 years transformational change experience",
-      "6 years gaming compliance specialisation",
+      "6 years gaming operations and loyalty",
+      "2 years gaming product and compliance specialisation",
       "Product and technology expertise",
       "Compliance-led growth strategies"
     ],
     value: "Mark brings the technology and innovation expertise needed to transform traditional compliance approaches into competitive advantages through smart systems and processes.",
-    linkedIn: "https://linkedin.com/in/markkelly"
+    linkedIn: "https://linkedin.com/in/mpkelly"
   }
 ]
 
