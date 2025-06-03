@@ -207,7 +207,7 @@ export default function Contact() {
                         value={formData.phone}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 bg-[#0f1115] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-[#66899b] focus:outline-none focus:ring-1 focus:ring-[#66899b]"
-                        placeholder="1 800 INVOLV"
+                        placeholder="0400 000 000"
                       />
                     </div>
                   </div>
