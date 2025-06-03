@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { Building2, Scale, Rocket, Monitor, Target, Award, Handshake, Zap, Landmark, Gamepad2, Settings } from 'lucide-react'
 import Navigation from '../../components/Navigation'
 
 export default function OurTeam() {
@@ -210,7 +211,9 @@ export default function OurTeam() {
             {expertiseAreas.map((area, index) => (
               <div key={index} className="bg-[#1a1d21] rounded-lg p-6 text-center hover:bg-[#1f2328] transition-colors">
                 <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">{area.icon}</span>
+                  <div className="text-2xl text-black">
+                    {area.iconComponent}
+                  </div>
                 </div>
                 <h3 className="text-lg font-semibold mb-3 text-white">{area.title}</h3>
                 <p className="text-gray-300 text-sm mb-4">{area.description}</p>
@@ -235,7 +238,9 @@ export default function OurTeam() {
                 <div key={index} className="bg-[#1a1d21] rounded-lg p-8">
                   <div className="flex items-start mb-4">
                     <div className="bg-[#66899b] w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                      <span className="text-2xl">{advantage.icon}</span>
+                      <div className="text-2xl text-black">
+                        {advantage.iconComponent}
+                      </div>
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-white mb-2">{advantage.title}</h3>
@@ -260,8 +265,10 @@ export default function OurTeam() {
           <div className="bg-[#1a1d21] rounded-lg p-8 text-center">
             <div className="grid md:grid-cols-3 gap-8 mb-8">
               {advisoryAreas.map((area, index) => (
-                <div key={index}>
-                  <div className="text-3xl mb-3">{area.icon}</div>
+                <div key={index} className="text-center">
+                  <div className="text-3xl mb-3 text-[#66899b] flex justify-center">
+                    {area.iconComponent}
+                  </div>
                   <h3 className="text-lg font-semibold text-white mb-2">{area.title}</h3>
                   <p className="text-gray-300 text-sm">{area.description}</p>
                 </div>
@@ -471,25 +478,25 @@ const founders = [
 
 const expertiseAreas = [
   {
-    icon: "🏢",
+    iconComponent: <Building2 className="w-8 h-8" />,
     title: "Gaming Operations",
     description: "Large-scale gaming management and optimisation from Australia's biggest operations.",
     teamMember: "Led by Con Nikitas"
   },
   {
-    icon: "⚖️",
+    iconComponent: <Scale className="w-8 h-8" />,
     title: "Regulatory Legal",
     description: "Gaming and AML compliance legal expertise across all Australian jurisdictions.",
     teamMember: "Led by Louise Lane"
   },
   {
-    icon: "🚀",
+    iconComponent: <Rocket className="w-8 h-8" />,
     title: "Transformation",
     description: "Business transformation and leadership across hospitality and gaming sectors.",
     teamMember: "Led by Tim Barnett"
   },
   {
-    icon: "💻",
+    iconComponent: <Monitor className="w-8 h-8" />,
     title: "Technology Innovation",
     description: "Digital transformation and technology solutions for venue operations.",
     teamMember: "Led by Mark Kelly"
@@ -498,22 +505,22 @@ const expertiseAreas = [
 
 const teamAdvantages = [
   {
-    icon: "🎯",
+    iconComponent: <Target className="w-8 h-8" />,
     title: "Complete Solution Coverage",
     description: "Other consultants specialise in one area. Our team covers gaming operations, regulatory compliance, business transformation, and technology innovation - everything venues need."
   },
   {
-    icon: "🏆",
+    iconComponent: <Award className="w-8 h-8" />,
     title: "Proven Track Record",
     description: "We have managed the largest gaming operations in Australia, navigated complex regulatory environments, and led successful business transformations at scale."
   },
   {
-    icon: "🤝",
+    iconComponent: <Handshake className="w-8 h-8" />,
     title: "Industry Relationships",
     description: "Decades of experience means deep relationships with regulators, manufacturers, and industry bodies that benefit our clients."
   },
   {
-    icon: "⚡",
+    iconComponent: <Zap className="w-8 h-8" />,
     title: "Implementation Excellence",
     description: "We do not just advise - we implement. Our hands-on approach ensures solutions work in real venue operations, not just on paper."
   }
@@ -521,17 +528,17 @@ const teamAdvantages = [
 
 const advisoryAreas = [
   {
-    icon: "🏛️",
+    iconComponent: <Landmark className="w-8 h-8" />,
     title: "Regulatory Network",
     description: "Former gaming regulators and compliance specialists across Australian jurisdictions."
   },
   {
-    icon: "🎰",
+    iconComponent: <Gamepad2 className="w-8 h-8" />,
     title: "Operations Experts",
     description: "Venue operators and gaming managers with hands-on experience across venue types."
   },
   {
-    icon: "🔧",
+    iconComponent: <Settings className="w-8 h-8" />,
     title: "Technology Specialists",
     description: "Gaming technology experts and system integrators who understand venue operations."
   }

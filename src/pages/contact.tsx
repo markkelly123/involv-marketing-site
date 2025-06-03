@@ -226,7 +226,7 @@ export default function Contact() {
                       <option value="">Select a service area</option>
                       <option value="aml-advisory">AML Advisory - Understanding AUSTRAC requirements</option>
                       <option value="risk-compliance">Gaming Risk & Compliance - Regulatory obligations</option>
-                      <option value="gaming-performance">Gaming Performance - Reporting and operations</option>
+                      <option value="gaming-performance">Gaming Performance - Reporting and gaming operations</option>
                       <option value="assure-software">Involv Assure - Compliance management software</option>
                       <option value="primeedge-software">Involv PrimeEdge - EGM optimisation software</option>
                       <option value="general-enquiry">General enquiry</option>

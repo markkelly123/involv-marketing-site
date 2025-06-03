@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { GetStaticProps } from 'next'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { ShieldPlus, Shield, TrendingUp, Award, Zap, Brain, Scale, Wrench } from 'lucide-react'
 import Navigation from '../components/Navigation'
 import { getPosts, Post, buildImageUrl } from '../../lib/sanity'
 
@@ -163,7 +164,7 @@ function WhyInvolvCarousel() {
                 </div>
                 <div className="text-center">
                   <div className="bg-[#66899b] w-32 h-32 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-6xl">{whyInvolvData[activeIndex].icon}</span>
+                    {whyInvolvData[activeIndex].iconComponent}
                   </div>
                   <p className="text-gray-400 text-sm italic">
                     {whyInvolvData[activeIndex].subtitle}
@@ -268,7 +269,7 @@ export default function Home({ insights }: HomePageProps) {
                 >
                   <div className="text-[#66899b] mb-4 group-hover:scale-110 transition-transform duration-300">
                     <div className="w-12 h-12 bg-[#66899b] bg-opacity-20 rounded-lg flex items-center justify-center">
-                      <span className="text-2xl">{service.icon}</span>
+                      {service.iconComponent}
                     </div>
                   </div>
                   <h3 className="text-xl font-semibold mb-3 group-hover:text-[#66899b] transition-colors duration-300">{service.title}</h3>
@@ -318,7 +319,9 @@ export default function Home({ insights }: HomePageProps) {
                     <h3 className="text-xl font-semibold mb-1 group-hover:text-[#66899b] transition-colors duration-300">{solution.name}</h3>
                     <p className="text-[#66899b] italic text-sm">{solution.tagline}</p>
                   </div>
-                  <div className="text-3xl group-hover:scale-110 transition-transform duration-300">{solution.icon}</div>
+                  <div className="text-[#66899b] group-hover:scale-110 transition-transform duration-300">
+                    {solution.iconComponent}
+                  </div>
                 </div>
                 <p className="text-gray-300 text-sm mb-4 leading-relaxed">{solution.problemFocus}</p>
                 <div className="mb-6">
@@ -460,7 +463,7 @@ const venueProblems = [
 const serviceCards = [
   {
     title: 'AML Advisory',
-    icon: '🛡️',
+    iconComponent: <Shield className="w-6 h-6" />,
     problemSolution: 'Get clear on your AML obligations. We help you understand AUSTRAC requirements and build programs that work in practice, giving you confidence you\'re meeting your obligations properly.',
     outcomes: [
       'Clear understanding of your AML/CTF obligations',
@@ -473,7 +476,7 @@ const serviceCards = [
   },
   {
     title: 'Gaming Risk & Compliance',
-    icon: '⚖️',
+    iconComponent: <Scale className="w-6 h-6" />,
     problemSolution: 'Understand your regulatory obligations across all jurisdictions. We help you navigate licence requirements and build compliance frameworks that support your business operations.',
     outcomes: [
       'Clear understanding of licence obligations',
@@ -486,7 +489,7 @@ const serviceCards = [
   },
   {
     title: 'Gaming Performance',
-    icon: '📈',
+    iconComponent: <TrendingUp className="w-6 h-6" />,
     problemSolution: 'Optimise your gaming revenue with guidance from Australia\'s most experienced gaming professionals. Get data-driven insights that help you make informed decisions about your gaming floor.',
     outcomes: [
       'Expert gaming floor guidance',
@@ -504,7 +507,7 @@ const whyInvolvData = [
     title: "Deep Industry Expertise",
     subtitle: "Built by venue operators, for venue operators",
     description: "Our team includes gaming specialists who\'ve managed Australia\'s largest operations. We don\'t just understand compliance — we know how high-performance venues actually run.",
-    icon: "🏆",
+    iconComponent: <Award className="w-16 h-16 text-white" />,
     points: [
       "80+ years combined gaming experience",
       "A regulatory lawyer and venue operators on our team",
@@ -516,7 +519,7 @@ const whyInvolvData = [
     title: "Practical Advisory Approach",
     subtitle: "Solutions that work in the real world",
     description: "We don\'t write policies and walk away. Our hands-on approach ensures compliance frameworks actually work in your day-to-day operations, protecting your licence while supporting growth.",
-    icon: "🔧",
+    iconComponent: <Wrench className="w-16 h-16 text-white" />,
     points: [
       "Implementation support, not just documentation",
       "Training programs that stick",
@@ -528,7 +531,7 @@ const whyInvolvData = [
     title: "Technology That Works",
     subtitle: "Software designed for venues, not corporates",
     description: "Involv Assure and PrimeEdge aren\'t generic tools adapted for gaming. They\'re purpose-built for Australian pub and club operations, delivering clear ROI without the complexity.",
-    icon: "⚡",
+    iconComponent: <Zap className="w-16 h-16 text-white" />,
     points: [
       "Intuitive interfaces staff actually use",
       "Built specifically for Australian gaming venues",
@@ -542,7 +545,7 @@ const solutionCards = [
   {
     name: 'Involv|Assure',
     tagline: 'A risk and compliance team in your browser.',
-    icon: '🛡️',
+    iconComponent: <ShieldPlus className="w-8 h-8" />,
     problemFocus: 'Know ALL your obligations, get compliant. Assure transforms regulatory obligations into clear, trackable systems that keep you audit-ready without the administrative burden.',
     benefits: [
       'Centralised obligations tracking across all jurisdictions',
@@ -555,7 +558,7 @@ const solutionCards = [
   {
     name: 'Involv|PrimeEdge',
     tagline: 'The science behind high-performance gaming venues.',
-    icon: '🎯',
+    iconComponent: <Brain className="w-8 h-8" />,
     problemFocus: 'Remove guess work from your gaming floor optimisation decisions. PrimeEdge uses AI and industry data to recommend machine placements and floor changes that actually drive revenue.',
     benefits: [
       'Data-driven gaming floor optimisation recommendations',

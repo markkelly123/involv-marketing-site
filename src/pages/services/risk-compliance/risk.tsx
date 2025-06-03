@@ -1,6 +1,21 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { 
+  Scale, 
+  Settings, 
+  DollarSign, 
+  Building, 
+  Target, 
+  Monitor, 
+  Shield, 
+  Search, 
+  Wrench,
+  TrendingUp,
+  CheckCircle,
+  Clock,
+  XCircle
+} from 'lucide-react'
 import Navigation from '../../../components/Navigation'
 
 export default function Risk() {
@@ -58,9 +73,7 @@ export default function Risk() {
             <div className="bg-[#1a1d21] rounded-lg p-8">
               <div className="text-center">
                 <div className="bg-[#66899b] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-10 h-10 text-black" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clipRule="evenodd" />
-                  </svg>
+                  <TrendingUp className="w-10 h-10 text-black" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">From Obligations to Risk Control</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
@@ -83,21 +96,14 @@ export default function Risk() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {riskProcess.map((step, index) => (
-                <div key={step.title} className="relative">
-                  {/* Connector Line */}
-                  {index < riskProcess.length - 1 && (
-                    <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gray-700 transform translate-x-4 -translate-y-1/2 z-0"></div>
-                  )}
-                  
-                  <div className="relative z-10 text-center">
-                    <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-xl font-bold text-black">{index + 1}</span>
-                    </div>
-                    <h3 className="text-lg font-semibold mb-3 text-white">{step.title}</h3>
-                    <p className="text-gray-300 text-sm mb-3">{step.description}</p>
-                    <div className="bg-[#1a1d21] rounded p-3">
-                      <p className="text-[#66899b] text-xs font-medium">{step.output}</p>
-                    </div>
+                <div key={step.title} className="text-center flex flex-col items-center">
+                  <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mb-6 flex-shrink-0">
+                    <span className="text-xl font-bold text-black">{index + 1}</span>
+                  </div>
+                  <h3 className="text-lg font-semibold mb-3 text-white">{step.title}</h3>
+                  <p className="text-gray-300 text-sm mb-4 flex-grow">{step.description}</p>
+                  <div className="bg-[#1a1d21] rounded p-3 w-full mt-auto">
+                    <p className="text-[#66899b] text-xs font-medium">{step.output}</p>
                   </div>
                 </div>
               ))}
@@ -114,21 +120,21 @@ export default function Risk() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {riskCategories.map((category) => (
-              <div key={category.title} className="bg-[#1a1d21] rounded-lg p-6 hover:bg-[#22252a] transition-colors">
+              <div key={category.title} className="bg-[#1a1d21] rounded-lg p-6 hover:bg-[#22252a] transition-colors h-full flex flex-col">
                 <div className="text-center mb-4">
                   <div className={`w-12 h-12 ${category.colorClass} rounded-lg flex items-center justify-center mx-auto mb-3`}>
-                    <span className="text-2xl">{category.icon}</span>
+                    {category.icon}
                   </div>
                   <h3 className="text-xl font-semibold text-white">{category.title}</h3>
                 </div>
-                <p className="text-gray-300 text-sm mb-4 text-center">{category.description}</p>
-                <ul className="space-y-1">
+                <p className="text-gray-300 text-sm mb-4 text-center flex-grow">{category.description}</p>
+                <ul className="space-y-1 mt-auto">
                   {category.examples.map((example, idx) => (
                     <li key={idx} className="flex items-start text-xs text-gray-400">
-                      <span className="text-[#66899b] mr-2 mt-1">•</span>
-                      {example}
+                      <span className="text-[#66899b] mr-2 mt-1 flex-shrink-0">•</span>
+                      <span className="leading-tight">{example}</span>
                     </li>
                   ))}
                 </ul>
@@ -155,7 +161,7 @@ export default function Risk() {
                   <p className="text-gray-400 text-sm">Your risk exposure without controls</p>
                 </div>
                 
-                <div className="bg-[#0f1115] rounded-lg p-6 mb-6">
+                <div className="bg-[#0f1115] rounded-lg p-6 mb-6 relative pl-8">
                   <div className="grid grid-cols-5 gap-1 mb-4">
                     {inherentRiskMatrix.map((cell, index) => (
                       <div 
@@ -166,21 +172,22 @@ export default function Risk() {
                       </div>
                     ))}
                   </div>
-                  <div className="flex justify-between text-xs text-gray-400">
+                  <div className="flex justify-between text-xs text-gray-400 mb-2">
                     <span>Low Impact</span>
                     <span>High Impact</span>
                   </div>
-                  <div className="flex flex-col justify-between text-xs text-gray-400 absolute -ml-8 h-32">
-                    <span className="transform -rotate-90 origin-center">High Likelihood</span>
-                    <span className="transform -rotate-90 origin-center">Low Likelihood</span>
+                  <div className="absolute left-1 top-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                    <span className="transform -rotate-90 origin-center text-xs text-gray-400 whitespace-nowrap block">
+                      Likelihood
+                    </span>
                   </div>
                 </div>
                 
                 <ul className="space-y-2">
                   {inherentRiskExamples.map((example, idx) => (
                     <li key={idx} className="flex items-start text-xs text-gray-300">
-                      <span className="text-red-400 mr-2 mt-1">■</span>
-                      {example}
+                      <span className="text-red-400 mr-2 mt-1 flex-shrink-0">■</span>
+                      <span className="leading-tight">{example}</span>
                     </li>
                   ))}
                 </ul>
@@ -193,7 +200,7 @@ export default function Risk() {
                   <p className="text-gray-400 text-sm">Your risk exposure with effective controls</p>
                 </div>
                 
-                <div className="bg-[#0f1115] rounded-lg p-6 mb-6">
+                <div className="bg-[#0f1115] rounded-lg p-6 mb-6 relative pl-8">
                   <div className="grid grid-cols-5 gap-1 mb-4">
                     {residualRiskMatrix.map((cell, index) => (
                       <div 
@@ -204,17 +211,22 @@ export default function Risk() {
                       </div>
                     ))}
                   </div>
-                  <div className="flex justify-between text-xs text-gray-400">
+                  <div className="flex justify-between text-xs text-gray-400 mb-2">
                     <span>Low Impact</span>
                     <span>High Impact</span>
+                  </div>
+                  <div className="absolute left-1 top-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                    <span className="transform -rotate-90 origin-center text-xs text-gray-400 whitespace-nowrap block">
+                      Likelihood
+                    </span>
                   </div>
                 </div>
                 
                 <ul className="space-y-2">
                   {residualRiskExamples.map((example, idx) => (
                     <li key={idx} className="flex items-start text-xs text-gray-300">
-                      <span className="text-green-400 mr-2 mt-1">■</span>
-                      {example}
+                      <span className="text-green-400 mr-2 mt-1 flex-shrink-0">■</span>
+                      <span className="leading-tight">{example}</span>
                     </li>
                   ))}
                 </ul>
@@ -228,22 +240,22 @@ export default function Risk() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Building and Testing Effective Controls</h2>
             <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-              Controls are only effective if they&apos;re properly designed, implemented, and regularly tested. We ensure your controls actually work.
+              Controls are only effective if they are properly designed, implemented, and regularly tested. We ensure your controls actually work.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {controlTypes.map((control) => (
-              <div key={control.title} className="bg-[#1a1d21] rounded-lg p-6">
+              <div key={control.title} className="bg-[#1a1d21] rounded-lg p-6 h-full flex flex-col">
                 <div className="text-center mb-4">
                   <div className="bg-[#66899b] w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <span className="text-2xl">{control.icon}</span>
+                    {control.icon}
                   </div>
                   <h3 className="text-lg font-semibold text-white">{control.title}</h3>
                 </div>
-                <p className="text-gray-300 text-sm mb-4 text-center">{control.description}</p>
+                <p className="text-gray-300 text-sm mb-4 text-center flex-grow">{control.description}</p>
                 
-                <div className="space-y-3">
+                <div className="space-y-3 mt-auto">
                   {control.examples.map((example, idx) => (
                     <div key={idx} className="bg-[#0f1115] rounded p-3">
                       <p className="text-white text-xs font-medium mb-1">{example.control}</p>
@@ -268,7 +280,7 @@ export default function Risk() {
                     </a>
                     <div>
                       <a href="https://assure.involv.com.au" className="hover:text-[#66899b] transition-colors">
-                        <h3 className="text-2xl font-bold text-white">Risk Management Technology</h3>
+
                       </a>
                       <p className="text-[#66899b] italic">Complete risk visibility and control testing</p>
                     </div>
@@ -319,7 +331,8 @@ export default function Risk() {
                       <div key={idx} className="bg-[#1a1d21] rounded p-4">
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-white text-sm font-medium">{metric.category}</span>
-                          <span className={`text-xs px-2 py-1 rounded ${metric.statusClass}`}>
+                          <span className={`text-xs px-2 py-1 rounded ${metric.statusClass} flex items-center gap-1`}>
+                            <metric.statusIcon className="w-3 h-3" />
                             {metric.status}
                           </span>
                         </div>
@@ -344,7 +357,7 @@ export default function Risk() {
           <div className="bg-[#1a1d21] rounded-lg p-8 md:p-12 text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Risk Management?</h2>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              Every venue has unique risks based on their operations, location, and regulatory environment. Let&apos;s assess your specific risk profile and design effective controls.
+              Every venue has unique risks based on their operations, location, and regulatory environment. Let us assess your specific risk profile and design effective controls.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium">
@@ -439,7 +452,7 @@ const riskProcess = [
 const riskCategories = [
   {
     title: "Regulatory Compliance Risk",
-    icon: "⚖️",
+    icon: <Scale className="w-6 h-6 text-white" />,
     colorClass: "bg-red-500",
     description: "Risk of breaching regulatory requirements and facing enforcement action.",
     examples: [
@@ -452,7 +465,7 @@ const riskCategories = [
   },
   {
     title: "Operational Risk",
-    icon: "⚙️",
+    icon: <Settings className="w-6 h-6 text-white" />,
     colorClass: "bg-orange-500",
     description: "Risk of operational failures affecting venue performance and compliance.",
     examples: [
@@ -465,7 +478,7 @@ const riskCategories = [
   },
   {
     title: "Financial Risk",
-    icon: "💰",
+    icon: <DollarSign className="w-6 h-6 text-white" />,
     colorClass: "bg-yellow-500",
     description: "Risk of financial loss through penalties, fines, or operational impacts.",
     examples: [
@@ -478,7 +491,7 @@ const riskCategories = [
   },
   {
     title: "Reputational Risk",
-    icon: "🏛️",
+    icon: <Building className="w-6 h-6 text-white" />,
     colorClass: "bg-blue-500",
     description: "Risk of damage to venue reputation and stakeholder relationships.",
     examples: [
@@ -491,7 +504,7 @@ const riskCategories = [
   },
   {
     title: "Strategic Risk",
-    icon: "🎯",
+    icon: <Target className="w-6 h-6 text-white" />,
     colorClass: "bg-purple-500",
     description: "Risk of strategic objectives being compromised by compliance or operational issues.",
     examples: [
@@ -504,7 +517,7 @@ const riskCategories = [
   },
   {
     title: "Technology Risk",
-    icon: "💻",
+    icon: <Monitor className="w-6 h-6 text-white" />,
     colorClass: "bg-green-500",
     description: "Risk from technology failures affecting compliance and operations.",
     examples: [
@@ -566,11 +579,6 @@ const residualRiskMatrix = [
   { value: 'VL', class: 'bg-green-300 text-black' },
   { value: 'VL', class: 'bg-green-300 text-black' },
   { value: 'L', class: 'bg-green-500 text-white' },
-  { value: 'L', class: 'bg-green-500 text-white' },
-  { value: 'VL', class: 'bg-green-300 text-black' },
-  { value: 'VL', class: 'bg-green-300 text-black' },
-  { value: 'VL', class: 'bg-green-300 text-black' },
-  { value: 'VL', class: 'bg-green-300 text-black' },
   { value: 'L', class: 'bg-green-500 text-white' }
 ]
 
@@ -583,7 +591,7 @@ const residualRiskExamples = [
 const controlTypes = [
   {
     title: "Preventive Controls",
-    icon: "🛡️",
+    icon: <Shield className="w-6 h-6 text-black" />,
     description: "Controls designed to prevent risks from occurring in the first place.",
     examples: [
       {
@@ -602,7 +610,7 @@ const controlTypes = [
   },
   {
     title: "Detective Controls",
-    icon: "🔍",
+    icon: <Search className="w-6 h-6 text-black" />,
     description: "Controls that identify when risks have materialised or controls have failed.",
     examples: [
       {
@@ -621,7 +629,7 @@ const controlTypes = [
   },
   {
     title: "Corrective Controls",
-    icon: "🔧",
+    icon: <Wrench className="w-6 h-6 text-black" />,
     description: "Controls that respond to and correct issues when they are identified.",
     examples: [
       {
@@ -656,6 +664,7 @@ const dashboardMetrics = [
     progress: 85,
     statusClass: "bg-green-500 text-white",
     progressClass: "bg-green-500",
+    statusIcon: CheckCircle,
     description: "23 of 27 controls tested and effective this quarter"
   },
   {
@@ -664,6 +673,7 @@ const dashboardMetrics = [
     progress: 70,
     statusClass: "bg-orange-500 text-white",
     progressClass: "bg-orange-500",
+    statusIcon: Clock,
     description: "4 controls require testing, 2 remediation actions open"
   },
   {
@@ -672,6 +682,7 @@ const dashboardMetrics = [
     progress: 95,
     statusClass: "bg-green-500 text-white",
     progressClass: "bg-green-500",
+    statusIcon: CheckCircle,
     description: "All controls tested effective, no open issues"
   },
   {
@@ -680,6 +691,7 @@ const dashboardMetrics = [
     progress: 60,
     statusClass: "bg-red-500 text-white",
     progressClass: "bg-red-500",
+    statusIcon: XCircle,
     description: "5 staff require RSA renewal, 3 require RSG update"
   }
 ]

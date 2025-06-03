@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { Target, Handshake, Waypoints, TrendingUp, Search, Wrench, BarChart3, Rocket } from 'lucide-react'
 import Navigation from '../../components/Navigation'
 
 export default function About() {
@@ -136,7 +137,7 @@ export default function About() {
             {values.map((value, index) => (
               <div key={index} className="text-center">
                 <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">{value.icon}</span>
+                  {value.iconComponent}
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-white">{value.title}</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">{value.description}</p>
@@ -196,7 +197,7 @@ export default function About() {
               <div key={index} className="bg-[#1a1d21] rounded-lg p-8">
                 <div className="flex items-start mb-4">
                   <div className="bg-[#66899b] w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                    <span className="text-2xl">{item.icon}</span>
+                    {item.iconComponent}
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
@@ -335,17 +336,17 @@ const differentiators = [
 
 const values = [
   {
-    icon: "🎯",
+    iconComponent: <Waypoints className="w-8 h-8 text-black" />,
     title: "Practical Solutions",
     description: "Every recommendation must work in the real world of venue operations, not just on paper."
   },
   {
-    icon: "🤝",
+    iconComponent: <Handshake className="w-8 h-8 text-black" />,
     title: "Partnership Approach",
     description: "We work alongside your team as trusted advisors, not as distant consultants."
   },
   {
-    icon: "📈",
+    iconComponent: <TrendingUp className="w-8 h-8 text-black" />,
     title: "Business Growth",
     description: "Compliance should enable growth, not hinder it. We align solutions with your commercial goals."
   }
@@ -384,7 +385,7 @@ const leadership = [
 
 const approach = [
   {
-    icon: "🔍",
+    iconComponent: <Search className="w-6 h-6 text-black" />,
     title: "Deep Venue Understanding",
     description: "We start by understanding your specific operational challenges, regulatory environment, and business goals.",
     points: [
@@ -395,7 +396,7 @@ const approach = [
     ]
   },
   {
-    icon: "🛠️",
+    iconComponent: <Wrench className="w-6 h-6 text-black" />,
     title: "Hands-On Implementation",
     description: "We do not just deliver reports - we work with your team to implement solutions that stick.",
     points: [
@@ -406,7 +407,7 @@ const approach = [
     ]
   },
   {
-    icon: "📊",
+    iconComponent: <BarChart3 className="w-6 h-6 text-black" />,
     title: "Measurable Results",
     description: "Every engagement delivers clear, measurable outcomes that improve your compliance and performance.",
     points: [
@@ -417,7 +418,7 @@ const approach = [
     ]
   },
   {
-    icon: "🚀",
+    iconComponent: <Rocket className="w-6 h-6 text-black" />,
     title: "Ongoing Support",
     description: "Regulations evolve and businesses grow. We provide ongoing support to ensure you stay ahead.",
     points: [

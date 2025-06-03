@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { Rocket, Award, Lightbulb, Target, Handshake, BookOpen, Zap, Scale, Shield, Monitor, BarChart3, TrendingUp, DollarSign, Home, Star } from 'lucide-react'
 import Navigation from '../../components/Navigation'
 
 export default function Careers() {
@@ -74,7 +75,7 @@ export default function Careers() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="bg-[#1a1d21] rounded-lg p-8 border border-[#66899b]/30">
               <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🚀</span>
+                <Rocket className="w-8 h-8 text-black" />
               </div>
               <h2 className="text-2xl font-bold mb-4">Building Something Special</h2>
               <p className="text-gray-300 text-lg mb-6">
@@ -100,7 +101,9 @@ export default function Careers() {
             {whyInvolv.map((reason, index) => (
               <div key={index} className="bg-[#1a1d21] rounded-lg p-8 text-center hover:bg-[#1f2328] transition-colors">
                 <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-3xl">{reason.icon}</span>
+                  <div className="text-3xl text-black">
+                    {reason.iconComponent}
+                  </div>
                 </div>
                 <h3 className="text-xl font-semibold mb-4 text-white">{reason.title}</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">{reason.description}</p>
@@ -124,7 +127,9 @@ export default function Careers() {
                 <div key={index} className="bg-[#1a1d21] rounded-lg p-8">
                   <div className="flex items-start mb-4">
                     <div className="bg-[#66899b] w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                      <span className="text-2xl">{value.icon}</span>
+                      <div className="text-2xl text-black">
+                        {value.iconComponent}
+                      </div>
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-white mb-2">{value.title}</h3>
@@ -158,7 +163,9 @@ export default function Careers() {
             {roleTypes.map((role, index) => (
               <div key={index} className="bg-[#1a1d21] rounded-lg p-6 hover:bg-[#1f2328] transition-colors">
                 <div className="text-[#66899b] mb-4">
-                  <span className="text-2xl">{role.icon}</span>
+                  <div className="text-2xl">
+                    {role.iconComponent}
+                  </div>
                 </div>
                 <h3 className="text-lg font-semibold mb-3 text-white">{role.title}</h3>
                 <p className="text-gray-300 text-sm mb-4 leading-relaxed">{role.description}</p>
@@ -188,7 +195,9 @@ export default function Careers() {
               {benefits.map((benefit, index) => (
                 <div key={index} className="text-center">
                   <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl">{benefit.icon}</span>
+                    <div className="text-2xl text-black">
+                      {benefit.iconComponent}
+                    </div>
                   </div>
                   <h3 className="text-lg font-semibold mb-3 text-white">{benefit.title}</h3>
                   <p className="text-gray-300 text-sm leading-relaxed">{benefit.description}</p>
@@ -367,17 +376,17 @@ export default function Careers() {
 // Data
 const whyInvolv = [
   {
-    icon: "🚀",
+    iconComponent: <Rocket className="w-8 h-8" />,
     title: "Impact & Growth",
     description: "Be part of a team that's transforming how Australian venues manage compliance and performance. Your work directly impacts venue success across the country."
   },
   {
-    icon: "🏆",
+    iconComponent: <Award className="w-8 h-8" />,
     title: "Industry Leadership",
     description: "Work alongside recognised industry veterans with decades of experience in gaming, compliance, and venue operations at the highest levels."
   },
   {
-    icon: "💡",
+    iconComponent: <Lightbulb className="w-8 h-8" />,
     title: "Innovation & Technology",
     description: "Help build cutting-edge solutions that solve real problems for venues. We're pioneering purpose-built compliance and gaming optimisation tools."
   }
@@ -385,7 +394,7 @@ const whyInvolv = [
 
 const cultureValues = [
   {
-    icon: "🎯",
+    iconComponent: <Target className="w-6 h-6" />,
     title: "Practical Excellence",
     description: "We believe in solutions that work in the real world, not just on paper. Everything we build must deliver genuine value to venue operators.",
     examples: [
@@ -395,7 +404,7 @@ const cultureValues = [
     ]
   },
   {
-    icon: "🤝",
+    iconComponent: <Handshake className="w-6 h-6" />,
     title: "Collaborative Partnership",
     description: "We work together as a team and with our clients as trusted partners, not distant consultants.",
     examples: [
@@ -405,7 +414,7 @@ const cultureValues = [
     ]
   },
   {
-    icon: "📚",
+    iconComponent: <BookOpen className="w-6 h-6" />,
     title: "Continuous Learning",
     description: "The regulatory and technology landscape is always evolving. We're committed to staying ahead and growing together.",
     examples: [
@@ -415,7 +424,7 @@ const cultureValues = [
     ]
   },
   {
-    icon: "⚡",
+    iconComponent: <Zap className="w-6 h-6" />,
     title: "Agile & Responsive",
     description: "We move quickly to solve problems and adapt to changing client needs while maintaining the highest quality standards.",
     examples: [
@@ -428,37 +437,37 @@ const cultureValues = [
 
 const roleTypes = [
   {
-    icon: "⚖️",
+    iconComponent: <Scale className="w-6 h-6" />,
     title: "Advisory & Consulting",
     description: "Help venues navigate complex compliance requirements and optimise their operations.",
     skills: ["Gaming compliance expertise", "AML/regulatory knowledge", "Implementation experience"]
   },
   {
-    icon: "🛡️",
+    iconComponent: <Shield className="w-6 h-6" />,
     title: "Compliance & Legal",
     description: "Provide regulatory expertise and ensure our solutions meet the highest compliance standards.",
     skills: ["Legal/regulatory background", "Gaming or AML experience", "Risk assessment"]
   },
   {
-    icon: "💻",
+    iconComponent: <Monitor className="w-6 h-6" />,
     title: "Technology & Product",
     description: "Build and enhance our Assure and PrimeEdge platforms to deliver exceptional user experiences.",
     skills: ["Product management", "UX/UI design", "Data science"]
   },
   {
-    icon: "📊",
+    iconComponent: <BarChart3 className="w-6 h-6" />,
     title: "Operations & Support",
     description: "Ensure smooth delivery of our services and provide exceptional support to our clients.",
     skills: ["Project management", "Client support", "Process optimisation"]
   },
   {
-    icon: "🎯",
+    iconComponent: <Target className="w-6 h-6" />,
     title: "Sales & Business Development",
     description: "Help grow our client base and build relationships within the venue community.",
     skills: ["B2B sales experience", "Gaming industry knowledge", "Relationship building"]
   },
   {
-    icon: "📈",
+    iconComponent: <TrendingUp className="w-6 h-6" />,
     title: "Data & Analytics",
     description: "Turn gaming and compliance data into actionable insights that drive venue performance.",
     skills: ["Data science", "Gaming analytics", "Reporting and visualisation"]
@@ -467,22 +476,22 @@ const roleTypes = [
 
 const benefits = [
   {
-    icon: "💰",
+    iconComponent: <DollarSign className="w-6 h-6" />,
     title: "Competitive Package",
     description: "Competitive salary and performance bonuses as we grow."
   },
   {
-    icon: "🏠",
+    iconComponent: <Home className="w-6 h-6" />,
     title: "Flexible Working",
     description: "Remote-first culture...we don't actually have an office! (...but we rent some seats in shared working spaces) Flexible hours that work for you."
   },
   {
-    icon: "📚",
+    iconComponent: <BookOpen className="w-6 h-6" />,
     title: "Learning & Development",
     description: "Professional development budget, conference attendance, and continuous learning opportunities."
   },
   {
-    icon: "🌟",
+    iconComponent: <Star className="w-6 h-6" />,
     title: "Industry Recognition",
     description: "Work with recognised industry leaders and build your reputation in the gaming and compliance sector."
   }

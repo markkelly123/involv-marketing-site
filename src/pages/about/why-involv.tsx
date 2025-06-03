@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { Award, Wrench, TrendingUp, BicepsFlexed, Target, CheckCircle, Rocket, Shield, BarChart3, Handshake } from 'lucide-react'
 import Navigation from '../../components/Navigation'
 
 export default function WhyInvolv() {
@@ -71,7 +72,9 @@ export default function WhyInvolv() {
                         : 'text-gray-400 hover:text-white hover:bg-[#22252a]'
                     }`}
                   >
-                    <span className="text-2xl">{prop.icon}</span>
+                    <div className="text-2xl">
+                      {prop.iconComponent}
+                    </div>
                     <div className="text-center md:text-left">
                       <div className="font-semibold text-sm">{prop.tabLabel}</div>
                       <div className="text-xs opacity-75">{prop.tabSubtext}</div>
@@ -88,7 +91,9 @@ export default function WhyInvolv() {
                   <div className="order-2 lg:order-1">
                     <div className="mb-6">
                       <div className="inline-flex items-center bg-[#66899b] bg-opacity-20 rounded-full px-4 py-2 mb-4">
-                        <span className="text-2xl mr-3">{valueProps[activeIndex].icon}</span>
+                        <div className="text-2xl mr-3 text-[#66899b]">
+                          {valueProps[activeIndex].iconComponent}
+                        </div>
                         <span className="text-[#66899b] font-medium text-sm">{valueProps[activeIndex].category}</span>
                       </div>
                       <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white leading-tight">
@@ -127,7 +132,9 @@ export default function WhyInvolv() {
                     <div className="bg-[#0f1115] rounded-2xl p-8 border border-gray-700">
                       <div className="text-center mb-6">
                         <div className="bg-[#66899b] w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4">
-                          <span className="text-4xl">{valueProps[activeIndex].statsIcon}</span>
+                          <div className="text-4xl text-black">
+                            {valueProps[activeIndex].statsIconComponent}
+                          </div>
                         </div>
                         <h4 className="text-lg font-semibold text-white mb-2">{valueProps[activeIndex].statsTitle}</h4>
                       </div>
@@ -239,7 +246,9 @@ export default function WhyInvolv() {
               {outcomes.map((outcome, index) => (
                 <div key={index} className="text-center">
                   <div className="bg-[#66899b] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span className="text-3xl font-bold text-black">{outcome.icon}</span>
+                    <div className="text-3xl text-black">
+                      {outcome.iconComponent}
+                    </div>
                   </div>
                   <h3 className="text-xl font-semibold mb-3 text-white">{outcome.title}</h3>
                   <p className="text-gray-300 text-sm leading-relaxed">{outcome.description}</p>
@@ -327,7 +336,7 @@ const valueProps = [
   {
     tabLabel: "Industry Expertise",
     tabSubtext: "Real Experience",
-    icon: "🏆",
+    iconComponent: <Award className="w-6 h-6" />,
     category: "Deep Venue Knowledge",
     title: "We've Actually Run Australia's Largest Gaming Operations",
     description: "While other consultants read about venues in textbooks, our team has managed 13,000 EGMs across Australia's largest hotel group. We understand the reality of venue operations because we've lived it.",
@@ -337,7 +346,7 @@ const valueProps = [
       "Deep relationships with manufacturers, regulators, and industry bodies",
       "Proven track record with Australia's largest venue groups"
     ],
-    statsIcon: "🎯",
+    statsIconComponent: <BicepsFlexed className="w-8 h-8" />,
     statsTitle: "Proven Track Record",
     stats: [
       { number: "13K", label: "EGMs Managed" },
@@ -352,7 +361,7 @@ const valueProps = [
   {
     tabLabel: "Practical Solutions",
     tabSubtext: "Real Implementation",
-    icon: "🔧",
+    iconComponent: <Wrench className="w-6 h-6" />,
     category: "Implementation Excellence",
     title: "Solutions That Actually Work in Your Day-to-Day Operations",
     description: "We don't write policies and disappear. Our frameworks are designed by operators who understand the pressures of running a venue. Every solution is tested in real-world conditions.",
@@ -362,7 +371,7 @@ const valueProps = [
       "Training programs tailored to actual venue operations",
       "Ongoing support as regulations evolve and businesses grow"
     ],
-    statsIcon: "✅",
+    statsIconComponent: <CheckCircle className="w-8 h-8" />,
     statsTitle: "Implementation Success",
     stats: [
       { number: "Zero", label: "Failed Audits" },
@@ -377,7 +386,7 @@ const valueProps = [
   {
     tabLabel: "Measurable Results",
     tabSubtext: "Proven ROI",
-    icon: "📈",
+    iconComponent: <TrendingUp className="w-6 h-6" />,
     category: "Performance Excellence",
     title: "Transform Compliance Burdens into Competitive Advantages",
     description: "We don't just help you meet obligations - we turn regulatory requirements into strategic advantages. Our clients report improved efficiency and productivity, and stronger regulatory relationships (...we also reckon they're experiencing a lot less stress!).",
@@ -387,7 +396,7 @@ const valueProps = [
       "Reduced regulatory risk and penalty exposure",
       "Enhanced staff confidence and operational efficiency"
     ],
-    statsIcon: "🚀",
+    statsIconComponent: <Rocket className="w-8 h-8" />,
     statsTitle: "Client Outcomes",
     stats: [
       { number: "0%", label: "Penalty Rate" },
@@ -427,17 +436,17 @@ const results = [
 
 const outcomes = [
   {
-    icon: "🛡️",
+    iconComponent: <Shield className="w-8 h-8" />,
     title: "Compliance Confidence",
     description: "Venues achieve audit-ready status with frameworks that actually work in daily operations, reducing stress and regulatory risk."
   },
   {
-    icon: "📊",
+    iconComponent: <BarChart3 className="w-8 h-8" />,
     title: "Performance Improvement",
     description: "Gaming floors optimised using data-driven insights deliver measurable revenue uplift and better customer experiences."
   },
   {
-    icon: "🤝",
+    iconComponent: <Handshake className="w-8 h-8" />,
     title: "Regulatory Partnership",
     description: "Stronger relationships with regulators built on consistent compliance and proactive communication."
   }

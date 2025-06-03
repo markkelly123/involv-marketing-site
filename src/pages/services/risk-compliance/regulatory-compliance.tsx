@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { Scroll, FileText, Settings, Volume2, Landmark, Gamepad2, Moon, AlertTriangle } from 'lucide-react'
 import Navigation from '../../../components/Navigation'
 
 export default function RegulatoryCompliance() {
@@ -10,7 +11,7 @@ export default function RegulatoryCompliance() {
     <>
       <Head>
         <title>Regulatory Compliance - Involv | Navigate Complex Gaming & Liquor Obligations</title>
-        <meta name="description" content="Navigate the complex web of gaming and liquor obligations across legislation, regulations, codes of practice, and licence conditions. Expert guidance to keep you compliant in today&apos;s enforcement environment." />
+        <meta name="description" content="Navigate the complex web of gaming and liquor obligations across legislation, regulations, codes of practice, and licence conditions. Expert guidance to keep you compliant in today's enforcement environment." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Favicon */}
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -44,7 +45,7 @@ export default function RegulatoryCompliance() {
                 Navigate the Compliance Minefield
               </h1>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                Gaming and liquor regulations have always been complex. What&apos;s changed is that regulators are now actively enforcing them. With inspections increasing and fines becoming material, it&apos;s never been more important to understand your obligations and have proper controls in place.
+                Gaming and liquor regulations have always been complex. What's changed is that regulators are now actively enforcing them. With inspections increasing and fines becoming material, it's never been more important to understand your obligations and have proper controls in place.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium text-center">
@@ -77,25 +78,27 @@ export default function RegulatoryCompliance() {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">The Universe of Obligations Facing Gaming Venues</h2>
               <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                It&apos;s not just legislation anymore. The regulatory landscape spans multiple layers of requirements across federal and state jurisdictions.
+                It's not just legislation anymore. The regulatory landscape spans multiple layers of requirements across federal and state jurisdictions.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {obligationTypes.map((type) => (
-                <div key={type.title} className="bg-[#1a1d21] rounded-lg p-6 hover:bg-[#22252a] transition-colors">
+                <div key={type.title} className="bg-[#1a1d21] rounded-lg p-6 hover:bg-[#22252a] transition-colors h-full flex flex-col">
                   <div className="text-[#66899b] mb-4">
                     <div className="w-12 h-12 bg-[#66899b] bg-opacity-20 rounded-lg flex items-center justify-center">
-                      <span className="text-2xl">{type.icon}</span>
+                      <div className="text-2xl">
+                        {type.iconComponent}
+                      </div>
                     </div>
                   </div>
                   <h3 className="text-xl font-semibold mb-3 text-white">{type.title}</h3>
-                  <p className="text-gray-300 mb-4 text-sm leading-relaxed">{type.description}</p>
-                  <ul className="space-y-1">
+                  <p className="text-gray-300 mb-4 text-sm leading-relaxed flex-grow">{type.description}</p>
+                  <ul className="space-y-1 mt-auto">
                     {type.examples.map((example, idx) => (
                       <li key={idx} className="flex items-start text-xs text-gray-400">
-                        <span className="text-[#66899b] mr-2 mt-1">•</span>
-                        {example}
+                        <span className="text-[#66899b] mr-2 mt-1 flex-shrink-0">•</span>
+                        <span className="leading-tight">{example}</span>
                       </li>
                     ))}
                   </ul>
@@ -108,7 +111,7 @@ export default function RegulatoryCompliance() {
         {/* Changed Enforcement Environment */}
         <section className="max-w-7xl mx-auto px-4 py-16">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">What&apos;s Changed: From Compliance Ignored to Actively Enforced</h2>
+            <h2 className="text-3xl font-bold mb-4">What's Changed: From Compliance Ignored to Actively Enforced</h2>
             <p className="text-gray-300 text-lg max-w-3xl mx-auto">
               The obligations have always existed, but enforcement was inconsistent. The cop is on the beat, and many venues are getting caught unprepared.
             </p>
@@ -119,7 +122,7 @@ export default function RegulatoryCompliance() {
             <div className="bg-[#1a1d21] rounded-lg p-8">
               <div className="text-center mb-6">
                 <div className="bg-gray-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">😴</span>
+                  <Moon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-400 mb-2">The Old Environment</h3>
                 <p className="text-gray-500 text-sm">Compliance was often overlooked</p>
@@ -138,9 +141,9 @@ export default function RegulatoryCompliance() {
             <div className="bg-[#1a1d21] rounded-lg p-8 border-2 border-red-500">
               <div className="text-center mb-6">
                 <div className="bg-red-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">🚨</span>
+                  <AlertTriangle className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-red-400 mb-2">Today&apos;s Reality</h3>
+                <h3 className="text-xl font-bold text-red-400 mb-2">Today's Reality</h3>
                 <p className="text-red-300 text-sm">Active enforcement and real consequences</p>
               </div>
               <ul className="space-y-3">
@@ -155,7 +158,7 @@ export default function RegulatoryCompliance() {
           </div>
         </section>
 
-        {/* Our Approach */}
+        {/* Our Approach - FIXED LAYOUT */}
         <section className="bg-[#121418] py-16 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
@@ -165,15 +168,15 @@ export default function RegulatoryCompliance() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {ourApproach.map((step, index) => (
-                <div key={step.title} className="text-center">
-                  <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div key={step.title} className="text-center flex flex-col items-center">
+                  <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mb-6 flex-shrink-0">
                     <span className="text-xl font-bold text-black">{index + 1}</span>
                   </div>
                   <h3 className="text-lg font-semibold mb-3 text-white">{step.title}</h3>
-                  <p className="text-gray-300 text-sm mb-4">{step.description}</p>
-                  <div className="bg-[#1a1d21] rounded p-3">
+                  <p className="text-gray-300 text-sm mb-4 flex-grow">{step.description}</p>
+                  <div className="bg-[#1a1d21] rounded p-3 w-full mt-auto">
                     <p className="text-[#66899b] text-xs font-medium">{step.outcome}</p>
                   </div>
                 </div>
@@ -261,7 +264,7 @@ export default function RegulatoryCompliance() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to Turn Compliance into Competitive Advantage?</h2>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              Every venue&apos;s regulatory situation is unique. Let&apos;s discuss your specific obligations and show you how to manage them efficiently while improving your operations.
+              Every venue's regulatory situation is unique. Let's discuss your specific obligations and show you how to manage them efficiently while improving your operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium">
@@ -332,7 +335,7 @@ export default function RegulatoryCompliance() {
 // Data
 const obligationTypes = [
   {
-    icon: "📜",
+    iconComponent: <Scroll className="w-6 h-6" />,
     title: "Legislation & Regulations",
     description: "Primary laws and associated regulations that govern gaming and liquor operations across federal and state levels.",
     examples: [
@@ -344,7 +347,7 @@ const obligationTypes = [
     ]
   },
   {
-    icon: "📋",
+    iconComponent: <FileText className="w-6 h-6" />,
     title: "Codes of Practice",
     description: "Industry-specific codes that define expected standards and behaviours for gaming venue operations.",
     examples: [
@@ -356,7 +359,7 @@ const obligationTypes = [
     ]
   },
   {
-    icon: "⚙️",
+    iconComponent: <Settings className="w-6 h-6" />,
     title: "Operational Standards",
     description: "Technical and operational requirements that venues must meet for ongoing compliance and safety.",
     examples: [
@@ -368,7 +371,7 @@ const obligationTypes = [
     ]
   },
   {
-    icon: "📢",
+    iconComponent: <Volume2 className="w-6 h-6" />,
     title: "Regulator Guidelines",
     description: "Official guidance from regulators on how to interpret and comply with legislative requirements.",
     examples: [
@@ -380,7 +383,7 @@ const obligationTypes = [
     ]
   },
   {
-    icon: "🏛️",
+    iconComponent: <Landmark className="w-6 h-6" />,
     title: "Ministerial Directions",
     description: "Direct instructions from government ministers that affect how venues must operate.",
     examples: [
@@ -392,7 +395,7 @@ const obligationTypes = [
     ]
   },
   {
-    icon: "🎰",
+    iconComponent: <Gamepad2 className="w-6 h-6" />,
     title: "LMO Rules & Licences",
     description: "Specific conditions attached to your gaming machine operator agreements and venue licences.",
     examples: [

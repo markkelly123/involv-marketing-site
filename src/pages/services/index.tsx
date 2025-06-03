@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { FileText, Scale, BarChart3, Shield, TrendingUp, BicepsFlexed, Target, Handshake } from 'lucide-react'
 import Navigation from '../../components/Navigation'
 
 export default function Services() {
@@ -99,7 +100,7 @@ export default function Services() {
                 >
                   <div className="text-[#66899b] mb-4 group-hover:scale-110 transition-transform duration-300">
                     <div className="w-12 h-12 bg-[#66899b] bg-opacity-20 rounded-lg flex items-center justify-center">
-                      <span className="text-2xl">{challenge.icon}</span>
+                      {challenge.iconComponent}
                     </div>
                   </div>
                   <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-[#66899b] transition-colors duration-300">{challenge.title}</h3>
@@ -184,7 +185,7 @@ export default function Services() {
                     <div className="bg-[#0f1115] rounded-lg p-6">
                       <div className="text-center mb-4">
                         <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
-                          <span className="text-3xl">{service.icon}</span>
+                          {service.iconComponent}
                         </div>
                         <h4 className="font-semibold text-white">{service.expertiseTitle}</h4>
                       </div>
@@ -248,7 +249,9 @@ export default function Services() {
             {whyChooseUs.map((reason) => (
               <div key={reason.title} className="text-center">
                 <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-black">{reason.icon}</span>
+                  {reason.iconComponent ? reason.iconComponent : (
+                    <span className="text-xl font-bold text-black">{reason.icon}</span>
+                  )}
                 </div>
                 <h3 className="text-lg font-semibold mb-3 text-white">{reason.title}</h3>
                 <p className="text-gray-300 text-sm">{reason.description}</p>
@@ -334,7 +337,7 @@ export default function Services() {
 const challenges = [
   {
     title: "AUSTRAC & AML Requirements",
-    icon: "📋",
+    iconComponent: <FileText className="w-6 h-6" />,
     description: "Understanding and implementing AML/CTF obligations properly for your venue.",
     problems: [
       "What do AML/CTF program requirements mean for our venue?",
@@ -347,7 +350,7 @@ const challenges = [
   },
   {
     title: "Gaming Compliance Obligations",
-    icon: "⚖️",
+    iconComponent: <Scale className="w-6 h-6" />,
     description: "Understanding gaming regulations across different jurisdictions while maintaining operations.",
     problems: [
       "What are our regulatory requirements in each state and territory?",
@@ -360,7 +363,7 @@ const challenges = [
   },
   {
     title: "Gaming Performance Optimisation",
-    icon: "📊",
+    iconComponent: <BarChart3 className="w-6 h-6" />,
     description: "Getting better returns from gaming operations while meeting compliance requirements.",
     problems: [
       "Could our gaming floor be performing better?",
@@ -377,7 +380,7 @@ const services = [
   {
     title: "AML Advisory",
     subtitle: "AUSTRAC Compliance Made Clear",
-    icon: "🛡️",
+    iconComponent: <Shield className="w-8 h-8 text-white" />,
     problemSolution: "Get clear on your AML obligations. We help you understand AUSTRAC requirements and build programs that work in practice, giving you confidence you're meeting your obligations properly. Our team have hands-on experience working with AUSTRAC and understand both regulatory expectations and practical venue operations.",
     outcomes: [
       "Clear understanding of your AUSTRAC obligations",
@@ -398,7 +401,7 @@ const services = [
   {
     title: "Gaming Risk & Compliance",
     subtitle: "Regulatory Requirements Simplified",
-    icon: "⚖️",
+    iconComponent: <Scale className="w-8 h-8 text-white" />,
     problemSolution: "Understand your regulatory obligations across all Australian jurisdictions. We help you navigate licence requirements and build compliance frameworks that work in your venue while supporting your business operations.",
     outcomes: [
       "Clear understanding of your licence obligations",
@@ -419,7 +422,7 @@ const services = [
   {
     title: "Gaming Performance Advisory",
     subtitle: "Revenue Optimisation Through Expert Guidance",
-    icon: "📈",
+    iconComponent: <TrendingUp className="w-8 h-8 text-white" />,
     problemSolution: "Optimise your gaming revenue with guidance from Australia's most experienced gaming professionals. Led by Con Nikitas, who managed nearly 13,000 EGMs at ALH Group, we provide data-driven insights that help you make informed decisions.",
     outcomes: [
       "Expert gaming floor guidance and recommendations",
@@ -446,17 +449,17 @@ const whyChooseUs = [
     description: "Collective expertise from gaming operators, gaming regulatory legal, and compliance specialists."
   },
   {
-    icon: "🎯",
+    iconComponent: <Target className="w-8 h-8 text-black" />,
     title: "Venue-Focused",
-    description: "Built exclusively for Australian pubs and clubs — we understand your unique challenges."
+    description: "Built exclusively for Australian pubs and clubs - we understand and appreciate your unique challenges."
   },
   {
-    icon: "📈",
+    iconComponent: <BicepsFlexed className="w-8 h-8 text-black" />,
     title: "Proven Results",
-    description: "Track record of helping venues achieve compliance while improving performance."
+    description: "Track record of helping venues achieve compliance while improving commercial performance."
   },
   {
-    icon: "🤝",
+    iconComponent: <Handshake className="w-8 h-8 text-black" />,
     title: "Partnership Approach",
     description: "We work alongside your team, not above it. Your success is our success."
   }

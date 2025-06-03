@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { FileText, Users, Search, File, Volume2, BarChart3, Shield, Target, Club, GraduationCap, RefreshCw, MessageSquare, Diamond, Heart } from 'lucide-react'
 import Navigation from '../../components/Navigation'
 
 export default function AMLAdvisory() {
@@ -84,7 +85,9 @@ export default function AMLAdvisory() {
                 <div key={problem.title} className="bg-[#1a1d21] rounded-lg p-6 border-l-4 border-red-500">
                   <div className="flex items-start mb-4">
                     <div className="text-red-500 mr-3 mt-1">
-                      <span className="text-2xl">{problem.icon}</span>
+                      <div className="text-2xl">
+                        {problem.iconComponent}
+                      </div>
                     </div>
                     <h3 className="text-lg font-semibold text-white">{problem.title}</h3>
                   </div>
@@ -115,7 +118,9 @@ export default function AMLAdvisory() {
               <div key={solution.title} className="bg-[#1a1d21] rounded-lg p-6 hover:bg-[#22252a] transition-colors">
                 <div className="text-[#66899b] mb-4">
                   <div className="w-12 h-12 bg-[#66899b] bg-opacity-20 rounded-lg flex items-center justify-center">
-                    <span className="text-2xl">{solution.icon}</span>
+                    <div className="text-2xl">
+                      {solution.iconComponent}
+                    </div>
                   </div>
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-white">{solution.title}</h3>
@@ -200,11 +205,11 @@ export default function AMLAdvisory() {
               <div key={step.title} className="relative">
                 {/* Connector Line */}
                 {index < amlProcess.length - 1 && (
-                  <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gray-700 transform translate-x-4 -translate-y-1/2 z-0"></div>
+                  <div className="hidden lg:block absolute top-8 left-1/2 w-full h-0.5 bg-gray-700 z-0"></div>
                 )}
                 
                 <div className="relative z-10 text-center">
-                  <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 relative z-20">
                     <span className="text-xl font-bold text-black">{index + 1}</span>
                   </div>
                   <h3 className="text-lg font-semibold mb-3 text-white">{step.title}</h3>
@@ -230,7 +235,9 @@ export default function AMLAdvisory() {
               {successStories.map((story, index) => (
                 <div key={index} className="bg-[#1a1d21] rounded-lg p-6">
                   <div className="text-center mb-4">
-                    <div className="text-3xl mb-2">{story.icon}</div>
+                    <div className="text-3xl mb-2 text-[#66899b] flex justify-center">
+                      {story.iconComponent}
+                    </div>
                     <h3 className="font-semibold text-white">{story.venue}</h3>
                     <p className="text-gray-400 text-sm">{story.type}</p>
                   </div>
@@ -323,37 +330,37 @@ export default function AMLAdvisory() {
 const amlProblems = [
   {
     title: "Program Requirements",
-    icon: "📋",
+    iconComponent: <FileText className="w-6 h-6" />,
     description: "Understanding what an AML/CTF program needs to include and how it applies to your venue.",
     quote: "What exactly do we need in our AML program and how detailed does it have to be?"
   },
   {
     title: "Staff Responsibilities",
-    icon: "👥",
+    iconComponent: <Users className="w-6 h-6" />,
     description: "Making sure staff understand their AML obligations and know what to do in different situations.",
     quote: "How do we make sure our staff know what they&apos;re supposed to do for AML compliance?"
   },
   {
     title: "Customer Due Diligence",
-    icon: "🔍",
+    iconComponent: <Search className="w-6 h-6" />,
     description: "Understanding when and how to conduct customer identification and verification.",
     quote: "When do we need to ask for ID and what information do we actually need to collect?"
   },
   {
     title: "Documentation Requirements",
-    icon: "📄",
+    iconComponent: <File className="w-6 h-6" />,
     description: "Keeping proper records and documentation that meet AUSTRAC standards.",
     quote: "What records do we need to keep and for how long? How should we organise everything?"
   },
   {
     title: "Regulatory Updates",
-    icon: "📢",
+    iconComponent: <Volume2 className="w-6 h-6" />,
     description: "Staying current with changes to AML requirements and understanding what they mean.",
     quote: "How do we keep up with changes to AML rules and know what we need to update?"
   },
   {
     title: "Reporting Obligations",
-    icon: "📊",
+    iconComponent: <BarChart3 className="w-6 h-6" />,
     description: "Understanding when and how to submit required reports to AUSTRAC.",
     quote: "What reports do we need to submit and how do we know if we&apos;re doing it correctly?"
   }
@@ -361,7 +368,7 @@ const amlProblems = [
 
 const amlSolutions = [
   {
-    icon: "🛡️",
+    iconComponent: <Shield className="w-6 h-6" />,
     title: "AUSTRAC-Ready Programs",
     outcome: "→ Audit confidence, not anxiety",
     description: "Complete AML/CTF programs designed by gaming AML legal professionals who know exactly what regulators expect to see.",
@@ -373,7 +380,7 @@ const amlSolutions = [
     ]
   },
   {
-    icon: "📋",
+    iconComponent: <FileText className="w-6 h-6" />,
     title: "Independent Reviews & Health Checks",
     outcome: "→ Know exactly where you stand",
     description: "Comprehensive assessment of your current AML position, identifying gaps before regulators do.",
@@ -385,7 +392,7 @@ const amlSolutions = [
     ]
   },
   {
-    icon: "🎯",
+    iconComponent: <Target className="w-6 h-6" />,
     title: "Risk Assessment & Profiling",
     outcome: "→ Targeted, efficient compliance",
     description: "Sophisticated risk assessment methodologies that focus your compliance efforts where they matter most.",
@@ -397,7 +404,7 @@ const amlSolutions = [
     ]
   },
   {
-    icon: "🎓",
+    iconComponent: <GraduationCap className="w-6 h-6" />,
     title: "Staff Training That Sticks",
     outcome: "→ Confident, capable team",
     description: "Role-specific training programs that ensure every team member understands their AML obligations and can implement them correctly.",
@@ -409,7 +416,7 @@ const amlSolutions = [
     ]
   },
   {
-    icon: "🔄",
+    iconComponent: <RefreshCw className="w-6 h-6" />,
     title: "Ongoing Compliance Support",
     outcome: "→ Stay compliant as regulations evolve",
     description: "Continuous support to maintain compliance as regulations change and your business grows.",
@@ -421,7 +428,7 @@ const amlSolutions = [
     ]
   },
   {
-    icon: "💬",
+    iconComponent: <MessageSquare className="w-6 h-6" />,
     title: "AUSTRAC Liaison & Representation",
     outcome: "→ Professional regulatory relationship",
     description: "Expert representation and communication with AUSTRAC when you need it most.",
@@ -470,21 +477,21 @@ const successStories = [
   {
     venue: "Regional Club",
     type: "Gaming & Hospitality",
-    icon: "🏆",
+    iconComponent: <Club className="w-8 h-8" />,
     quote: "We went from dreading AUSTRAC contact to actually welcoming their visit. The confidence Involv gave us was life-changing.",
     result: "Perfect AUSTRAC audit score"
   },
   {
     venue: "Metropolitan Hotel",
     type: "Gaming Venue",
-    icon: "⭐",
+    iconComponent: <Diamond className="w-8 h-8" />,
     quote: "Finally, our staff know exactly what to do for AML compliance. No more guessing or anxiety about getting it wrong.",
     result: "100% staff confidence rating"
   },
   {
     venue: "Family-owned Group of Hotels",
     type: "Multi-venue Operation",
-    icon: "🎯",
+    iconComponent: <Heart className="w-8 h-8" />,
     quote: "Involv's program scales perfectly across all our venues. Consistent compliance without the complexity.",
     result: "Streamlined 3-venue operation"
   }
