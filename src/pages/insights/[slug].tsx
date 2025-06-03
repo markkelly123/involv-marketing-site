@@ -25,7 +25,12 @@ export default function PostPage({ post }: PostPageProps) {
         <title>{post.title} - Involv</title>
         <meta name="description" content={post.excerpt || `Read ${post.title} on Involv`} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        {/* Favicon */}
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
         
         {/* Open Graph tags */}
         <meta property="og:title" content={post.title} />

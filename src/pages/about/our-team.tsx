@@ -14,7 +14,12 @@ export default function OurTeam() {
         <title>Our Team - Meet the Industry Veterans Behind Involv</title>
         <meta name="description" content="Meet the Involv team - Tim Barnett, Louise Lane, Con Nikitas, and Mark Kelly. Industry veterans with 80+ years combined experience in gaming, compliance, and venue operations." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+{/* Favicon */}
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
       </Head>
 
       <div className="bg-[#0f1115] text-white font-sans min-h-screen">
