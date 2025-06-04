@@ -256,25 +256,26 @@ export async function getPosts(site?: string, limit?: number, postType?: string)
 
 export async function getPost(slug: string): Promise<Post | null> {
   const query = `
-    *[_type == "post" && slug.current == "${slug}"][0] {
+    *[_type == "post" && slug.current == $slug][0] {
       _id,
       title,
       slug,
       excerpt,
       body,
       publishedAt,
-      author->{name, role, bio},
+      author->{_id, name, role, bio, image{asset->{_id, url}, alt}},
       sites,
       categories[]->{title, _id},
       tags,
       jurisdictions,
       featured,
-      mainImage{asset->{url}, alt},
-      postType
+      mainImage{asset->{_id, url}, alt},
+      postType,
+      estimatedReadingTime
     }
   `
   
-  return await sanity.fetch(query)
+  return await sanity.fetch(query, { slug })
 }
 
 export async function getCaseStudies(site?: string, limit?: number): Promise<CaseStudy[]> {
