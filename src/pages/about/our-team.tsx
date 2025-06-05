@@ -75,7 +75,7 @@ export default function OurTeam() {
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Founding Team</h2>
               <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                Four industry veterans who brought together the exact expertise needed to solve venue challenges.
+                Four industry veterans who brought together the exact expertise needed to solve contemporary venue challenges.
               </p>
             </div>
 
@@ -275,7 +275,7 @@ export default function OurTeam() {
               ))}
             </div>
             <p className="text-gray-400 text-sm">
-              Our extended network includes regulatory legal practitioners, venue operators, technology specialists, and compliance experts across Australia.
+              Our extended network includes regulatory legal practitioners, venue operators, technology specialists, data scientists, and compliance experts across Australia.
             </p>
           </div>
         </section>
@@ -378,33 +378,9 @@ function ProfileImage({ founder, className }: { founder: any; className: string 
 // Data
 const founders = [
   {
-    name: "Tim Barnett",
-    slug: "tim-barnett",
-    title: "Co-Founder",
-    initials: "TB",
-    role: "Hospitality & Gaming Leadership Expert",
-    speciality: "Transformation & Leadership",
-    bio: "Tim Barnett brings over two decades of leadership excellence in hospitality and gaming across Australia and international markets. His proven expertise in business transformation, regulatory navigation, and team leadership creates substantial value for organisations.\n\nTim excels at developing robust risk management frameworks and control systems that satisfy stringent compliance requirements. His passion for building sustainable gaming businesses is fundamentally supported by effective safer gaming practices.\n\nTim's deep understanding of regulatory obligations enables him to deliver strategic solutions that skilfully balance commercial objectives with safer gaming principles.",
-    expertise: [
-      "Business transformation and turnaround leadership",
-      "Regulatory relationship management across jurisdictions",
-      "Risk management framework development",
-      "Team leadership and organisational development",
-      "International hospitality and gaming operations"
-    ],
-    highlights: [
-      "20+ years hospitality & gaming leadership",
-      "International market experience",
-      "Proven business transformation track record",
-      "Expert in regulatory navigation"
-    ],
-    value: "Tim brings the strategic leadership and transformation expertise needed to help venues navigate complex change while building sustainable competitive advantages.",
-    linkedIn: "https://www.linkedin.com/in/tim-barnett-52258126"
-  },
-  {
     name: "Louise Lane",
     slug: "louise-lane",
-    title: "Co-Founder",
+    title: "Chief Executive Officer",
     initials: "LL",
     role: "Gaming Regulatory Legal Expert",
     speciality: "Compliance & Regulatory Law",
@@ -428,7 +404,7 @@ const founders = [
   {
     name: "Con Nikitas",
     slug: "con-nikitas",
-    title: "Director",
+    title: "Chief Commercial Officer",
     initials: "CN",
     role: "Gaming Operations Expert",
     speciality: "Gaming Performance & Operations",
@@ -450,9 +426,33 @@ const founders = [
     linkedIn: "https://www.linkedin.com/in/con-nikitas-19200122"
   },
   {
+    name: "Tim Barnett",
+    slug: "tim-barnett",
+    title: "Chief Strategy Officer",
+    initials: "TB",
+    role: "Hospitality & Gaming Leadership Expert",
+    speciality: "Transformation & Leadership",
+    bio: "Tim Barnett brings over two decades of leadership excellence in hospitality and gaming across Australia and international markets. His proven expertise in business transformation, regulatory navigation, and team leadership creates substantial value for organisations.\n\nTim excels at developing robust risk management frameworks and control systems that satisfy stringent compliance requirements. His passion for building sustainable gaming businesses is fundamentally supported by effective safer gaming practices.\n\nTim's deep understanding of regulatory obligations enables him to deliver strategic solutions that skilfully balance commercial objectives with safer gaming principles.",
+    expertise: [
+      "Business transformation and turnaround leadership",
+      "Regulatory relationship management across jurisdictions",
+      "Risk management framework development",
+      "Team leadership and organisational development",
+      "International hospitality and gaming operations"
+    ],
+    highlights: [
+      "20+ years hospitality & gaming leadership",
+      "International market experience",
+      "Proven business transformation track record",
+      "Expert in regulatory navigation"
+    ],
+    value: "Tim brings the strategic leadership and transformation expertise needed to help venues navigate complex change while building sustainable competitive advantages.",
+    linkedIn: "https://www.linkedin.com/in/tim-barnett-52258126"
+  },
+  {
     name: "Mark Kelly",
     slug: "mark-kelly",
-    title: "Co-Founder",
+    title: "Chief Operating Officer",
     initials: "MK",
     role: "Transformation & Technology Expert",
     speciality: "Digital Innovation & Change",

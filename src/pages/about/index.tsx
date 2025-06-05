@@ -224,7 +224,7 @@ export default function About() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to Work with Industry Veterans?</h2>
             <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              Stop dealing with consultants who do not understand venues. Work with the team that has actually solved these challenges at scale.
+              You'll be wasting your time with consultants who do not understand venues. Work with the team that has actually solved these challenges at scale.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium">
@@ -354,32 +354,32 @@ const values = [
 
 const leadership = [
   {
-    name: "Tim Barnett",
-    slug: "tim-barnett",
-    role: "Co-Founder",
-    initials: "TB",
-    highlight: "20+ years hospitality & gaming leadership across Australia and international markets."
-  },
-  {
     name: "Louise Lane",
     slug: "louise-lane",
-    role: "Co-Founder",
+    role: "Chief Executive Officer",
     initials: "LL",
     highlight: "Regulatory legal expert specialising in gaming, liquor, AML, and compliance frameworks."
   },
   {
     name: "Con Nikitas",
     slug: "con-nikitas",
-    role: "Director",
+    role: "Chief Commercial Officer",
     initials: "CN",
     highlight: "30 years gaming industry experience, former ALH Group executive managing 13,000 EGMs."
   },
   {
+    name: "Tim Barnett",
+    slug: "tim-barnett",
+    role: "Chief Strategy Officer",
+    initials: "TB",
+    highlight: "20+ years hospitality & gaming leadership across Australia and international markets."
+  },
+  {
     name: "Mark Kelly",
     slug: "mark-kelly",
-    role: "Co-Founder",
+    role: "Chief Operating Officer",
     initials: "MK",
-    highlight: "30 years transformational change experience, 6 years specialising in gaming compliance."
+    highlight: "30 years transformational change experience, 6 years specialising in gaming compliance and loyalty."
   }
 ]
 
