@@ -47,7 +47,7 @@ export default function GamingRiskCompliance() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium text-center">
-                  Get Compliance Assessment
+                  Get a Compliance Assessment
                 </Link>
                 <Link href="/insights" className="border border-[#66899b] text-[#66899b] px-8 py-3 rounded-lg hover:bg-[#66899b] hover:text-white transition-colors font-medium text-center">
                   Compliance Insights

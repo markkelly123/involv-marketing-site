@@ -64,7 +64,7 @@ export default function Risk() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact" className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium text-center">
-                  Get Risk Assessment
+                  Get a Risk Assessment
                 </Link>
                 <Link href="/services/risk-compliance/regulatory-compliance" className="border border-[#66899b] text-[#66899b] px-8 py-3 rounded-lg hover:bg-[#66899b] hover:text-white transition-colors font-medium text-center">
                   Regulatory Compliance
@@ -316,7 +316,7 @@ export default function Risk() {
                       href="/contact" 
                       className="border border-[#66899b] text-[#66899b] px-6 py-3 rounded-lg hover:bg-[#66899b] hover:text-white transition-colors font-medium text-center"
                     >
-                      Get Risk Assessment
+                      Get a Risk Assessment
                     </Link>
                   </div>
                 </div>
