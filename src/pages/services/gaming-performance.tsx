@@ -14,6 +14,7 @@ import {
   Store 
 } from 'lucide-react'
 import Navigation from '../../components/Navigation'
+import Footer from '../../components/Footer'
 
 export default function GamingPerformance() {
   const router = useRouter()
@@ -302,55 +303,7 @@ export default function GamingPerformance() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-[#121418] text-white py-12 px-4 border-t border-gray-800">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-4 gap-8">
-              <div>
-                <div className="mb-4">
-                  <img src="/logo-involv-white.svg" alt="Involv" className="h-6 w-auto" />
-                </div>
-                <p className="text-gray-400 text-sm">
-                  Compliance made simple. Gaming made smarter. Built for Australian pubs and clubs.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="font-semibold mb-4">Services</h3>
-                <ul className="space-y-2 text-sm text-gray-400">
-                  <li><Link href="/services/aml-advisory" className="hover:text-white">AML Advisory</Link></li>
-                  <li><Link href="/services/risk-compliance" className="hover:text-white">Risk & Compliance</Link></li>
-                  <li><Link href="/services/gaming-performance" className="text-[#66899b]">Gaming Performance</Link></li>
-                </ul>
-              </div>
-              
-              <div>
-                <h3 className="font-semibold mb-4">Solutions</h3>
-                <ul className="space-y-2 text-sm text-gray-400">
-                  <li><a href="https://assure.involv.com.au" className="hover:text-white">Involv Assure</a></li>
-                  <li><a href="https://primeedge.involv.com.au" className="hover:text-white">Involv PrimeEdge</a></li>
-                </ul>
-              </div>
-              
-              <div>
-                <h3 className="font-semibold mb-4">Company</h3>
-                <ul className="space-y-2 text-sm text-gray-400">
-                  <li><Link href="/about" className="hover:text-white">About</Link></li>
-                  <li><Link href="/insights" className="hover:text-white">Insights</Link></li>
-                  <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-              <p>&copy; 2025 Involv. All rights reserved.</p>
-              <div className="flex space-x-6 mt-4 md:mt-0">
-                <Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
-                <Link href="/terms-of-use" className="hover:text-white">Terms of Use</Link>
-                <Link href="/disclaimer" className="hover:text-white">Disclaimer</Link>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
   )
