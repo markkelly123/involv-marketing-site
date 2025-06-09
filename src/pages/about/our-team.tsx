@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { Building2, Scale, Rocket, Monitor, Target, Award, Handshake, Zap, Landmark, Gamepad2, Settings } from 'lucide-react'
+import { Building2, Scale, Rocket, Monitor, Target, Award, Handshake, Zap, Landmark, ClipboardList, Settings } from 'lucide-react'
 import Navigation from '../../components/Navigation'
 import Footer from '../../components/Footer'
 
@@ -486,7 +486,7 @@ const advisoryAreas = [
     description: "Former gaming regulators and compliance specialists across Australian jurisdictions."
   },
   {
-    iconComponent: <Gamepad2 className="w-8 h-8" />,
+    iconComponent: <ClipboardList className="w-8 h-8" />,
     title: "Operations Experts",
     description: "Venue operators and gaming managers with hands-on experience across venue types."
   },

@@ -317,7 +317,12 @@ export default function Home({ insights }: HomePageProps) {
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className="text-xl font-semibold mb-1 group-hover:text-[#66899b] transition-colors duration-300">{solution.name}</h3>
+                    {/* Logo instead of text name */}
+                    <img 
+                      src={solution.logo} 
+                      alt={solution.name}
+                      className="h-6 w-auto mb-2 group-hover:opacity-80 transition-opacity duration-300"
+                    />
                     <p className="text-[#66899b] italic text-sm">{solution.tagline}</p>
                   </div>
                   <div className="text-[#66899b] group-hover:scale-110 transition-transform duration-300">
@@ -339,7 +344,7 @@ export default function Home({ insights }: HomePageProps) {
                   </ul>
                 </div>
                 <div className="flex items-center text-[#66899b] text-sm font-medium group-hover:translate-x-2 transition-transform duration-300">
-                  <span>Explore {solution.name}</span>
+                  <span>Explore {solution.shortName}</span>
                   <svg className="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
@@ -492,6 +497,8 @@ const whyInvolvData = [
 const solutionCards = [
   {
     name: 'Involv|Assure',
+    shortName: 'Assure',
+    logo: '/logo-involv-assure-white.svg',
     tagline: 'A risk and compliance team in your browser.',
     iconComponent: <ShieldPlus className="w-8 h-8" />,
     problemFocus: 'Know ALL your obligations, get compliant. Assure transforms regulatory obligations into clear, trackable systems that keep you audit-ready without the administrative burden.',
@@ -505,6 +512,8 @@ const solutionCards = [
   },
   {
     name: 'Involv|PrimeEdge',
+    shortName: 'PrimeEdge',
+    logo: '/logo-involv-primeedge-white.svg',
     tagline: 'The science behind high-performance gaming venues.',
     iconComponent: <Brain className="w-8 h-8" />,
     problemFocus: 'Remove guess work from your gaming floor optimisation decisions. PrimeEdge uses AI and industry data to recommend machine placements and floor changes that actually drive revenue.',
