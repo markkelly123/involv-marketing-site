@@ -39,10 +39,10 @@ export default function Navigation({ currentPath = '' }: NavigationProps) {
       <div className="w-full bg-[#0f1115] text-white">
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-end gap-x-6">
           <a href="https://assure.involv.com.au">
-            <img src="/logo-involve-assure-white.svg" alt="Assure" className="h-4 w-auto" />
+            <img src="/logo-involv-assure-white.svg" alt="Assure" className="h-4 w-auto" />
           </a>
           <a href="https://primeedge.involv.com.au">
-            <img src="/logo-involve-primeedge-white.svg" alt="PrimeEdge" className="h-4 w-auto" />
+            <img src="/logo-involv-primeedge-white.svg" alt="PrimeEdge" className="h-4 w-auto" />
           </a>
           <a href="https://lane.involv.com.au">
             <img src="/logo-lane-white.svg" alt="Lane Consulting" className="h-4 w-auto" />
