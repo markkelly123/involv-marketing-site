@@ -219,7 +219,7 @@ export default function Home({ insights }: HomePageProps) {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                Compliance Made Simple. Gaming Made Smarter. Built for Pubs and Clubs.
+                Compliance Made Simple.<br></br>Gaming Made Smarter.<br></br>Built for Pubs and Clubs.
               </h1>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
                 Need clearer guidance on regulatory requirements? Want to optimise gaming performance but not sure where to start? We help Australian pubs and clubs understand their obligations while improving their operations.
