@@ -64,8 +64,8 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Solutions</h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="https://assure.involv.com.au" className="hover:text-white transition-colors">Involv Assure</a></li>
-              <li><a href="https://primeedge.involv.com.au" className="hover:text-white transition-colors">Involv PrimeEdge</a></li>
+              <li><a href="https://assure.involv.com.au" className="hover:text-white transition-colors">Assure</a></li>
+              <li><a href="https://primeedge.involv.com.au" className="hover:text-white transition-colors">PrimeEdge</a></li>
             </ul>
           </div>
           

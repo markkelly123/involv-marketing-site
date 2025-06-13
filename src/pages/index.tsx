@@ -498,7 +498,7 @@ const solutionCards = [
   {
     name: 'Involv|Assure',
     shortName: 'Assure',
-    logo: '/logo-involv-assure-white.svg',
+    logo: '/logo-involv-assure-white2.svg',
     tagline: 'A risk and compliance team in your browser.',
     iconComponent: <ShieldPlus className="w-8 h-8" />,
     problemFocus: 'Know ALL your obligations, get compliant. Assure transforms regulatory obligations into clear, trackable systems that keep you audit-ready without the administrative burden.',
@@ -513,7 +513,7 @@ const solutionCards = [
   {
     name: 'Involv|PrimeEdge',
     shortName: 'PrimeEdge',
-    logo: '/logo-involv-primeedge-white.svg',
+    logo: '/logo-involv-primeedge-white2.svg',
     tagline: 'The science behind high-performance gaming venues.',
     iconComponent: <Brain className="w-8 h-8" />,
     problemFocus: 'Remove guess work from your gaming floor optimisation decisions. PrimeEdge uses AI and industry data to recommend machine placements and floor changes that actually drive revenue.',
