@@ -23,7 +23,7 @@ function InsightsSection({ insights }: { insights: Post[] }) {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-6">Latest Industry Insights</h2>
           <p className="text-gray-300 text-xl max-w-3xl mx-auto leading-relaxed">
-            Stay ahead with expert analysis on compliance, regulation, and gaming performance from Australia's leading industry professionals.
+            Stay on point with expert analysis on compliance, regulation, and gaming performance from Australia's leading industry professionals.
           </p>
         </div>
         
@@ -255,13 +255,13 @@ function SuccessStoriesSection() {
               </div>
             </div>
             <blockquote className="text-gray-700 text-lg mb-6 italic leading-relaxed">
-              "Involv helped us understand our AML obligations completely. We went from constant worry about compliance to having a clear, manageable system that actually works."
+              "Involv helped us understand our AML obligations completely. We went from somwhere between uncertainty and controlled chaos to having a clear, manageable system that actually works."
             </blockquote>
             <div className="border-t border-gray-200 pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-bold text-gray-900">Metro Hotel Group</h4>
-                  <p className="text-gray-600 text-sm">15 venues across NSW</p>
+                  <h4 className="font-bold text-gray-900">Metro Hotel</h4>
+                  <p className="text-gray-600 text-sm">NSW</p>
                 </div>
                 <div className="text-right">
                   <div className="text-2xl font-bold text-[#66899b]">100%</div>
@@ -285,13 +285,13 @@ function SuccessStoriesSection() {
               </div>
             </div>
             <blockquote className="text-gray-700 text-lg mb-6 italic leading-relaxed">
-              "Con's gaming expertise transformed our floor performance. The data-driven recommendations delivered results we could see immediately."
+              "Con's gaming expertise transformed our floor performance. The data-driven recommendations combined with his depth of experience delivered results. Impressive results."
             </blockquote>
             <div className="border-t border-gray-200 pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-bold text-gray-900">Riverside Sports Club</h4>
-                  <p className="text-gray-600 text-sm">Queensland</p>
+                  <h4 className="font-bold text-gray-900">Regional Club</h4>
+                  <p className="text-gray-600 text-sm">QLD</p>
                 </div>
                 <div className="text-right">
                   <div className="text-2xl font-bold text-[#66899b]">23%</div>
@@ -315,16 +315,16 @@ function SuccessStoriesSection() {
               </div>
             </div>
             <blockquote className="text-gray-700 text-lg mb-6 italic leading-relaxed">
-              "Working with Involv gave us confidence across all our operations - from compliance to gaming performance. True industry experts."
+              "Working with Involv gave us confidence across all our operations - from control design to gaming performance. True industry experts."
             </blockquote>
             <div className="border-t border-gray-200 pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-bold text-gray-900">City Workers Club</h4>
+                  <h4 className="font-bold text-gray-900">Metro Club</h4>
                   <p className="text-gray-600 text-sm">Victoria</p>
                 </div>
                 <div className="text-right">
-                  <div className="text-2xl font-bold text-[#66899b]">6 months</div>
+                  <div className="text-2xl font-bold text-[#66899b]">4 months</div>
                   <p className="text-sm text-gray-600">To full compliance</p>
                 </div>
               </div>
@@ -573,7 +573,7 @@ export default function Home({ insights }: HomePageProps) {
           <div className="max-w-5xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-6">Ready for Practical Guidance from Industry Experts?</h2>
             <p className="text-gray-300 text-xl mb-12 max-w-3xl mx-auto leading-relaxed">
-              Every venue faces different requirements. Let us discuss your specific situation and how our expertise can help you understand your obligations while improving your operations.
+              Every venue is a different set of circumstances. Let us discuss your specific situation and how our expertise can help you understand your obligations while improving your operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link href="/contact" className="bg-[#66899b] text-white px-10 py-4 rounded-xl hover:bg-opacity-80 transition-all duration-300 font-semibold hover:transform hover:scale-105 shadow-lg">
@@ -615,12 +615,12 @@ export const getStaticProps: GetStaticProps = async () => {
 
 // Data
 const venueProblems = [
-  "What are all our regulatory obligations across different jurisdictions?",
+  "What are the full range of our regulatory obligations?",
+  "Do we have effective controls in place to meet them, and when were they last tested?",
   "How do we know if we are meeting our AML/CTF requirements properly?",
-  "Are our staff training and procedures up to current standards?",
+  "Do we adequately understand the risk in our busienss?",
   "How can we be confident we are audit-ready?",
-  "Could our gaming floor be performing better with the right guidance?", 
-  "How do we balance compliance requirements with operational efficiency?"
+  "Could our gaming floor be performing better?" 
 ]
 
 const serviceCards = [
@@ -706,7 +706,7 @@ const whyInvolvData = [
 
 const solutionCards = [
   {
-    name: 'Involv|Assure',
+    name: 'Assure',
     shortName: 'Assure',
     logo: '/logo-involv-assure-white2.svg',
     tagline: 'A risk and compliance team in your browser.',
@@ -721,7 +721,7 @@ const solutionCards = [
     link: 'https://assure.involv.com.au',
   },
   {
-    name: 'Involv|PrimeEdge',
+    name: 'PrimeEdge',
     shortName: 'PrimeEdge',
     logo: '/logo-involv-primeedge-white2.svg',
     tagline: 'The science behind high-performance gaming venues.',
