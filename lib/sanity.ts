@@ -1,4 +1,5 @@
 import { createClient } from '@sanity/client'
+import imageUrlBuilder from '@sanity/image-url'
 
 export const sanity = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -6,6 +7,12 @@ export const sanity = createClient({
   apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION!,
   useCdn: true,
 })
+
+// Initialize the image URL builder
+const builder = imageUrlBuilder(sanity)
+
+// Alternative export name for compatibility
+export const client = sanity
 
 // Helper function to calculate reading time from body content
 export function calculateReadingTime(body: any[]): number {
@@ -28,19 +35,34 @@ export function calculateReadingTime(body: any[]): number {
   return readingTime || 1
 }
 
-// Helper function to build Sanity image URLs with transformations
-export function buildImageUrl(imageUrl: string, width?: number, height?: number, quality?: number): string {
-  if (!imageUrl) return ''
+// Improved buildImageUrl function using Sanity's image builder
+export function buildImageUrl(source: any) {
+  if (!source) return ''
+  return builder.image(source)
+}
+
+// Helper function with transformation options
+export function buildImageUrlWithOptions(
+  source: any, 
+  options?: {
+    width?: number
+    height?: number
+    quality?: number
+    format?: 'jpg' | 'png' | 'webp'
+    fit?: 'crop' | 'clip' | 'fill' | 'fillmax' | 'max' | 'scale' | 'min'
+  }
+) {
+  if (!source) return ''
   
-  const params = new URLSearchParams()
-  if (width) params.append('w', width.toString())
-  if (height) params.append('h', height.toString())
-  if (quality) params.append('q', quality.toString())
-  params.append('fit', 'crop')
-  params.append('auto', 'format')
+  let urlBuilder = builder.image(source)
   
-  const queryString = params.toString()
-  return queryString ? `${imageUrl}?${queryString}` : imageUrl
+  if (options?.width) urlBuilder = urlBuilder.width(options.width)
+  if (options?.height) urlBuilder = urlBuilder.height(options.height)
+  if (options?.quality) urlBuilder = urlBuilder.quality(options.quality)
+  if (options?.format) urlBuilder = urlBuilder.format(options.format)
+  if (options?.fit) urlBuilder = urlBuilder.fit(options.fit)
+  
+  return urlBuilder.url()
 }
 
 // Types for our CMS content
@@ -176,6 +198,40 @@ export interface JobPosting {
   }
   tags?: string[]
   internalNotes?: string
+}
+
+// Updated NewsPress interface to match your schema
+export interface NewsPress {
+  _id: string
+  _type: 'newsPress'
+  title: string
+  slug: {
+    current: string
+  }
+  contentType: 'news' | 'press-release' | 'company-update' | 'award' | 'partnership'
+  excerpt?: string
+  mainImage?: {
+    asset: {
+      _id: string
+      url: string
+    }
+    alt?: string
+  }
+  publishedAt: string
+  priority: 'high' | 'medium' | 'low'
+  sites: string[] // ['involv', 'lane', 'assure', 'primeedge']
+  body?: any // Portable text
+  tags?: string[]
+  externalLink?: string
+  downloadableAssets?: Array<{
+    title: string
+    file: {
+      asset: {
+        url: string
+      }
+    }
+    description?: string
+  }>
 }
 
 // Fetch functions
@@ -487,6 +543,178 @@ export async function getJobStatistics(site?: string) {
   
   return await sanity.fetch(query)
 }
+
+// ===== NEWS & PRESS FUNCTIONS - UPDATED TO MATCH SCHEMA =====
+
+// Fetch all news and press releases for a specific site
+export async function getNewsPress(
+  siteName: string,
+  limit?: number,
+  priority?: 'high' | 'medium' | 'low'
+): Promise<NewsPress[]> {
+  try {
+    let query = `*[_type == "newsPress" && "${siteName}" in sites`
+    
+    if (priority) {
+      query += ` && priority == "${priority}"`
+    }
+    
+    query += `] | order(publishedAt desc)`
+    
+    if (limit) {
+      query += `[0...${limit}]`
+    }
+    
+    query += `{
+      _id,
+      _type,
+      title,
+      slug,
+      contentType,
+      excerpt,
+      mainImage{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      },
+      publishedAt,
+      priority,
+      sites,
+      body,
+      tags,
+      externalLink,
+      downloadableAssets[]{
+        title,
+        file{
+          asset->{
+            url
+          }
+        },
+        description
+      }
+    }`
+
+    const newsPress = await sanity.fetch(query)
+    return newsPress || []
+  } catch (error) {
+    console.error('Error fetching news and press releases:', error)
+    return []
+  }
+}
+
+// Fetch featured news and press releases (high priority) for a specific site
+export async function getFeaturedNewsPress(
+  siteName: string,
+  limit: number = 3
+): Promise<NewsPress[]> {
+  return getNewsPress(siteName, limit, 'high')
+}
+
+// Fetch news by content type
+export async function getNewsByContentType(
+  siteName: string,
+  contentType: 'news' | 'press-release' | 'company-update' | 'award' | 'partnership',
+  limit?: number
+): Promise<NewsPress[]> {
+  try {
+    let query = `*[_type == "newsPress" && "${siteName}" in sites && contentType == "${contentType}"] | order(publishedAt desc)`
+    
+    if (limit) {
+      query += `[0...${limit}]`
+    }
+    
+    query += `{
+      _id,
+      _type,
+      title,
+      slug,
+      contentType,
+      excerpt,
+      mainImage{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      },
+      publishedAt,
+      priority,
+      sites,
+      tags,
+      externalLink
+    }`
+
+    const newsPress = await sanity.fetch(query)
+    return newsPress || []
+  } catch (error) {
+    console.error('Error fetching news by content type:', error)
+    return []
+  }
+}
+
+// Fetch single news/press item by slug
+export async function getNewsPressItem(
+  slug: string,
+  siteName: string
+): Promise<NewsPress | null> {
+  try {
+    const query = `*[_type == "newsPress" && slug.current == $slug && "${siteName}" in sites][0]{
+      _id,
+      _type,
+      title,
+      slug,
+      contentType,
+      excerpt,
+      mainImage{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      },
+      publishedAt,
+      priority,
+      sites,
+      body,
+      tags,
+      externalLink,
+      downloadableAssets[]{
+        title,
+        file{
+          asset->{
+            url
+          }
+        },
+        description
+      }
+    }`
+
+    const newsPress = await sanity.fetch(query, { slug })
+    return newsPress || null
+  } catch (error) {
+    console.error('Error fetching news/press item:', error)
+    return null
+  }
+}
+
+// Get recent press releases only
+export async function getPressReleases(siteName: string, limit?: number): Promise<NewsPress[]> {
+  return getNewsByContentType(siteName, 'press-release', limit)
+}
+
+// Get company news only
+export async function getCompanyNews(siteName: string, limit?: number): Promise<NewsPress[]> {
+  return getNewsByContentType(siteName, 'news', limit)
+}
+
+// Get awards and recognition
+export async function getAwards(siteName: string, limit?: number): Promise<NewsPress[]> {
+  return getNewsByContentType(siteName, 'award', limit)
+}
+
+// ===== END NEWS & PRESS FUNCTIONS =====
 
 // Helper function to get featured content for any site
 export async function getFeaturedContent(site: string) {
