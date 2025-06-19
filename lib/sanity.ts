@@ -219,6 +219,7 @@ export interface Webinar {
   tags: string[]
   jurisdictions: string[]
   featured: boolean
+  eventType: string // Added missing eventType field
   mainImage?: {
     asset: {
       _id: string
@@ -824,6 +825,7 @@ export async function getWebinars(site?: string, limit?: number, status?: string
     tags,
     jurisdictions,
     featured,
+    eventType,
     mainImage{asset->{_id, url}, alt},
     registrationRequired,
     registrationUrl,
@@ -854,6 +856,7 @@ export async function getWebinar(slug: string): Promise<Webinar | null> {
       tags,
       jurisdictions,
       featured,
+      eventType,
       mainImage{asset->{_id, url}, alt},
       registrationRequired,
       registrationUrl,
