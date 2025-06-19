@@ -228,7 +228,7 @@ export interface Webinar {
     alt?: string
   }
   registrationRequired: boolean
-  registrationUrl?: string
+  registrationLink?: string // Changed from registrationUrl to match existing code
   webinarUrl?: string
   recordingUrl?: string
   status: 'upcoming' | 'live' | 'completed' | 'cancelled' // Changed from 'scheduled' to match existing code
@@ -828,7 +828,7 @@ export async function getWebinars(site?: string, limit?: number, status?: string
     eventType,
     mainImage{asset->{_id, url}, alt},
     registrationRequired,
-    registrationUrl,
+    registrationLink,
     webinarUrl,
     recordingUrl,
     status,
@@ -859,7 +859,7 @@ export async function getWebinar(slug: string): Promise<Webinar | null> {
       eventType,
       mainImage{asset->{_id, url}, alt},
       registrationRequired,
-      registrationUrl,
+      registrationLink,
       webinarUrl,
       recordingUrl,
       status,
