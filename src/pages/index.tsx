@@ -415,11 +415,7 @@ export default function Home({ insights }: HomePageProps) {
         <title>Involv - Compliance Made Simple. Gaming Made Smarter.</title>
         <meta name="description" content="Transform regulatory burdens into competitive advantages. Expert advisory and intelligent software for Australian pubs and clubs facing compliance and gaming performance challenges." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
+
       </Head>
 
       <div className="bg-[#0f1115] text-white font-sans min-h-screen">
