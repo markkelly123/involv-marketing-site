@@ -211,7 +211,7 @@ export interface Webinar {
   slug: { current: string }
   excerpt: string
   description?: any // Portable Text
-  scheduledDate: string
+  scheduledDateTime: string // Changed from scheduledDate to match existing code
   duration?: number // minutes
   presenter?: Author
   sites: string[]
@@ -230,7 +230,7 @@ export interface Webinar {
   registrationUrl?: string
   webinarUrl?: string
   recordingUrl?: string
-  status: 'scheduled' | 'live' | 'completed' | 'cancelled'
+  status: 'upcoming' | 'live' | 'completed' | 'cancelled' // Changed from 'scheduled' to match existing code
   maxAttendees?: number
   currentAttendees?: number
 }
@@ -804,7 +804,7 @@ export async function getWebinars(site?: string, limit?: number, status?: string
     query += ` && (${conditions.join(' && ')})`
   }
   
-  query += `] | order(scheduledDate desc)`
+  query += `] | order(scheduledDateTime desc)`
   
   if (limit) {
     query += ` [0...${limit}]`
@@ -816,7 +816,7 @@ export async function getWebinars(site?: string, limit?: number, status?: string
     slug,
     excerpt,
     description,
-    scheduledDate,
+    scheduledDateTime,
     duration,
     presenter->{_id, name, role, bio, image{asset->{_id, url}, alt}},
     sites,
@@ -846,7 +846,7 @@ export async function getWebinar(slug: string): Promise<Webinar | null> {
       slug,
       excerpt,
       description,
-      scheduledDate,
+      scheduledDateTime,
       duration,
       presenter->{_id, name, role, bio, image{asset->{_id, url}, alt}},
       sites,
@@ -870,7 +870,7 @@ export async function getWebinar(slug: string): Promise<Webinar | null> {
 
 // Get upcoming webinars
 export async function getUpcomingWebinars(site?: string, limit?: number): Promise<Webinar[]> {
-  return getWebinars(site, limit, 'scheduled')
+  return getWebinars(site, limit, 'upcoming')
 }
 
 // Get completed webinars
