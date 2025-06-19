@@ -748,6 +748,19 @@ export async function getFeaturedContent(site: string) {
   }
 }
 
+// Get all insights content for the insights page
+export async function getAllInsightsContent(site: string) {
+  const [posts, caseStudies] = await Promise.all([
+    getPosts(site),
+    getCaseStudies(site)
+  ])
+
+  return {
+    posts: posts || [],
+    caseStudies: caseStudies || []
+  }
+}
+
 // Helper to get posts by category
 export async function getPostsByCategory(site: string, category: string, limit?: number): Promise<Post[]> {
   let query = `*[_type == "post" && "${site}" in sites && "${category}" in categories[]->title] | order(publishedAt desc)`
