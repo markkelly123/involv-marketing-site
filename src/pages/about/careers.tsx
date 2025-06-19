@@ -1,9 +1,10 @@
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { Rocket, Award, Lightbulb, Target, Handshake, BookOpen, Zap, Scale, Shield, Monitor, BarChart3, TrendingUp, DollarSign, Home, Star, CheckCircle } from 'lucide-react'
+import { Rocket, Award, Lightbulb, Target, Handshake, BookOpen, Zap, Scale, Shield, Monitor, BarChart3, TrendingUp, DollarSign, Home, Star, CheckCircle, MapPin, Clock, Users } from 'lucide-react'
 import Navigation from '../../components/Navigation'
 import Footer from '../../components/Footer'
 import { getJobPostings, JobPosting } from '../../../lib/sanity'
@@ -110,11 +111,11 @@ export default function Careers({ jobPostings }: CareersPageProps) {
         <meta name="description" content="Join Involv and help transform compliance and gaming challenges for Australian pubs and clubs. Work with industry veterans who are building the future of venue operations." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Favicon */}
-<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
       <div className="bg-[#0f1115] text-white font-sans min-h-screen">
@@ -132,33 +133,69 @@ export default function Careers({ jobPostings }: CareersPageProps) {
         </div>
 
         {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-4 pt-12 pb-16">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight max-w-4xl mx-auto">
-              Build the Future of Venue Operations with Industry Veterans
-            </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Join us in transforming how Australian pubs and clubs manage AML, risk, and compliance - while also driving smarter, data-led gaming performance.
-            </p>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+            <div className="lg:col-span-3">
+              <div className="mb-6">
+                <span className="inline-block px-3 py-1 bg-[#66899b] bg-opacity-20 text-[#66899b] border border-[#66899b] border-opacity-30 rounded-full text-sm font-medium">
+                  Join Our Team
+                </span>
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6">
+                Build the Future of
+                <span className="block text-[#66899b] italic">Venue Operations</span>
+              </h1>
+              <p className="text-xl text-gray-300 leading-relaxed mb-8">
+                Join us in transforming how Australian pubs and clubs manage AML, risk, and compliance 
+                - while also driving smarter, data-led gaming performance.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-gray-300">
+                <div className="flex items-center">
+                  <Award className="w-4 h-4 mr-2 text-[#66899b]" />
+                  Industry Veterans
+                </div>
+                <div className="flex items-center">
+                  <Lightbulb className="w-4 h-4 mr-2 text-[#66899b]" />
+                  Innovation & Technology
+                </div>
+                <div className="flex items-center">
+                  <Target className="w-4 h-4 mr-2 text-[#66899b]" />
+                  Real Impact
+                </div>
+              </div>
+            </div>
+            <div className="lg:col-span-2">
+              <div className="relative">
+                <Image
+                  src="/involv-careers.png"
+                  alt="Involv careers"
+                  width={400}
+                  height={300}
+                  className="rounded-2xl shadow-2xl w-full"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#66899b]/20 to-transparent rounded-2xl"></div>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Current Opportunities Section */}
-        {jobPostings && jobPostings.length > 0 ? (
-          <section className="bg-[#121418] py-16 px-4">
-            <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
-                  Current Opportunities
-                </h2>
-                <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                  Explore our open positions and find your next career opportunity with Australia's premier compliance and gaming optimisation consultancy.
-                </p>
-              </div>
+        <section className="bg-[#121418] py-16 lg:py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+                Current Opportunities
+              </h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                Explore our open positions and find your next career opportunity with Australia's 
+                premier compliance and gaming optimisation consultancy.
+              </p>
+            </div>
 
+            {jobPostings && jobPostings.length > 0 ? (
               <div className="grid gap-8 lg:gap-12">
                 {jobPostings.map((job) => (
-                  <div key={job._id} className="bg-[#1a1d21] rounded-2xl p-8 border border-gray-700">
+                  <div key={job._id} className="bg-[#1a1d21] rounded-2xl p-8 border border-gray-700 hover:border-gray-600 transition-colors">
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
                       <div className="mb-4 lg:mb-0">
                         <div className="flex items-center gap-3 mb-2">
@@ -176,15 +213,11 @@ export default function Careers({ jobPostings }: CareersPageProps) {
                         </div>
                         <div className="flex flex-wrap gap-4 text-sm text-gray-400">
                           <span className="flex items-center">
-                            <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd" />
-                            </svg>
+                            <Users className="w-4 h-4 mr-1" />
                             {job.department}
                           </span>
                           <span className="flex items-center">
-                            <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                            </svg>
+                            <MapPin className="w-4 h-4 mr-1" />
                             {job.location}
                           </span>
                           <span>{formatEmploymentType(job.employmentType)}</span>
@@ -246,42 +279,45 @@ export default function Careers({ jobPostings }: CareersPageProps) {
                   </div>
                 ))}
               </div>
-            </div>
-          </section>
-        ) : (
-          /* Current Status - No Openings */
-          <section className="bg-[#121418] py-16 px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="bg-[#1a1d21] rounded-lg p-8 border border-[#66899b]/30">
-                <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Rocket className="w-8 h-8 text-black" />
+            ) : (
+              /* Current Status - No Openings */
+              <div className="text-center py-16">
+                <div className="max-w-md mx-auto">
+                  <div className="bg-[#1a1d21] rounded-lg p-8 border border-[#66899b]/30">
+                    <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Rocket className="w-8 h-8 text-black" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4">Building Something Special</h3>
+                    <p className="text-gray-300 text-lg mb-6">
+                      We don't currently have any open positions, but we're always interested in connecting 
+                      with exceptional people who share our vision of helping venues thrive.
+                    </p>
+                    <p className="text-gray-400">
+                      If you're passionate about the gaming and hospitality industry and believe you could 
+                      contribute to our mission, we'd love to hear from you.
+                    </p>
+                  </div>
                 </div>
-                <h2 className="text-2xl font-bold mb-4">Building Something Special</h2>
-                <p className="text-gray-300 text-lg mb-6">
-                  We don't currently have any open positions, but we're always interested in connecting with exceptional people who share our vision of helping venues thrive.
-                </p>
-                <p className="text-gray-400 text-sm">
-                  If you're passionate about the gaming and hospitality industry and believe you could contribute to our mission, we'd love to hear from you.
-                </p>
               </div>
-            </div>
-          </section>
-        )}
+            )}
+          </div>
+        </section>
 
         {/* Why Work at Involv */}
         <section className="max-w-6xl mx-auto px-4 py-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Why Work at Involv</h2>
             <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-              We're building a company where industry expertise meets innovation, and where every team member has the opportunity to make a real impact.
+              We're building a company where industry expertise meets innovation, and where every team 
+              member has the opportunity to make a real impact.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {whyInvolv.map((reason: any, index: number) => (
+            {whyInvolv.map((reason, index) => (
               <div key={index} className="bg-[#1a1d21] rounded-lg p-8 text-center hover:bg-[#1f2328] transition-colors">
                 <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <div className="text-3xl text-black">
+                  <div className="text-black">
                     {reason.iconComponent}
                   </div>
                 </div>
@@ -298,16 +334,17 @@ export default function Careers({ jobPostings }: CareersPageProps) {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Our Culture</h2>
               <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                We're industry veterans who believe in practical solutions, continuous learning, and supporting each other's success.
+                We're industry veterans who believe in practical solutions, continuous learning, 
+                and supporting each other's success.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              {cultureValues.map((value: any, index: number) => (
+              {cultureValues.map((value, index) => (
                 <div key={index} className="bg-[#1a1d21] rounded-lg p-8">
                   <div className="flex items-start mb-4">
                     <div className="bg-[#66899b] w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                      <div className="text-2xl text-black">
+                      <div className="text-black">
                         {value.iconComponent}
                       </div>
                     </div>
@@ -340,12 +377,10 @@ export default function Careers({ jobPostings }: CareersPageProps) {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {roleTypes.map((role: any, index: number) => (
+            {roleTypes.map((role, index) => (
               <div key={index} className="bg-[#1a1d21] rounded-lg p-6 hover:bg-[#1f2328] transition-colors">
                 <div className="text-[#66899b] mb-4">
-                  <div className="text-2xl">
-                    {role.iconComponent}
-                  </div>
+                  {role.iconComponent}
                 </div>
                 <h3 className="text-lg font-semibold mb-3 text-white">{role.title}</h3>
                 <p className="text-gray-300 text-sm mb-4 leading-relaxed">{role.description}</p>
@@ -372,10 +407,10 @@ export default function Careers({ jobPostings }: CareersPageProps) {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {benefits.map((benefit: any, index: number) => (
+              {benefits.map((benefit, index) => (
                 <div key={index} className="text-center">
                   <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <div className="text-2xl text-black">
+                    <div className="text-black">
                       {benefit.iconComponent}
                     </div>
                   </div>
@@ -392,7 +427,8 @@ export default function Careers({ jobPostings }: CareersPageProps) {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Interested in Joining Our Team?</h2>
             <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-              Even if we don't have current openings, we'd love to connect with exceptional people who share our vision.
+              Even if we don't have current openings, we'd love to connect with exceptional people 
+              who share our vision.
             </p>
           </div>
 
