@@ -902,14 +902,18 @@ export async function getFeaturedContent(site: string) {
 
 // Get all insights content for the insights page
 export async function getAllInsightsContent(site: string, limit?: number) {
-  const [posts, caseStudies] = await Promise.all([
+  const [posts, caseStudies, whitepapers, webinars] = await Promise.all([
     getPosts(site, limit),
-    getCaseStudies(site, limit)
+    getCaseStudies(site, limit),
+    getPosts(site, limit, 'whitepaper'), // Get whitepapers specifically
+    getWebinars(site, limit) // Get webinars
   ])
 
   return {
-    posts: posts || [],
-    caseStudies: caseStudies || []
+    articles: posts || [], // Rename posts to articles
+    caseStudies: caseStudies || [],
+    whitepapers: whitepapers || [],
+    webinars: webinars || []
   }
 }
 
