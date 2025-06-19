@@ -80,7 +80,7 @@ export interface Post {
   postType: 'article' | 'whitepaper' | 'report'
   estimatedReadingTime?: number
   
-  // NEW: Enhanced whitepaper/report fields
+  // Enhanced whitepaper/report fields
   downloadUrl?: string
   fileSize?: string
   fileFormat?: 'PDF' | 'DOCX' | 'PPTX' | 'XLSX'
@@ -114,7 +114,7 @@ export interface CaseStudy {
     alt: string
   }
   
-  // NEW: Enhanced fields
+  // Enhanced fields
   clientSize?: 'small' | 'medium' | 'large' | 'government'
   timeline?: {
     duration: string
@@ -139,114 +139,43 @@ export interface CaseStudy {
   servicesProvided?: string[]
 }
 
-export interface Whitepaper {
+export interface JobPosting {
   _id: string
   title: string
   slug: { current: string }
-  excerpt: string
-  body: any // Portable Text
-  publishedAt: string
-  author: Author
-  sites: string[]
-  categories: { _id: string; title: string }[]
-  tags: string[]
-  jurisdictions: string[]
-  featured: boolean
-  mainImage?: {
-    asset: {
-      _id: string
-      url: string
-    }
-    alt?: string
+  department: string
+  location: string
+  employmentType: 'full-time' | 'part-time' | 'contract' | 'casual' | 'internship' | 'graduate'
+  experienceLevel?: 'entry' | 'mid' | 'senior' | 'executive' | 'graduate'
+  salaryRange?: {
+    min?: number
+    max?: number
+    displayPublicly?: boolean
   }
-  downloadFile?: {
-    asset: {
-      _id: string
-      url: string
-      originalFilename: string
-    }
-  }
-  downloadCount?: number
-  fileSize?: string
-  pageCount?: number
-}
-
-export interface Webinar {
-  _id: string
-  title: string
-  slug: { current: string }
-  eventType: 'webinar' | 'workshop' | 'conference' | 'training' | 'panel' | 'industry-event'
-  status: 'upcoming' | 'live' | 'completed' | 'cancelled'
-  excerpt: string
-  body: any // Portable Text
-  publishedAt: string
-  scheduledDateTime: string
-  duration: number
-  timezone: string
-  youtubeVideoId?: string
-  registrationLink?: string
-  meetingLink?: string
-  presenter: Author
-  additionalPresenters?: Author[]
-  sites: string[]
-  categories: { _id: string; title: string }[]
-  tags: string[]
-  jurisdictions: string[]
-  featured: boolean
-  mainImage?: {
-    asset: {
-      _id: string
-      url: string
-    }
-    alt?: string
-  }
-  maxAttendees?: number
-  registrationCount?: number
-  resources?: Array<{
-    title: string
-    file: {
-      asset: {
-        _id: string
-        url: string
-        originalFilename: string
-      }
-    }
-    description?: string
+  summary: string
+  description: any // Portable Text
+  requirements?: Array<{
+    requirement: string
+    essential: boolean
   }>
-}
-
-export interface NewsPress {
-  _id: string
-  title: string
-  slug: {
-    current: string
-  }
-  contentType: 'news' | 'press-release' | 'company-update' | 'award' | 'partnership'
-  excerpt?: string
-  mainImage?: {
-    asset: {
-      _id: string
-      url: string
-    }
-    alt?: string
-  }
-  publishedAt: string
-  priority: 'high' | 'medium' | 'low'
+  responsibilities?: string[]
+  benefits?: string[]
+  skills?: string[]
+  applicationDeadline?: string
+  applicationEmail: string
+  applicationInstructions?: string
+  status: 'draft' | 'open' | 'closed' | 'on-hold' | 'filled'
+  featured: boolean
+  urgent: boolean
   sites: string[]
-  body: any
+  postedAt: string
+  contactPerson?: {
+    name?: string
+    role?: string
+    email?: string
+  }
   tags?: string[]
-  externalLink?: string
-  downloadableAssets?: Array<{
-    title: string
-    file: {
-      asset: {
-        _id: string
-        url: string
-        originalFilename: string
-      }
-    }
-    description?: string
-  }>
+  internalNotes?: string
 }
 
 // Fetch functions
@@ -284,7 +213,7 @@ export async function getPosts(site?: string, limit?: number, postType?: string)
     postType,
     estimatedReadingTime,
     
-    // NEW: Enhanced whitepaper/report fields
+    // Enhanced whitepaper/report fields
     downloadUrl,
     fileSize,
     fileFormat,
@@ -298,7 +227,7 @@ export async function getPosts(site?: string, limit?: number, postType?: string)
 
 export async function getPost(slug: string): Promise<Post | null> {
   const query = `
-    *[_type == "post" && slug.current == $slug][0] {
+    *[_type == "post" && slug.current == "${slug}"][0] {
       _id,
       title,
       slug,
@@ -317,7 +246,7 @@ export async function getPost(slug: string): Promise<Post | null> {
     }
   `
   
-  return await sanity.fetch(query, { slug })
+  return await sanity.fetch(query)
 }
 
 export async function getCaseStudies(site?: string, limit?: number): Promise<CaseStudy[]> {
@@ -354,7 +283,7 @@ export async function getCaseStudies(site?: string, limit?: number): Promise<Cas
     confidential,
     mainImage{asset->{_id, url}, alt},
     
-    // NEW: Enhanced fields
+    // Enhanced fields
     timeline,
     outcome,
     servicesProvided
@@ -381,42 +310,20 @@ export async function getCaseStudy(slug: string): Promise<CaseStudy | null> {
       categories[]->{title, _id},
       tags,
       jurisdictions,
-      mainImage{asset->{url}, alt}
+      mainImage{asset->{_id, url}, alt}
     }
   `
   
   return await sanity.fetch(query)
 }
 
-export async function getWhitepaper(slug: string): Promise<Whitepaper | null> {
-  const query = `
-    *[_type == "whitepaper" && slug.current == "${slug}"][0] {
-      _id,
-      title,
-      slug,
-      excerpt,
-      body,
-      publishedAt,
-      author->{_id, name, role, bio, image{asset->{_id, url}, alt}},
-      sites,
-      categories[]->{title, _id},
-      tags,
-      jurisdictions,
-      featured,
-      mainImage{asset->{_id, url}, alt},
-      downloadFile{asset->{_id, url, originalFilename}},
-      downloadCount,
-      fileSize,
-      pageCount
-    }
-  `
-  
-  return await sanity.fetch(query)
-}
-
-// NEW: Webinar functions
-export async function getWebinars(site?: string, limit?: number, status?: string): Promise<Webinar[]> {
-  let query = `*[_type == "webinar"`
+// Get all job postings for a site with optional filtering
+export async function getJobPostings(
+  site?: string, 
+  limit?: number, 
+  status?: string
+): Promise<JobPosting[]> {
+  let query = `*[_type == "jobPosting"`
   
   const conditions = []
   if (site) conditions.push(`"${site}" in sites`)
@@ -426,7 +333,7 @@ export async function getWebinars(site?: string, limit?: number, status?: string
     query += ` && (${conditions.join(' && ')})`
   }
   
-  query += `] | order(scheduledDateTime desc)`
+  query += `] | order(postedAt desc)`
   
   if (limit) {
     query += ` [0...${limit}]`
@@ -436,201 +343,165 @@ export async function getWebinars(site?: string, limit?: number, status?: string
     _id,
     title,
     slug,
-    eventType,
+    department,
+    location,
+    employmentType,
+    experienceLevel,
+    salaryRange,
+    summary,
+    description,
+    requirements,
+    responsibilities,
+    benefits,
+    skills,
+    applicationDeadline,
+    applicationEmail,
+    applicationInstructions,
     status,
-    excerpt,
-    publishedAt,
-    scheduledDateTime,
-    duration,
-    timezone,
-    youtubeVideoId,
-    registrationLink,
-    meetingLink,
-    presenter->{_id, name, role, bio, image{asset->{_id, url}, alt}},
-    additionalPresenters[]->{_id, name, role, bio, image{asset->{_id, url}, alt}},
-    sites,
-    categories[]->{title, _id},
-    tags,
-    jurisdictions,
     featured,
-    mainImage{asset->{_id, url}, alt},
-    maxAttendees,
-    registrationCount
+    urgent,
+    sites,
+    postedAt,
+    contactPerson,
+    tags,
+    internalNotes
   }`
   
   return await sanity.fetch(query)
 }
 
-export async function getWebinar(slug: string): Promise<Webinar | null> {
-  const query = `
-    *[_type == "webinar" && slug.current == "${slug}"][0] {
-      _id,
-      title,
-      slug,
-      eventType,
-      status,
-      excerpt,
-      body,
-      publishedAt,
-      scheduledDateTime,
-      duration,
-      timezone,
-      youtubeVideoId,
-      registrationLink,
-      meetingLink,
-      presenter->{_id, name, role, bio, image{asset->{_id, url}, alt}},
-      additionalPresenters[]->{_id, name, role, bio, image{asset->{_id, url}, alt}},
-      sites,
-      categories[]->{title, _id},
-      tags,
-      jurisdictions,
-      featured,
-      mainImage{asset->{_id, url}, alt},
-      maxAttendees,
-      registrationCount,
-      resources[]{
-        title,
-        file{asset->{_id, url, originalFilename}},
-        description
-      }
-    }
-  `
+// Get a single job posting by slug
+export async function getJobPosting(slug: string, site?: string): Promise<JobPosting | null> {
+  let query = `*[_type == "jobPosting" && slug.current == "${slug}"`
+  
+  if (site) {
+    query += ` && "${site}" in sites`
+  }
+  
+  query += `][0] {
+    _id,
+    title,
+    slug,
+    department,
+    location,
+    employmentType,
+    experienceLevel,
+    salaryRange,
+    summary,
+    description,
+    requirements,
+    responsibilities,
+    benefits,
+    skills,
+    applicationDeadline,
+    applicationEmail,
+    applicationInstructions,
+    status,
+    featured,
+    urgent,
+    sites,
+    postedAt,
+    contactPerson,
+    tags,
+    internalNotes
+  }`
   
   return await sanity.fetch(query)
 }
 
-// Get news and press releases for a specific site
-export async function getNewsPress(siteName: string, limit?: number): Promise<NewsPress[]> {
-  const limitClause = limit ? `[0...${limit}]` : ''
+// Get open job postings only
+export async function getOpenJobPostings(site?: string, limit?: number): Promise<JobPosting[]> {
+  return getJobPostings(site, limit, 'open')
+}
+
+// Get featured job postings
+export async function getFeaturedJobPostings(site?: string, limit?: number): Promise<JobPosting[]> {
+  let query = `*[_type == "jobPosting" && featured == true && status == "open"`
   
-  const query = `*[_type == "newsPress" && "${siteName}" in sites] | order(publishedAt desc)${limitClause} {
-    _id,
-    title,
-    slug,
-    contentType,
-    excerpt,
-    mainImage{
-      asset->{
-        _id,
-        url
-      },
-      alt
-    },
-    publishedAt,
-    priority,
-    sites,
-    tags,
-    externalLink
-  }`
-
-  return await sanity.fetch(query)
-}
-
-// Get a single news/press item by slug
-export async function getNewsPressItem(slug: string, siteName: string): Promise<NewsPress | null> {
-  const query = `*[_type == "newsPress" && slug.current == "${slug}" && "${siteName}" in sites][0] {
-    _id,
-    title,
-    slug,
-    contentType,
-    excerpt,
-    mainImage{
-      asset->{
-        _id,
-        url
-      },
-      alt
-    },
-    publishedAt,
-    priority,
-    sites,
-    body,
-    tags,
-    externalLink,
-    downloadableAssets[]{
-      title,
-      file{
-        asset->{
-          _id,
-          url,
-          originalFilename
-        }
-      },
-      description
-    }
-  }`
-
-  return await sanity.fetch(query)
-}
-
-// Get featured news/press items (high priority)
-export async function getFeaturedNewsPress(siteName: string, limit: number = 3): Promise<NewsPress[]> {
-  const query = `*[_type == "newsPress" && "${siteName}" in sites && priority == "high"] | order(publishedAt desc)[0...${limit}] {
-    _id,
-    title,
-    slug,
-    contentType,
-    excerpt,
-    mainImage{
-      asset->{
-        _id,
-        url
-      },
-      alt
-    },
-    publishedAt,
-    priority,
-    sites,
-    tags,
-    externalLink
-  }`
-
-  return await sanity.fetch(query)
-}
-
-// Get news/press by content type
-export async function getNewsPressbyType(siteName: string, contentType: string, limit?: number): Promise<NewsPress[]> {
-  const limitClause = limit ? `[0...${limit}]` : ''
+  if (site) {
+    query += ` && "${site}" in sites`
+  }
   
-  const query = `*[_type == "newsPress" && "${siteName}" in sites && contentType == "${contentType}"] | order(publishedAt desc)${limitClause} {
+  query += `] | order(postedAt desc)`
+  
+  if (limit) {
+    query += ` [0...${limit}]`
+  }
+  
+  query += ` {
     _id,
     title,
     slug,
-    contentType,
-    excerpt,
-    mainImage{
-      asset->{
-        _id,
-        url
-      },
-      alt
-    },
-    publishedAt,
-    priority,
+    department,
+    location,
+    employmentType,
+    experienceLevel,
+    salaryRange,
+    summary,
+    status,
+    featured,
+    urgent,
     sites,
-    tags,
-    externalLink
+    postedAt,
+    tags
   }`
+  
+  return await sanity.fetch(query)
+}
 
+// Get job postings by department
+export async function getJobPostingsByDepartment(
+  site: string, 
+  department: string, 
+  limit?: number
+): Promise<JobPosting[]> {
+  let query = `*[_type == "jobPosting" && "${site}" in sites && department == "${department}" && status == "open"] | order(postedAt desc)`
+  
+  if (limit) {
+    query += ` [0...${limit}]`
+  }
+  
+  query += ` {
+    _id,
+    title,
+    slug,
+    department,
+    location,
+    employmentType,
+    summary,
+    status,
+    postedAt
+  }`
+  
+  return await sanity.fetch(query)
+}
+
+// Get job statistics for a site
+export async function getJobStatistics(site?: string) {
+  let query = `{
+    "totalJobs": count(*[_type == "jobPosting"${site ? ` && "${site}" in sites` : ''}]),
+    "openJobs": count(*[_type == "jobPosting" && status == "open"${site ? ` && "${site}" in sites` : ''}]),
+    "featuredJobs": count(*[_type == "jobPosting" && featured == true && status == "open"${site ? ` && "${site}" in sites` : ''}]),
+    "departments": array::unique(*[_type == "jobPosting"${site ? ` && "${site}" in sites` : ''}].department)
+  }`
+  
   return await sanity.fetch(query)
 }
 
 // Helper function to get featured content for any site
 export async function getFeaturedContent(site: string) {
-  const [featuredPosts, recentArticles, whitepapers, caseStudies, upcomingWebinars] = await Promise.all([
+  const [featuredPosts, recentArticles, whitepapers, caseStudies] = await Promise.all([
     getPosts(site, 3).then(posts => posts.filter(p => p.featured)),
     getPosts(site, 6, 'article'),
-    getWhitepapers(site, 3),
-    getCaseStudies(site, 3),
-    getWebinars(site, 3, 'upcoming')
+    getPosts(site, 3, 'whitepaper'),
+    getCaseStudies(site, 3)
   ])
 
   return {
     featuredPosts,
     recentArticles,
     whitepapers,
-    caseStudies,
-    upcomingWebinars
+    caseStudies
   }
 }
 
@@ -651,7 +522,7 @@ export async function getPostsByCategory(site: string, category: string, limit?:
     author->{name, role},
     categories[]->{title, _id},
     tags,
-    mainImage{asset->{url}, alt},
+    mainImage{asset->{_id, url}, alt},
     postType
   }`
   
@@ -676,28 +547,11 @@ export async function getPostsByJurisdiction(site: string, jurisdiction: string,
     jurisdictions,
     categories[]->{title, _id},
     tags,
-    mainImage{asset->{url}, alt},
+    mainImage{asset->{_id, url}, alt},
     postType
   }`
   
   return await sanity.fetch(query)
-}
-
-// NEW: Combined content fetcher for insights page
-export async function getAllInsightsContent(site: string, limit?: number) {
-  const [articles, caseStudies, whitepapers, webinars] = await Promise.all([
-    getPosts(site, limit, 'article'),
-    getCaseStudies(site, limit),
-    getWhitepapers(site, limit),
-    getWebinars(site, limit)
-  ])
-
-  return {
-    articles,
-    caseStudies,
-    whitepapers,
-    webinars
-  }
 }
 
 // Helper: Get whitepapers with download info

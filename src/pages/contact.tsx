@@ -39,21 +39,15 @@ export default function Contact() {
     setIsSubmitting(true)
     
     try {
+      const form = e.target as HTMLFormElement
+      const formDataObj = new FormData(form)
+      
       const response = await fetch('https://formspree.io/f/xgvyelyj', {
         method: 'POST',
+        body: formDataObj,
         headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          phone: formData.phone,
-          serviceInterest: formData.serviceInterest,
-          message: formData.message,
-          _replyto: formData.email,
-          _subject: `New Involv Enquiry from ${formData.name}`,
-        }),
+          'Accept': 'application/json'
+        }
       })
 
       if (response.ok) {
@@ -84,11 +78,11 @@ export default function Contact() {
         <meta name="description" content="Ready to discuss your compliance and gaming performance challenges? Contact Involv's team of industry experts for a consultation tailored to your venue's needs." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Favicon */}
-<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
       <div className="bg-[#0f1115] text-white font-sans min-h-screen">
@@ -107,7 +101,7 @@ export default function Contact() {
         <section className="max-w-7xl mx-auto px-4 pt-12 pb-16">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Ready to Simplify Your Compliance?
+              Ready to up your compliance game?
             </h1>
             <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
               Every venue faces different challenges. Let's discuss your specific situation and how our team of industry experts can help you understand and meet your obligations while improving your operations.
@@ -124,7 +118,7 @@ export default function Contact() {
                 <div className="mb-8">
                   <h2 className="text-2xl font-bold mb-4">Schedule a Consultation</h2>
                   <p className="text-gray-300">
-                    Fill out the form below and we'll get back to you within 24 hours to discuss how we can help your venue.
+                    Fill out the form below and we'll get back to you within 24 hours to discuss how we can help your business.
                   </p>
                 </div>
 
@@ -147,7 +141,7 @@ export default function Contact() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Hidden fields for Formspree */}
                   <input type="hidden" name="_next" value="https://www.involv.com.au/contact?success=true" />
-                  <input type="hidden" name="_cc" value="hello@involv.com.au" />
+                  <input type="hidden" name="_cc" value="mark.kelly@involv.com.au" />
                   <input type="hidden" name="_template" value="table" />
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
@@ -177,7 +171,7 @@ export default function Contact() {
                         onChange={handleInputChange}
                         required
                         className="w-full px-4 py-3 bg-[#0f1115] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-[#66899b] focus:outline-none focus:ring-1 focus:ring-[#66899b]"
-                        placeholder="your.email@venue.com.au"
+                        placeholder="your.email@email.com.au"
                       />
                     </div>
                   </div>
@@ -228,7 +222,7 @@ export default function Contact() {
                       <option value="aml-advisory">AML Advisory - Understanding AUSTRAC requirements</option>
                       <option value="risk-compliance">Gaming Risk & Compliance - Regulatory obligations</option>
                       <option value="gaming-performance">Gaming Performance - Reporting and gaming operations</option>
-                      <option value="assure-software">Involv Assure - Compliance management software</option>
+                      <option value="assure-software">Involv Assure - a governance, risk & compliance platform</option>
                       <option value="primeedge-software">Involv PrimeEdge - EGM optimisation software</option>
                       <option value="general-enquiry">General enquiry</option>
                       <option value="not-sure">Not sure - help me understand my options</option>
@@ -247,7 +241,7 @@ export default function Contact() {
                       required
                       rows={5}
                       className="w-full px-4 py-3 bg-[#0f1115] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-[#66899b] focus:outline-none focus:ring-1 focus:ring-[#66899b] resize-vertical"
-                      placeholder="What challenges are you facing? What questions do you have about risk, compliance, or gaming performance optimisation? The more detail you can provide, the better we can help."
+                      placeholder="What challenges are you facing? What questions do you have about risk & compliance, or how to improve the performance of your gaming floor? The more detail you can provide, the better we can help."
                     />
                   </div>
 
@@ -304,8 +298,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-gray-400 text-sm mb-1">Phone</p>
-                    <a href="tel:1800INVOLV" className="text-[#66899b] hover:text-white transition-colors">
-                      1 800 INVOLV
+                    <a href="tel:1300 000 000" className="text-[#66899b] hover:text-white transition-colors">
+                      1300 XXX XXX
                     </a>
                   </div>
                   <div>
@@ -317,7 +311,7 @@ export default function Contact() {
 
               {/* Why Choose Involv */}
               <div className="bg-[#1a1d21] rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-4">Why Venues Choose Involv</h3>
+                <h3 className="text-xl font-semibold mb-4">Why Gaming Operators Choose Involv</h3>
                 <div className="space-y-4">
                   {reasons.map((reason, index) => (
                     <div key={index} className="flex items-start">
@@ -349,10 +343,10 @@ export default function Contact() {
                     → Latest Industry Insights
                   </Link>
                   <a href="https://assure.involv.com.au" className="block text-[#66899b] hover:text-white transition-colors text-sm">
-                    → Involv|Assure Demo
+                    → Assure Demo
                   </a>
                   <a href="https://primeedge.involv.com.au" className="block text-[#66899b] hover:text-white transition-colors text-sm">
-                    → Involv|PrimeEdge Demo
+                    → PrimeEdge Demo
                   </a>
                 </div>
               </div>
@@ -410,7 +404,7 @@ const reasons = [
   },
   {
     title: "Complete Coverage",
-    description: "AML, gaming compliance, and performance optimisation all in one team"
+    description: "AML, gaming risk & compliance, and gaming performance optimisation - all in one team"
   },
   {
     title: "Ongoing Support",
@@ -425,7 +419,7 @@ const faqs = [
   },
   {
     question: "Do you work with all types of venues?",
-    answer: "Yes, we work with pubs, clubs, hotels, and other licensed gaming venues across Australia. Our experience spans single venues to large multi-site operations."
+    answer: "Yes, we work with hotels, clubs, and other licensed gaming venues across Australia. Our experience spans single venues to large multi-site operations."
   },
   {
     question: "What makes you different from other consultants?",
@@ -433,7 +427,7 @@ const faqs = [
   },
   {
     question: "Can you help with software implementation?",
-    answer: "Absolutely. Our Involv Assure and PrimeEdge solutions include full implementation support, training, and ongoing assistance to ensure you get maximum value."
+    answer: "Absolutely. Our Assure and PrimeEdge solutions include full establishment support, training, and ongoing assistance to ensure you get maximum value."
   },
   {
     question: "Do you provide ongoing support?",

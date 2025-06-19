@@ -1,26 +1,81 @@
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { Rocket, Award, Lightbulb, Target, Handshake, BookOpen, Zap, Scale, Shield, Monitor, BarChart3, TrendingUp, DollarSign, Home, Star } from 'lucide-react'
+import { Rocket, Award, Lightbulb, Target, Handshake, BookOpen, Zap, Scale, Shield, Monitor, BarChart3, TrendingUp, DollarSign, Home, Star, CheckCircle } from 'lucide-react'
 import Navigation from '../../components/Navigation'
 import Footer from '../../components/Footer'
+import { getJobPostings, JobPosting } from '../../../lib/sanity'
 
-export default function Careers() {
+interface CareersPageProps {
+  jobPostings: JobPosting[]
+}
+
+interface FormData {
+  name: string
+  email: string
+  phone: string
+  position: string
+  message: string
+}
+
+export default function Careers({ jobPostings }: CareersPageProps) {
   const router = useRouter()
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     phone: '',
     position: '',
-    message: '',
-    resume: null
+    message: ''
   })
+  
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
+    setIsSubmitting(true)
+    setSubmitError(false)
+    
+    try {
+      const form = e.target as HTMLFormElement
+      const formDataObj = new FormData(form)
+      
+      const response = await fetch('https://formspree.io/f/xjkroley', {
+        method: 'POST',
+        body: formDataObj,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+
+      if (response.ok) {
+        setIsSubmitted(true)
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          position: '',
+          message: ''
+        })
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false)
+        }, 5000)
+      } else {
+        const data = await response.json()
+        console.error('Form submission failed:', data)
+        setSubmitError(true)
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitError(true)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -29,6 +84,23 @@ export default function Careers() {
       ...prev,
       [name]: value
     }))
+  }
+
+  const formatSalaryRange = (salaryRange?: { min?: number; max?: number; displayPublicly?: boolean }) => {
+    if (!salaryRange || !salaryRange.displayPublicly) return null
+    if (salaryRange.min && salaryRange.max) {
+      return `$${salaryRange.min.toLocaleString()} - $${salaryRange.max.toLocaleString()}`
+    }
+    if (salaryRange.min) {
+      return `From $${salaryRange.min.toLocaleString()}`
+    }
+    return null
+  }
+
+  const formatEmploymentType = (type: string) => {
+    return type.split('-').map(word => 
+      word.charAt(0).toUpperCase() + word.slice(1)
+    ).join('-')
   }
 
   return (
@@ -71,23 +143,130 @@ export default function Careers() {
           </div>
         </section>
 
-        {/* Current Status */}
-        <section className="bg-[#121418] py-16 px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="bg-[#1a1d21] rounded-lg p-8 border border-[#66899b]/30">
-              <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Rocket className="w-8 h-8 text-black" />
+        {/* Current Opportunities Section */}
+        {jobPostings && jobPostings.length > 0 ? (
+          <section className="bg-[#121418] py-16 px-4">
+            <div className="max-w-7xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+                  Current Opportunities
+                </h2>
+                <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                  Explore our open positions and find your next career opportunity with Australia's premier compliance and gaming optimisation consultancy.
+                </p>
               </div>
-              <h2 className="text-2xl font-bold mb-4">Building Something Special</h2>
-              <p className="text-gray-300 text-lg mb-6">
-                We don't currently have any open positions, but we're always interested in connecting with exceptional people who share our vision of helping venues thrive.
-              </p>
-              <p className="text-gray-400 text-sm">
-                If you're passionate about the gaming and hospitality industry and believe you could contribute to our mission, we'd love to hear from you.
-              </p>
+
+              <div className="grid gap-8 lg:gap-12">
+                {jobPostings.map((job) => (
+                  <div key={job._id} className="bg-[#1a1d21] rounded-2xl p-8 border border-gray-700">
+                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+                      <div className="mb-4 lg:mb-0">
+                        <div className="flex items-center gap-3 mb-2">
+                          <h3 className="text-2xl font-bold text-white">{job.title}</h3>
+                          {job.urgent && (
+                            <span className="px-3 py-1 bg-red-900/30 text-red-400 text-sm font-medium rounded-full border border-red-500/30">
+                              Urgent
+                            </span>
+                          )}
+                          {job.featured && (
+                            <span className="px-3 py-1 bg-[#66899b]/20 text-[#66899b] text-sm font-medium rounded-full border border-[#66899b]/30">
+                              Featured
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex flex-wrap gap-4 text-sm text-gray-400">
+                          <span className="flex items-center">
+                            <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd" />
+                            </svg>
+                            {job.department}
+                          </span>
+                          <span className="flex items-center">
+                            <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                            </svg>
+                            {job.location}
+                          </span>
+                          <span>{formatEmploymentType(job.employmentType)}</span>
+                          {job.experienceLevel && (
+                            <span className="capitalize">{job.experienceLevel} Level</span>
+                          )}
+                        </div>
+                      </div>
+                      {formatSalaryRange(job.salaryRange) && (
+                        <div className="text-right">
+                          <div className="text-lg font-semibold text-white">
+                            {formatSalaryRange(job.salaryRange)}
+                          </div>
+                          <div className="text-sm text-gray-400">per annum</div>
+                        </div>
+                      )}
+                    </div>
+
+                    <p className="text-gray-300 mb-6 leading-relaxed">{job.summary}</p>
+
+                    {job.skills && job.skills.length > 0 && (
+                      <div className="mb-6">
+                        <h4 className="font-semibold text-white mb-3">Key Skills</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {job.skills.slice(0, 6).map((skill: string, index: number) => (
+                            <span key={index} className="px-3 py-1 bg-[#66899b]/20 text-[#66899b] text-sm rounded-full border border-[#66899b]/30">
+                              {skill}
+                            </span>
+                          ))}
+                          {job.skills.length > 6 && (
+                            <span className="px-3 py-1 bg-gray-700 text-gray-300 text-sm rounded-full">
+                              +{job.skills.length - 6} more
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <a
+                        href={`mailto:${job.applicationEmail}?subject=Application for ${job.title}&body=Dear Team,%0D%0A%0D%0AI am interested in applying for the ${job.title} position.%0D%0A%0D%0APlease find my application details below:%0D%0A%0D%0A`}
+                        className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-black bg-[#66899b] hover:bg-[#5a7a8a] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#66899b] transition-colors"
+                      >
+                        Apply Now
+                        <svg className="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                      </a>
+                      <button className="inline-flex items-center justify-center px-6 py-3 border border-gray-600 text-base font-medium rounded-lg text-gray-300 bg-transparent hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#66899b] transition-colors">
+                        Learn More
+                      </button>
+                    </div>
+
+                    {job.applicationDeadline && (
+                      <div className="mt-4 text-sm text-gray-400">
+                        Application deadline: {new Date(job.applicationDeadline).toLocaleDateString('en-AU')}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        ) : (
+          /* Current Status - No Openings */
+          <section className="bg-[#121418] py-16 px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="bg-[#1a1d21] rounded-lg p-8 border border-[#66899b]/30">
+                <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Rocket className="w-8 h-8 text-black" />
+                </div>
+                <h2 className="text-2xl font-bold mb-4">Building Something Special</h2>
+                <p className="text-gray-300 text-lg mb-6">
+                  We don't currently have any open positions, but we're always interested in connecting with exceptional people who share our vision of helping venues thrive.
+                </p>
+                <p className="text-gray-400 text-sm">
+                  If you're passionate about the gaming and hospitality industry and believe you could contribute to our mission, we'd love to hear from you.
+                </p>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Why Work at Involv */}
         <section className="max-w-6xl mx-auto px-4 py-16">
@@ -99,7 +278,7 @@ export default function Careers() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {whyInvolv.map((reason, index) => (
+            {whyInvolv.map((reason: any, index: number) => (
               <div key={index} className="bg-[#1a1d21] rounded-lg p-8 text-center hover:bg-[#1f2328] transition-colors">
                 <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                   <div className="text-3xl text-black">
@@ -124,7 +303,7 @@ export default function Careers() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              {cultureValues.map((value, index) => (
+              {cultureValues.map((value: any, index: number) => (
                 <div key={index} className="bg-[#1a1d21] rounded-lg p-8">
                   <div className="flex items-start mb-4">
                     <div className="bg-[#66899b] w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
@@ -136,7 +315,7 @@ export default function Careers() {
                       <h3 className="text-xl font-semibold text-white mb-2">{value.title}</h3>
                       <p className="text-gray-300 text-sm leading-relaxed mb-4">{value.description}</p>
                       <div className="space-y-2">
-                        {value.examples.map((example, idx) => (
+                        {value.examples.map((example: string, idx: number) => (
                           <div key={idx} className="flex items-start text-sm text-gray-400">
                             <span className="text-[#66899b] mr-2 mt-1">•</span>
                             {example}
@@ -161,7 +340,7 @@ export default function Careers() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {roleTypes.map((role, index) => (
+            {roleTypes.map((role: any, index: number) => (
               <div key={index} className="bg-[#1a1d21] rounded-lg p-6 hover:bg-[#1f2328] transition-colors">
                 <div className="text-[#66899b] mb-4">
                   <div className="text-2xl">
@@ -171,7 +350,7 @@ export default function Careers() {
                 <h3 className="text-lg font-semibold mb-3 text-white">{role.title}</h3>
                 <p className="text-gray-300 text-sm mb-4 leading-relaxed">{role.description}</p>
                 <div className="space-y-1">
-                  {role.skills.map((skill, idx) => (
+                  {role.skills.map((skill: string, idx: number) => (
                     <div key={idx} className="text-xs text-gray-400">
                       • {skill}
                     </div>
@@ -193,7 +372,7 @@ export default function Careers() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {benefits.map((benefit, index) => (
+              {benefits.map((benefit: any, index: number) => (
                 <div key={index} className="text-center">
                   <div className="bg-[#66899b] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <div className="text-2xl text-black">
@@ -218,7 +397,40 @@ export default function Careers() {
           </div>
 
           <div className="bg-[#1a1d21] rounded-lg p-8">
+            {/* Success Message */}
+            {isSubmitted && (
+              <div className="mb-8 p-6 bg-green-900/30 border border-green-500/30 rounded-lg">
+                <div className="flex items-center">
+                  <CheckCircle className="w-6 h-6 text-green-400 mr-3" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-green-400 mb-1">Thank you for your interest!</h3>
+                    <p className="text-green-300 text-sm">We've received your message and will be in touch soon.</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Error Message */}
+            {submitError && (
+              <div className="mb-8 p-6 bg-red-900/30 border border-red-500/30 rounded-lg">
+                <div className="flex items-center">
+                  <div className="w-6 h-6 text-red-400 mr-3">⚠</div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-red-400 mb-1">Something went wrong</h3>
+                    <p className="text-red-300 text-sm">Please try again or contact us directly at careers@involv.com.au</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Hidden fields for Formspree */}
+              <input type="hidden" name="_subject" value="Career Interest - Involv" />
+              <input type="hidden" name="_next" value={typeof window !== 'undefined' ? window.location.href : ''} />
+              <input type="hidden" name="_cc" value="careers@involv.com.au" />
+              <input type="hidden" name="site" value="Involv" />
+              <input type="hidden" name="form_type" value="Career Interest" />
+              
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
@@ -232,6 +444,7 @@ export default function Careers() {
                     value={formData.name}
                     onChange={handleInputChange}
                     className="w-full px-4 py-2 bg-[#0f1115] border border-gray-600 rounded-lg text-white focus:border-[#66899b] focus:outline-none"
+                    placeholder="Your full name"
                   />
                 </div>
                 
@@ -247,6 +460,7 @@ export default function Careers() {
                     value={formData.email}
                     onChange={handleInputChange}
                     className="w-full px-4 py-2 bg-[#0f1115] border border-gray-600 rounded-lg text-white focus:border-[#66899b] focus:outline-none"
+                    placeholder="your.email@example.com"
                   />
                 </div>
               </div>
@@ -263,6 +477,7 @@ export default function Careers() {
                     value={formData.phone}
                     onChange={handleInputChange}
                     className="w-full px-4 py-2 bg-[#0f1115] border border-gray-600 rounded-lg text-white focus:border-[#66899b] focus:outline-none"
+                    placeholder="04XX XXX XXX"
                   />
                 </div>
 
@@ -283,6 +498,7 @@ export default function Careers() {
                     <option value="technology">Technology & Product</option>
                     <option value="operations">Operations & Support</option>
                     <option value="sales">Sales & Business Development</option>
+                    <option value="data-analytics">Data & Analytics</option>
                     <option value="other">Other</option>
                   </select>
                 </div>
@@ -307,9 +523,10 @@ export default function Careers() {
               <div className="text-center">
                 <button
                   type="submit"
-                  className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium"
+                  disabled={isSubmitting}
+                  className="bg-[#66899b] text-white px-8 py-3 rounded-lg hover:bg-opacity-80 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Your Message
+                  {isSubmitting ? 'Sending...' : 'Send Your Message'}
                 </button>
                 <p className="text-gray-400 text-sm mt-4">
                   We'll review your message and get back to you within a few business days.
@@ -449,3 +666,26 @@ const benefits = [
     description: "Work with recognised industry leaders and build your reputation in the gaming and compliance sector."
   }
 ]
+
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    // Fetch open job postings for the Involv site
+    const jobPostings = await getJobPostings('involv', undefined, 'open')
+    
+    return {
+      props: {
+        jobPostings: jobPostings || [],
+      },
+      revalidate: 300, // Revalidate every 5 minutes
+    }
+  } catch (error) {
+    console.error('Error fetching job postings:', error)
+    
+    return {
+      props: {
+        jobPostings: [],
+      },
+      revalidate: 300,
+    }
+  }
+}
