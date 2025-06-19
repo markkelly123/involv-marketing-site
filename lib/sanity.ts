@@ -35,10 +35,25 @@ export function calculateReadingTime(body: any[]): number {
   return readingTime || 1
 }
 
-// Improved buildImageUrl function using Sanity's image builder
-export function buildImageUrl(source: any) {
+// Helper function to build Sanity image URLs with transformations (backward compatible)
+export function buildImageUrl(imageUrl: string, width?: number, height?: number, quality?: number): string {
+  if (!imageUrl) return ''
+  
+  const params = new URLSearchParams()
+  if (width) params.append('w', width.toString())
+  if (height) params.append('h', height.toString())
+  if (quality) params.append('q', quality.toString())
+  params.append('fit', 'crop')
+  params.append('auto', 'format')
+  
+  const queryString = params.toString()
+  return queryString ? `${imageUrl}?${queryString}` : imageUrl
+}
+
+// New Sanity image builder function for image objects
+export function buildSanityImageUrl(source: any) {
   if (!source) return ''
-  return builder.image(source)
+  return builder.image(source).url()
 }
 
 // Helper function with transformation options
