@@ -176,6 +176,65 @@ export interface CaseStudy {
   servicesProvided?: string[]
 }
 
+export interface Whitepaper {
+  _id: string
+  title: string
+  slug: { current: string }
+  excerpt: string
+  body: any // Portable Text
+  publishedAt: string
+  author: Author
+  sites: string[]
+  categories: { _id: string; title: string }[]
+  tags: string[]
+  jurisdictions: string[]
+  featured: boolean
+  mainImage?: {
+    asset: {
+      _id: string
+      url: string
+    }
+    alt?: string
+  }
+  downloadUrl?: string
+  fileSize?: string
+  fileFormat?: 'PDF' | 'DOCX' | 'PPTX' | 'XLSX'
+  pageCount?: number
+  requiresRegistration?: boolean
+  downloadCount?: number
+  estimatedReadingTime?: number
+}
+
+export interface Webinar {
+  _id: string
+  title: string
+  slug: { current: string }
+  excerpt: string
+  description?: any // Portable Text
+  scheduledDate: string
+  duration?: number // minutes
+  presenter?: Author
+  sites: string[]
+  categories: { _id: string; title: string }[]
+  tags: string[]
+  jurisdictions: string[]
+  featured: boolean
+  mainImage?: {
+    asset: {
+      _id: string
+      url: string
+    }
+    alt?: string
+  }
+  registrationRequired: boolean
+  registrationUrl?: string
+  webinarUrl?: string
+  recordingUrl?: string
+  status: 'scheduled' | 'live' | 'completed' | 'cancelled'
+  maxAttendees?: number
+  currentAttendees?: number
+}
+
 export interface JobPosting {
   _id: string
   title: string
@@ -730,6 +789,96 @@ export async function getAwards(siteName: string, limit?: number): Promise<NewsP
 }
 
 // ===== END NEWS & PRESS FUNCTIONS =====
+
+// ===== WEBINAR FUNCTIONS =====
+
+// Get all webinars for a site
+export async function getWebinars(site?: string, limit?: number, status?: string): Promise<Webinar[]> {
+  let query = `*[_type == "webinar"`
+  
+  const conditions = []
+  if (site) conditions.push(`"${site}" in sites`)
+  if (status) conditions.push(`status == "${status}"`)
+  
+  if (conditions.length > 0) {
+    query += ` && (${conditions.join(' && ')})`
+  }
+  
+  query += `] | order(scheduledDate desc)`
+  
+  if (limit) {
+    query += ` [0...${limit}]`
+  }
+  
+  query += ` {
+    _id,
+    title,
+    slug,
+    excerpt,
+    description,
+    scheduledDate,
+    duration,
+    presenter->{_id, name, role, bio, image{asset->{_id, url}, alt}},
+    sites,
+    categories[]->{title, _id},
+    tags,
+    jurisdictions,
+    featured,
+    mainImage{asset->{_id, url}, alt},
+    registrationRequired,
+    registrationUrl,
+    webinarUrl,
+    recordingUrl,
+    status,
+    maxAttendees,
+    currentAttendees
+  }`
+  
+  return await sanity.fetch(query)
+}
+
+// Get single webinar by slug
+export async function getWebinar(slug: string): Promise<Webinar | null> {
+  const query = `
+    *[_type == "webinar" && slug.current == "${slug}"][0] {
+      _id,
+      title,
+      slug,
+      excerpt,
+      description,
+      scheduledDate,
+      duration,
+      presenter->{_id, name, role, bio, image{asset->{_id, url}, alt}},
+      sites,
+      categories[]->{title, _id},
+      tags,
+      jurisdictions,
+      featured,
+      mainImage{asset->{_id, url}, alt},
+      registrationRequired,
+      registrationUrl,
+      webinarUrl,
+      recordingUrl,
+      status,
+      maxAttendees,
+      currentAttendees
+    }
+  `
+  
+  return await sanity.fetch(query)
+}
+
+// Get upcoming webinars
+export async function getUpcomingWebinars(site?: string, limit?: number): Promise<Webinar[]> {
+  return getWebinars(site, limit, 'scheduled')
+}
+
+// Get completed webinars
+export async function getCompletedWebinars(site?: string, limit?: number): Promise<Webinar[]> {
+  return getWebinars(site, limit, 'completed')
+}
+
+// ===== END WEBINAR FUNCTIONS =====
 
 // Helper function to get featured content for any site
 export async function getFeaturedContent(site: string) {
