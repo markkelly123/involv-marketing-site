@@ -901,10 +901,10 @@ export async function getFeaturedContent(site: string) {
 }
 
 // Get all insights content for the insights page
-export async function getAllInsightsContent(site: string) {
+export async function getAllInsightsContent(site: string, limit?: number) {
   const [posts, caseStudies] = await Promise.all([
-    getPosts(site),
-    getCaseStudies(site)
+    getPosts(site, limit),
+    getCaseStudies(site, limit)
   ])
 
   return {
