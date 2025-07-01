@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 import { GetStaticProps } from 'next'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -244,9 +245,14 @@ function SuccessStoriesSection() {
           {/* Success Story 1 - Compliance */}
           <div className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105">
             <div className="mb-6">
-              {/* IMAGE REQUIRED HERE: Photo of a typical pub exterior or interior */}
-              <div className="w-full h-48 bg-gradient-to-br from-[#66899b] to-gray-400 rounded-xl flex items-center justify-center mb-4">
-                <span className="text-white font-medium">IMAGE REQUIRED HERE: Pub/Club Photo</span>
+              <div className="w-full h-48 bg-gray-200 rounded-xl overflow-hidden mb-4">
+                <Image 
+                  src="/images/testimonials/lcIMG_4565.png" 
+                  alt="Metro Club exterior - NSW venue"
+                  width={400}
+                  height={192}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -255,12 +261,12 @@ function SuccessStoriesSection() {
               </div>
             </div>
             <blockquote className="text-gray-700 text-lg mb-6 italic leading-relaxed">
-              "Involv helped us understand our AML obligations completely. We went from somwhere between uncertainty and controlled chaos to having a clear, manageable system that actually works."
+              "Lou helped us understand our AML obligations completely. We went from somwhere between uncertainty and controlled chaos to having a clear, manageable system that actually works."
             </blockquote>
             <div className="border-t border-gray-200 pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-bold text-gray-900">Metro Hotel</h4>
+                  <h4 className="font-bold text-gray-900">Metro Club</h4>
                   <p className="text-gray-600 text-sm">NSW</p>
                 </div>
                 <div className="text-right">
@@ -274,9 +280,14 @@ function SuccessStoriesSection() {
           {/* Success Story 2 - Performance */}
           <div className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105">
             <div className="mb-6">
-              {/* IMAGE REQUIRED HERE: Photo of gaming floor or club interior */}
-              <div className="w-full h-48 bg-gradient-to-br from-[#66899b] to-gray-400 rounded-xl flex items-center justify-center mb-4">
-                <span className="text-white font-medium">IMAGE REQUIRED HERE: Gaming Floor Photo</span>
+              <div className="w-full h-48 bg-gray-200 rounded-xl overflow-hidden mb-4">
+                <Image 
+                  src="/images/testimonials/cl_img39083.jpg" 
+                  alt="Metro Hotel gaming floor - VIC venue"
+                  width={400}
+                  height={192}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -290,11 +301,11 @@ function SuccessStoriesSection() {
             <div className="border-t border-gray-200 pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-bold text-gray-900">Regional Club</h4>
-                  <p className="text-gray-600 text-sm">QLD</p>
+                  <h4 className="font-bold text-gray-900">Metro Hotel</h4>
+                  <p className="text-gray-600 text-sm">VIC</p>
                 </div>
                 <div className="text-right">
-                  <div className="text-2xl font-bold text-[#66899b]">23%</div>
+                  <div className="text-2xl font-bold text-[#66899b]">17%</div>
                   <p className="text-sm text-gray-600">Revenue increase</p>
                 </div>
               </div>
@@ -304,9 +315,14 @@ function SuccessStoriesSection() {
           {/* Success Story 3 - Comprehensive */}
           <div className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105 md:col-span-2 lg:col-span-1">
             <div className="mb-6">
-              {/* IMAGE REQUIRED HERE: Photo of modern club or hospitality venue */}
-              <div className="w-full h-48 bg-gradient-to-br from-[#66899b] to-gray-400 rounded-xl flex items-center justify-center mb-4">
-                <span className="text-white font-medium">IMAGE REQUIRED HERE: Modern Venue Photo</span>
+              <div className="w-full h-48 bg-gray-200 rounded-xl overflow-hidden mb-4">
+                <Image 
+                  src="/images/testimonials/IMG_183354rrcq.jpg" 
+                  alt="Regional Club venue - QLD hospitality venue"
+                  width={400}
+                  height={192}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -315,13 +331,13 @@ function SuccessStoriesSection() {
               </div>
             </div>
             <blockquote className="text-gray-700 text-lg mb-6 italic leading-relaxed">
-              "Working with Involv gave us confidence across all our operations - from control design to gaming performance. True industry experts."
+              "Working with Involv gave us confidence across our operations - from control design to a new risk culture. True industry experts."
             </blockquote>
             <div className="border-t border-gray-200 pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-bold text-gray-900">Metro Club</h4>
-                  <p className="text-gray-600 text-sm">Victoria</p>
+                  <h4 className="font-bold text-gray-900">Regional Club</h4>
+                  <p className="text-gray-600 text-sm">QLD</p>
                 </div>
                 <div className="text-right">
                   <div className="text-2xl font-bold text-[#66899b]">4 months</div>
